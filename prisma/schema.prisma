@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AccountStatusEnum {
+  ACTIVE
+  SUSPENDED
+  BANNED
+  DELETED
+}
+
+enum PaymentMethodEnum {
+  CARD
+  CRYPTO
+}
+
+enum CouponStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RoleEnum {
+  ADMIN
+  USER
+  VENDOR
+}
+
+model Payment {
+  id String @id @default(cuid())
+
+  amount        Decimal
+  paymentId     String
+  paymentRef    String
+  purpose       String
+  paymentMethod PaymentMethodEnum
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+// OTP Model
+model otp {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  expiresAt BigInt
+  email     String   @unique
+  code      String
+  updatedAt DateTime @default(now())
+}
+
+model Admin {
+  id String @id @default(cuid())
+
+  first_name   String
+  last_name    String
+  phone_number String
+  email        String
+  password     String
+
+  account_status AccountStatusEnum @default(ACTIVE)
+
+  avatar String?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt()
+  last_login DateTime?
+}
+
+model Customer {
+  id           String @id @default(cuid())
+  first_name   String
+  last_name    String
+  phone_number String
+  email        String
+  password     String
+
+  account_status AccountStatusEnum @default(ACTIVE)
+
+  avatar String?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt()
+  last_login DateTime?
+}
+
+model Vendor {
+  id           String @id @default(cuid())
+  first_name   String
+  last_name    String
+  phone_number String
+  email        String
+  password     String
+
+  account_status AccountStatusEnum @default(ACTIVE)
+
+  avatar String?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt()
+  last_login DateTime?
+  vendor_id  String?
+}
+
+model User {
+  id String @id @default(cuid())
+
+  accountStatus AccountStatusEnum @default(ACTIVE)
+
+  emailVerified Boolean @default(false)
+
+  email       String @unique
+  firstName   String
+  lastName    String
+  phoneNumber String
+
+  password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  role RoleEnum @default(USER)
+
+  // deviceDetails: {
+  //   type: Sequelize.UUID,
+  // },
+}
+
+model Coupon {
+  id        String       @id @default(cuid())
+  code      String
+  vendor_id String
+  discount  Decimal
+  expiresAt DateTime
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt()
+  status    CouponStatus @default(ACTIVE)
+}
+
+model RedeemedCoupon {
+  redeened_coupon_id String   @id @default(cuid())
+  coupon_id          String
+  customer_id        String
+  redeemed_at        DateTime @default(now())
+}
