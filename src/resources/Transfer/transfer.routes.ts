@@ -1,13 +1,12 @@
 import { Router } from "express";
-import { createUserHandler } from "./controllers/user.controller";
 import validateResource from "../../middlewares/validate-resource";
-import { createUserSchema } from "./schemas/index.schema";
-const userRouter = Router();
+import { externalTransfer, internalTransfer } from "./controllers/user.controller";
+import { externalTransferSchema, internalTransferSchema } from "./schemas/index.schema";
 
+const transferRouter = Router();
 
-userRouter.post("/transfers/external", validateResource(createUserSchema), createUserHandler);
+transferRouter.post("/transfers/external", validateResource(externalTransferSchema), externalTransfer);
 
-userRouter.post("/transfers/internal", validateResource(createUserSchema), createUserHandler);
+transferRouter.post("/transfers/internal", validateResource(internalTransferSchema), internalTransfer);
 
-
-export default userRouter;
+export default transferRouter;

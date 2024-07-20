@@ -1,10 +1,21 @@
 import { NextFunction, Request, Response } from "express";
-import prisma from "../../../db";
-import { hashData } from "../../../utils/hash";
-import { CreateUserInput } from "../schemas/index.schema";
+import { ExternalTransferInput, InternalTransferInput } from "../schemas/index.schema";
+import { TransferService } from "../services/transfer.service";
 
-export const createUserHandler = async (
-    req: Request<{}, {}, CreateUserInput["body"]>,
+const transferService = new TransferService()
+
+export const externalTransfer = async (
+    req: Request<{}, {}, ExternalTransferInput["body"]>,
     res: Response,
     next: NextFunction
-) => { }
+) => {
+    transferService.executeExternalTransfer()
+}
+
+export const internalTransfer = async (
+    req: Request<{}, {}, InternalTransferInput["body"]>,
+    res: Response,
+    next: NextFunction
+) => {
+    transferService.executeInternalTransfer()
+}

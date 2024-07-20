@@ -5,7 +5,7 @@ import morgan from "morgan";
 import routes from "./routes";
 dotenv.config();
 
-const PORT = process.env.PORT || 7790;
+const PORT = process.env.PORT || 6969;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

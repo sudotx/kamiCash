@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { createUserHandler } from "../Transfer/controllers/user.controller";
 import validateResource from "../../middlewares/validate-resource";
-import { createUserSchema } from "../Transfer/schemas/index.schema";
-const userRouter = Router();
+import { getCardDetails, linkCard, removeCard } from "./controllers/card.controller";
+import { getCardDetailsSchema, linkCardSchema, removeCardSchema } from "./schemas/index.schema";
+const cardRouter = Router();
 
-userRouter.post("/card/link", validateResource(createUserSchema), createUserHandler);
+cardRouter.post("/card/link", validateResource(linkCardSchema), linkCard);
 
-userRouter.get("/card/details", validateResource(createUserSchema), createUserHandler);
+cardRouter.get("/card/details", validateResource(getCardDetailsSchema), getCardDetails);
 
-userRouter.post("/card/remove", validateResource(createUserSchema), createUserHandler);
+cardRouter.post("/card/remove", validateResource(removeCardSchema), removeCard);
 
-export default userRouter;
+export default cardRouter;

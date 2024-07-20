@@ -1,4 +1,6 @@
-import { object, string, TypeOf, z } from "zod";
+import { number, object, string, TypeOf, z } from "zod";
+
+export const assetTypeEnum = z.enum(["SOL", "USDC"]);
 
 export const createUserSchema = object({
     body: object({
@@ -23,4 +25,39 @@ export const createUserSchema = object({
     }),
 });
 
-export type CreateUserInput = TypeOf<typeof createUserSchema>;
+export const externalTransferSchema = object({
+    body: object({
+        fromUserId: string({
+            required_error: "Sender user ID is required",
+        }),
+        toAddress: string({
+            required_error: "Recipient Solana address is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
+
+// Schema for internal transfers
+export const internalTransferSchema = object({
+    body: object({
+        fromUserId: string({
+            required_error: "Sender user ID is required",
+        }),
+        toUserId: string({
+            required_error: "Recipient user ID is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
+
+// Types for the validated input
+export type ExternalTransferInput = TypeOf<typeof externalTransferSchema>;
+export type InternalTransferInput = TypeOf<typeof internalTransferSchema>;

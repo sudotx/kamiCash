@@ -1,28 +1,30 @@
 import express from "express";
 import validateResource from "../../middlewares/validate-resource";
 import {
-    verifyAccountHander
+    loginHandler,
+    logoutHandler,
+    registerHandler
 } from "./controllers/auth.controller";
-import { verifyOtpSchema } from "./schema/auth.schema";
+import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/auth.schema";
 
 const authRouter = express.Router();
 
 authRouter.post(
     "/register",
-    validateResource(verifyOtpSchema),
-    verifyAccountHander
+    validateResource(registerUserSchema),
+    registerHandler
 );
 
 authRouter.post(
     "/login",
-    validateResource(verifyOtpSchema),
-    verifyAccountHander
+    validateResource(loginUserSchema),
+    loginHandler
 );
 
 authRouter.post(
     "/logout",
-    validateResource(verifyOtpSchema),
-    verifyAccountHander
+    validateResource(logoutUserSchema),
+    logoutHandler
 );
 
 
