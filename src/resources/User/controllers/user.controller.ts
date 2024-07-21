@@ -8,8 +8,8 @@ export const getUserProfile = async (
     res: Response,
     next: NextFunction
 ) => {
+    const userId = req.body;
     try {
-        const userId = req.body;
         const result = userService.getProfile(userId)
         return res.status(200).json(result)
     } catch (error) {
@@ -23,10 +23,13 @@ export const getUserBalance = async (
     res: Response,
     next: NextFunction
 ) => {
-
+    const { userId } = req.body
     try {
-        const result = userService.getBalance()
+        const result = userService.getBalance(userId)
+        return res.status(200).json(result)
     } catch (error) {
+        console.log("Error Getting", error);
+        return res.status(500).json({ json: "error" })
     }
 }
 
@@ -35,9 +38,12 @@ export const getUserTransactions = async (
     res: Response,
     next: NextFunction
 ) => {
+    const { userId } = req.body
     try {
-        userService.getTransactions()
+        const result = userService.getTransactions(userId)
+        return res.status(200).json(result)
     } catch (error) {
-
+        console.log("Error Getting", error);
+        return res.status(500).json({ json: "error" })
     }
 }

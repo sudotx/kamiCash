@@ -9,7 +9,14 @@ export const externalTransfer = async (
     res: Response,
     next: NextFunction
 ) => {
-    transferService.executeExternalTransfer()
+    const { amount, assetType, fromUserId, toAddress, memo } = req.body;
+    try {
+        const result = await transferService.executeExternalTransfer({ amount, assetType, fromUserId, toAddress, memo });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("External transfer failed:", error);
+        res.status(500).json({ message: "External transfer failed", error: error });
+    }
 }
 
 export const internalTransfer = async (
@@ -17,5 +24,12 @@ export const internalTransfer = async (
     res: Response,
     next: NextFunction
 ) => {
-    transferService.executeInternalTransfer()
+    const { amount, assetType, fromUserId, toUserId, memo } = req.body;
+    try {
+        const result = await transferService.executeInternalTransfer({ amount, assetType, fromUserId, toUserId, memo });
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("Internal transfer failed:", error);
+        res.status(500).json({ message: "Internal transfer failed", error: error });
+    }
 }
