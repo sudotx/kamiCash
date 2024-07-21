@@ -12,7 +12,7 @@ export const linkCard = async (
 ) => {
     try {
         const cardData = req.body;
-        const result = await card.linkCard(cardData);
+        const result = await card.linkCard(cardData, cardData.userId);
         return res.status(201).json(result);
     } catch (error) {
         console.error('Error linking card:', error);

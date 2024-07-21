@@ -1,16 +1,34 @@
+import { Decimal } from '@prisma/client/runtime/library';
 import { prisma } from '../../../db';
-import { LinkCardInput } from '../schemas/index.schema';
+import { LinkCardInput, linkCardSchema } from '../schemas/index.schema';
 
+class TokenizationService {
+    private tokenVault: Map<string, string> = new Map();
+    async tokenizeCard(cardNumber: string): Promise<string> {
+        // This would involve interaction with a tokenization service or API
+        // Here, we'll simulate tokenization by generating a unique token
+        const token = crypto.randomUUID() // Example token generation
+        this.tokenVault.set(token, cardNumber); // Map token to original data
+        return token;
+    }
+
+    async detokenizeCard(token: string): Promise<string | null> {
+        return this.tokenVault.get(token) || null; // Retrieve original data
+    }
+}
 export class CardService {
-    async linkCard(cardData: LinkCardInput['body']) {
+    private tokenizationService = new TokenizationService();
+
+    async linkCard(cardData: LinkCardInput['body'], userId: string) {
+        const token = await this.tokenizationService.tokenizeCard(cardData.cardNumber);
         const newCard = await prisma.card.create({
             data: {
-                userId: 'user_123', // Replace with actual user ID
+                userId: userId, // Replace with actual user ID
                 last4: cardData.cardNumber.slice(-4),
                 brand: 'visa', // You'd determine this based on the card number
                 expiryMonth: cardData.expiryMonth,
                 expiryYear: cardData.expiryYear,
-                // Tokenization logic can be added here
+                token: token
             },
         });
 
@@ -42,5 +60,14 @@ export class CardService {
             where: { id: cardId },
         });
         return;
+    }
+
+    async processTransaction(token: string, amount: Decimal) {
+        const cardNumber = await this.tokenizationService.detokenizeCard(token);
+        if (!cardNumber) {
+            throw new Error('Invalid token');
+        }
+
+        // Process transaction with cardNumber
     }
 }
