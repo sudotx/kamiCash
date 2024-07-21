@@ -5,7 +5,9 @@ export const registerHandler = async (
     req: Request<{}, {}, LoginUserInput["body"]>,
     res: Response,
     next: NextFunction
-) => { };
+) => {
+    const { email, password } = req.body;
+};
 
 export const loginHandler = async (
     req: Request<{}, {}, LoginUserInput["body"]>,
