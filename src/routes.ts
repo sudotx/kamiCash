@@ -9,9 +9,9 @@ function routes(app: Express) {
         res.send({ message: "Welcome To PayMeNow" })
     );
     app.use("/api/auth", authRouter);
-    app.use("/api/user", userRouter);
     app.use("/api/card", cardRouter);
     app.use("/api/transfer", transferRouter);
+    app.use("/api/user", userRouter);
 }
 
 export default routes;
