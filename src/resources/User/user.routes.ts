@@ -5,10 +5,10 @@ import { getUserBalanceSchema, getUserProfileSchema, getUserTransactionsSchema }
 
 const userRouter = Router();
 
-userRouter.get("/user/profile", validateResource(getUserProfileSchema), getUserProfile);
+userRouter.get("/profile", validateResource(getUserProfileSchema), getUserProfile);
 
-userRouter.get("/user/balance", validateResource(getUserBalanceSchema), getUserBalance);
+userRouter.get("/balance", validateResource(getUserBalanceSchema), getUserBalance);
 
-userRouter.get("/users/transactions", validateResource(getUserTransactionsSchema), getUserTransactions);
+userRouter.get("/transactions", validateResource(getUserTransactionsSchema), getUserTransactions);
 
 export default userRouter;

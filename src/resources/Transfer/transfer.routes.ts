@@ -5,8 +5,8 @@ import { externalTransferSchema, internalTransferSchema } from "./schemas/index.
 
 const transferRouter = Router();
 
-transferRouter.post("/transfers/external", validateResource(externalTransferSchema), externalTransfer);
+transferRouter.post("/external", validateResource(externalTransferSchema), externalTransfer);
 
-transferRouter.post("/transfers/internal", validateResource(internalTransferSchema), internalTransfer);
+transferRouter.post("/internal", validateResource(internalTransferSchema), internalTransfer);
 
 export default transferRouter;
