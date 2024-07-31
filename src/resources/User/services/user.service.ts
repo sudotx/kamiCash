@@ -42,22 +42,33 @@ export class UserService {
 
     async getBalance(userId: string) {
         try {
-            const wallet = await prisma.wallet.findUnique({
+            const wallets = await prisma.wallet.findMany({
                 where: {
-                    userId_assetType: {
-                        userId: userId,
-                        assetType: 'SOL', // Default or a specific asset type
-                    },
+                    userId: userId,
+                    assetType: {
+                        in: ['SOL', 'USDC']
+                    }
                 },
             });
 
-            if (!wallet) {
+            if (!wallets) {
                 throw new Error('Wallet not found for this user');
             }
 
-            return {
-                balance: wallet.balance.toNumber(), // Convert Decimal to number if necessary
+            const balances = {
+                sol_balance: '0',
+                usdc_balance: '0'
             };
+
+            for (const wallet of wallets) {
+                if (wallet.assetType === 'SOL') {
+                    balances.sol_balance = wallet.balance.toString();
+                } else if (wallet.assetType === 'USDC') {
+                    balances.usdc_balance = wallet.balance.toString();
+                }
+            }
+
+            return balances;
         } catch (error) {
             throw error;
         }
@@ -87,6 +98,11 @@ export class UserService {
                     createdAt: 'desc',
                 },
             });
+
+            if (!transactions) {
+                throw new Error("Transactions not found for user")
+            }
+
 
             return {
                 userTransactions: transactions,
