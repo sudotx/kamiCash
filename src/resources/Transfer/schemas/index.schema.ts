@@ -44,10 +44,10 @@ export const externalTransferSchema = object({
 // Schema for internal transfers
 export const internalTransferSchema = object({
     body: object({
-        fromUserId: string({
+        from: string({
             required_error: "Sender user ID is required",
         }),
-        toUserId: string({
+        to: string({
             required_error: "Recipient user ID is required",
         }),
         amount: number({
