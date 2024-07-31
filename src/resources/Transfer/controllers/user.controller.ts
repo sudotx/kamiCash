@@ -24,9 +24,10 @@ export const internalTransfer = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { amount, assetType, fromUserId, toUserId, memo } = req.body;
+    const { amount, assetType, from, to, memo } = req.body;
     try {
-        const result = await transferService.executeInternalTransfer({ amount, assetType, fromUserId, toUserId, memo });
+        const result = await transferService.executeInternalTransfer({ amount, assetType, from, to, memo });
+        console.log(result);
         res.status(200).json(result);
     } catch (error) {
         console.error("Internal transfer failed:", error);

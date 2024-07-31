@@ -8,9 +8,9 @@ export const getUserProfile = async (
     res: Response,
     next: NextFunction
 ) => {
-    const userId = req.body;
+    const userId = req.query.userId as string;
     try {
-        const result = userService.getProfile(userId)
+        const result = await userService.getProfile(userId)
         return res.status(200).json(result)
     } catch (error) {
         console.log("Error Getting", error);
@@ -23,9 +23,10 @@ export const getUserBalance = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { userId } = req.body
+    const userId = req.query.userId as string
     try {
-        const result = userService.getBalance(userId)
+        const result = await userService.getBalance(userId)
+        console.log(result);
         return res.status(200).json(result)
     } catch (error) {
         console.log("Error Getting", error);
@@ -38,7 +39,7 @@ export const getUserTransactions = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { userId } = req.body
+    const userId = req.query.userId as string
     try {
         const result = userService.getTransactions(userId)
         return res.status(200).json(result)
