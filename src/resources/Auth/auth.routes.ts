@@ -1,6 +1,8 @@
 import express from "express";
+import { requireAdminAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
 import {
+    getLoggedInUserHander,
     loginHandler,
     logoutHandler,
     registerHandler
@@ -8,6 +10,9 @@ import {
 import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/auth.schema";
 
 const authRouter = express.Router();
+
+authRouter.route("/admin").get(requireAdminAuth, getLoggedInUserHander);
+
 
 authRouter.post(
     "/register",

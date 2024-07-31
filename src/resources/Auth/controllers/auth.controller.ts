@@ -2,6 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { LoginUserInput, RegisterUserInput } from "../schema/auth.schema";
 import { prisma } from "../../../db";
 import { hashData, unhashData } from "../../../utils/hash";
+import { signJwt } from "../../../utils/jwt";
+import { JwtPayload } from "../../../utils/interfaces";
+import { CustomError } from "../../../utils/handle-error";
 
 export const registerHandler = async (
     req: Request<{}, {}, RegisterUserInput["body"]>,
@@ -59,6 +62,11 @@ export const loginHandler = async (
                 message: "Invalid email or password",
             });
         }
+        const accessToken = signJwt(
+            user,
+            { expiresIn: process.env.ACCESS_TOKEN_TIME_TTL } //15 minutes
+        );
+
         const isPasswordValid = await unhashData(password, user.password);
         if (!isPasswordValid) {
             return res.status(401).json({
@@ -68,6 +76,7 @@ export const loginHandler = async (
         res.status(200).json({
             message: "User logged in successfully",
             user,
+            accessToken
         });
     } catch (err: any) {
         next(err);
@@ -87,3 +96,33 @@ export const logoutHandler = async (
         message: "User logged out successfully",
     });
 }
+
+export const getLoggedInUserHander = async (
+    _: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtAdmin: JwtPayload = await res.locals.user;
+
+        const user = await prisma.user.findUnique({
+            where: {
+                id: jwtAdmin.id,
+            },
+        });
+
+        if (!user) {
+            throw {
+                message: "user not found",
+            };
+        }
+
+        const { password: pass, ...remainingAdmin } = user;
+        return res.status(200).json({
+            ...remainingAdmin,
+        });
+    } catch (error: any) {
+        console.log("[GET_LOGGEDIN_USER_ERROR]:", error);
+        next(new CustomError(error.message, error.statusCode));
+    }
+};
