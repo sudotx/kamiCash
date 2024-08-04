@@ -41,7 +41,7 @@ export const getUserTransactions = async (
 ) => {
     const userId = req.query.userId as string
     try {
-        const result = userService.getTransactions(userId)
+        const result = await userService.getTransactions(userId)
         return res.status(200).json(result)
     } catch (error) {
         console.log("Error Getting", error);

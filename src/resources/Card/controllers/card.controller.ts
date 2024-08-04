@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { GetCardDetailsInput, LinkCardInput, RemoveCardInput } from "../schemas/index.schema";
 import { CardService } from "../services/card.service";
 
-
 const card = new CardService()
 
 export const linkCard = async (
@@ -21,13 +20,14 @@ export const linkCard = async (
 }
 
 export const getCardDetails = async (
-    req: Request<{}, {}, GetCardDetailsInput["query"]>,
+    req: Request<{}, {}, GetCardDetailsInput["body"]>,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const { userId } = req.query;
-        const cardDetails = await card.getCardDetails("userId");
+        const { userId } = req.body;
+        const cardDetails = await card.getCardDetails(userId);
+        console.log("card details", cardDetails);
         return res.status(200).json(cardDetails);
     } catch (error) {
         console.error('Error getting card details:', error);

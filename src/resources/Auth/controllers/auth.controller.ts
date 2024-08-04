@@ -1,48 +1,32 @@
+import { Keypair } from "@solana/web3.js";
 import { NextFunction, Request, Response } from "express";
-import { LoginUserInput, RegisterUserInput } from "../schema/auth.schema";
-import { prisma } from "../../../db";
-import { hashData, unhashData } from "../../../utils/hash";
-import { signJwt } from "../../../utils/jwt";
-import { JwtPayload } from "../../../utils/interfaces";
 import { CustomError } from "../../../utils/handle-error";
+import { hashData } from "../../../utils/hash";
+import { JwtPayload } from "../../../utils/interfaces";
+import { signJwt } from "../../../utils/jwt";
+import { LoginUserInput, RegisterUserInput } from "../schema/auth.schema";
+
+import { AuthService } from "../services/auth.service";
+
+const authService = new AuthService()
 
 export const registerHandler = async (
     req: Request<{}, {}, RegisterUserInput["body"]>,
     res: Response,
     next: NextFunction
 ) => {
-    const { email, password, firstName, lastName, phoneNumber } = req.body;
     try {
+        const { email, password, firstName, lastName, phoneNumber } = req.body;
         const hashedPassword = await hashData(password);
-        const user = await prisma.user.create({
-            data: {
-                email,
-                password: hashedPassword,
-                firstName,
-                lastName,
-                phoneNumber,
-                wallets: {
-                    create: [
-                        {
-                            assetType: "SOL",
-                            balance: 0,
-                        },
-                        {
-                            assetType: "USDC",
-                            balance: 0,
-                        }
-                    ],
-                },
-            },
-        });
+        const newKeypair = Keypair.generate();
+        const user = await authService.createUser(email, hashedPassword, firstName, lastName, phoneNumber, newKeypair);
         res.status(201).json({
             message: "User created successfully",
-            user,
+            user: authService.sanitizeUser(user),
         });
     } catch (err: any) {
-        next(err);
+        next(new CustomError(err.message, 400));
     }
-
 };
 
 export const loginHandler = async (
@@ -50,32 +34,13 @@ export const loginHandler = async (
     res: Response,
     next: NextFunction
 ) => {
-    const { email, password } = req.body;
     try {
-        const user = await prisma.user.findUnique({
-            where: {
-                email,
-            },
-        });
-        if (!user) {
-            return res.status(401).json({
-                message: "Invalid email or password",
-            });
-        }
-        const accessToken = signJwt(
-            user,
-            { expiresIn: process.env.ACCESS_TOKEN_TIME_TTL } //15 minutes
-        );
-
-        const isPasswordValid = await unhashData(password, user.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({
-                message: "Invalid email or password",
-            });
-        }
+        const { email, password } = req.body;
+        const user = await authService.authenticateUser(email, password);
+        const accessToken = signJwt(user, { expiresIn: process.env.ACCESS_TOKEN_TIME_TTL });
         res.status(200).json({
             message: "User logged in successfully",
-            user,
+            user: authService.sanitizeUser(user),
             accessToken
         });
     } catch (err: any) {
@@ -88,41 +53,22 @@ export const logoutHandler = async (
     res: Response,
     next: NextFunction
 ) => {
-    res.clearCookie("token");
-    res.clearCookie("refreshToken");
-    res.clearCookie("userId");
-    res.clearCookie("userEmail");
+    // a.clearUserCookies(res);
     res.status(200).json({
         message: "User logged out successfully",
     });
-}
+};
 
-export const getLoggedInUserHander = async (
-    _: Request,
+export const getLoggedInUserHandler = async (
+    req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const jwtAdmin: JwtPayload = await res.locals.user;
-
-        const user = await prisma.user.findUnique({
-            where: {
-                id: jwtAdmin.id,
-            },
-        });
-
-        if (!user) {
-            throw {
-                message: "user not found",
-            };
-        }
-
-        const { password: pass, ...remainingAdmin } = user;
-        return res.status(200).json({
-            ...remainingAdmin,
-        });
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
     } catch (error: any) {
-        console.log("[GET_LOGGEDIN_USER_ERROR]:", error);
-        next(new CustomError(error.message, error.statusCode));
+        next(new CustomError(error.message, error.statusCode || 500));
     }
 };
