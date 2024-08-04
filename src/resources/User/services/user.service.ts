@@ -99,10 +99,9 @@ export class UserService {
                 },
             });
 
-            if (!transactions) {
-                throw new Error("Transactions not found for user")
+            if (transactions.length == 0) {
+                return { userTransaction: [] }
             }
-
 
             return {
                 userTransactions: transactions,

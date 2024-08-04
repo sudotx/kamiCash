@@ -1,6 +1,6 @@
 import { Decimal } from '@prisma/client/runtime/library';
 import { prisma } from '../../../db';
-import { LinkCardInput, linkCardSchema } from '../schemas/index.schema';
+import { LinkCardInput } from '../schemas/index.schema';
 
 class TokenizationService {
     private tokenVault: Map<string, string> = new Map();
@@ -67,7 +67,5 @@ export class CardService {
         if (!cardNumber) {
             throw new Error('Invalid token');
         }
-
-        // Process transaction with cardNumber
     }
 }
