@@ -25,7 +25,7 @@ export const linkCardSchema = object({
 
 // Schema for getting card details
 export const getCardDetailsSchema = object({
-    query: object({
+    body: object({
         userId: string({
             required_error: "User ID is required",
         }),

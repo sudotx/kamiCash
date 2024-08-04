@@ -25,7 +25,7 @@ export const createUserSchema = object({
     }),
 });
 
-export const externalTransferSchema = object({
+export const withdrawSchema = object({
     body: object({
         fromUserId: string({
             required_error: "Sender user ID is required",
@@ -41,7 +41,6 @@ export const externalTransferSchema = object({
     }),
 });
 
-// Schema for internal transfers
 export const internalTransferSchema = object({
     body: object({
         from: string({
@@ -58,6 +57,5 @@ export const internalTransferSchema = object({
     }),
 });
 
-// Types for the validated input
-export type ExternalTransferInput = TypeOf<typeof externalTransferSchema>;
+export type WithdrawInput = TypeOf<typeof withdrawSchema>;
 export type InternalTransferInput = TypeOf<typeof internalTransferSchema>;
