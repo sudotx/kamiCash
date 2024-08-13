@@ -24,3 +24,5 @@ build
 prisma/migrations
 
 Makefile
+
+test-ledger
