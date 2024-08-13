@@ -4,7 +4,7 @@ import { prisma } from "../../src/db";
 import { SolanaService, TransferService } from "../../src/resources/Transfer/services/transfer.service";
 
 // Mock Prisma
-jest.mock("../../../db", () => ({
+jest.mock("../../src/db", () => ({
     prisma: {
         wallet: {
             findUnique: jest.fn(),
@@ -45,7 +45,7 @@ jest.mock("@solana/web3.js", () => {
 });
 
 // Mock sendMail
-jest.mock("../../../utils/sendmail", () => ({
+jest.mock("../../src/utils/sendmail", () => ({
     sendMail: jest.fn(),
 }));
 

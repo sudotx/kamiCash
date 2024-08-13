@@ -6,7 +6,7 @@ import { AuthService } from '../../src/resources/Auth/services/auth.service';
 import { CustomError } from '../../src/utils/handle-error';
 import { hashData, unhashData } from '../../src/utils/hash';
 
-jest.mock('../../../db', () => ({
+jest.mock('../../src/db', () => ({
     prisma: {
         user: {
             findFirst: jest.fn(),
@@ -16,7 +16,7 @@ jest.mock('../../../db', () => ({
     },
 }));
 
-jest.mock('../../../utils/hash', () => ({
+jest.mock('../../src/utils/hash', () => ({
     hashData: jest.fn(),
     unhashData: jest.fn(),
 }));

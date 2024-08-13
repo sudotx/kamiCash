@@ -3,7 +3,7 @@ import { prisma } from '../../src/db';
 import { LinkCardInput } from '../../src/resources/Card/schemas/index.schema';
 import { CardService } from '../../src/resources/Card/services/card.service';
 
-jest.mock('../../../db', () => ({
+jest.mock('../../src/db', () => ({
     prisma: {
         card: {
             create: jest.fn(),
@@ -13,7 +13,7 @@ jest.mock('../../../db', () => ({
     },
 }));
 
-jest.mock('./card.service'); // Mock the TokenizationService
+jest.mock('../../src/resources/Card/services/card.service'); // Mock the TokenizationService
 
 describe('CardService', () => {
     let cardService: CardService;
