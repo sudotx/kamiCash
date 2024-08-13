@@ -38,6 +38,14 @@ export const loginHandler = async (
         const { email, password } = req.body;
         const user = await authService.authenticateUser(email, password);
         const accessToken = signJwt(user, { expiresIn: process.env.ACCESS_TOKEN_TIME_TTL });
+
+        res.cookie('refreshToken', accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 15 * 24 * 60 * 60 * 1000
+        });
+
         res.status(200).json({
             message: "User logged in successfully",
             user: authService.sanitizeUser(user),
@@ -53,7 +61,13 @@ export const logoutHandler = async (
     res: Response,
     next: NextFunction
 ) => {
-    // a.clearUserCookies(res);
+
+    res.clearCookie('refreshToken', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict'
+    });
+
     res.status(200).json({
         message: "User logged out successfully",
     });

@@ -1,6 +1,16 @@
 import { prisma } from "../../../db";
 
 export class UserService {
+    private async generateUserId(userId: string) {
+        const random = Math.floor(Math.random() * 10000);
+        const timestamp = Date.now();
+        const uniqueId = `${random}-${timestamp}-${userId}`;
+        const newUserId = `user-${uniqueId}`;
+        return newUserId;
+    }
+
+    protected async deleteUser(userId: string) { }
+
     async getProfile(userId: string) {
         try {
             const user = await prisma.user.findUnique({
@@ -32,12 +42,71 @@ export class UserService {
         }
     }
 
-    private generateUserId(userId: string) {
-        const random = Math.floor(Math.random() * 10000);
-        const timestamp = Date.now();
-        const uniqueId = `${random}-${timestamp}-${userId}`;
-        const newUserId = `user-${uniqueId}`;
-        return newUserId;
+    async getUser(email: string) { }
+
+    async updateUser(userId: string, data: any) {
+        try {
+            const user = await prisma.user.findUnique({
+                where: { id: userId },
+                select: {
+                    id: true,
+                    firstName: true,
+                    lastName: true,
+                    email: true,
+                    phoneNumber: true,
+                    role: true,
+                    createdAt: true,
+                    updatedAt: true,
+                },
+            });
+
+            if (!user) {
+                throw new Error('User not found');
+            }
+            const updatedUser = await prisma.user.update({
+                where: { id: userId },
+                data: {
+                    firstName: data.firstName || user.firstName,
+                    lastName: data.lastName || user.lastName,
+                    email: data.email || user.email,
+                    phoneNumber: data.phoneNumber || user.phoneNumber,
+                    role: data.role || user.role,
+                },
+            });
+            return updatedUser;
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async requestDeleteUser(userId: string) {
+        try {
+            const user = await prisma.user.findUnique({
+                where: { id: userId },
+                select: {
+                    id: true,
+                    firstName: true,
+                    lastName: true,
+                    email: true,
+                    phoneNumber: true,
+                    role: true,
+                    createdAt: true,
+                    updatedAt: true,
+                },
+            });
+
+            if (!user) {
+                throw new Error('User not found');
+            }
+
+            const deletedUser = await prisma.user.delete({
+                where: { id: userId },
+            });
+            return deletedUser;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async getBalance(userId: string) {

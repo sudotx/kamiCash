@@ -3,14 +3,14 @@ import { Decimal } from "@prisma/client/runtime/library";
 import { Connection, Keypair, PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
 import { prisma } from "../../../db";
 import { CustomError } from "../../../utils/handle-error";
-import { sendMail } from "../../../utils/sendmail";
 import { InternalTransferInput, WithdrawInput } from "../schemas/index.schema";
+import { sendMail } from "../../../utils/sendmail";
 
 export class SolanaService {
     private connection: Connection;
     private payer: Keypair;
 
-    constructor(rpcUrl: string, /*payerKeypair: Keypair*/) {
+    constructor(rpcUrl: string) {
         this.connection = new Connection(rpcUrl, "confirmed");
         this.payer = Keypair.generate()
     }
@@ -35,28 +35,52 @@ export class SolanaService {
 
         return signature;
     }
-}
 
-export class notificationService {
-    async sendMail(email: string, subject: string, msgBody: string) {
-        const success = await sendMail(email, subject, msgBody);
-        if (success) {
-            console.log("Email was sent successfully.");
-        } else {
-            console.log("Failed to send email.");
-        }
+    async transferSPLToken(
+        tokenMintAddress: string,
+        fromTokenAccount: PublicKey,
+        toTokenAccount: PublicKey,
+        fromWallet: Keypair,
+        amount: number
+    ): Promise<string> {
+        const mintPublicKey = new PublicKey(tokenMintAddress);
+
+        const transaction = new Transaction().add(
+            // Token.createTransferInstruction(
+            //     TOKEN_PROGRAM_ID,
+            //     fromTokenAccount,
+            //     toTokenAccount,
+            //     fromWallet.publicKey,
+            //     [],
+            //     amount
+            // )
+        );
+
+        const signature = await this.connection.sendTransaction(transaction, [fromWallet, this.payer], { skipPreflight: false });
+
+        await this.connection.confirmTransaction(signature);
+
+        return signature;
     }
+
+    async getBalance(publicKey: PublicKey): Promise<number> {
+        return this.connection.getBalance(publicKey);
+    }
+
+    async getSPLTokenBalance(tokenAccount: PublicKey): Promise<number> {
+        const accountInfo = await this.connection.getTokenAccountBalance(tokenAccount);
+        return parseFloat(accountInfo.value.amount);
+    }
+
 }
 
 export class TransferService {
     private solanaService: SolanaService;
-    private notificationService: notificationService;
 
     constructor() {
-        // Initialize SolanaService with RPC URL and payer Keypair
-        const rpcUrl = "https://api.mainnet-beta.solana.com";
-        this.solanaService = new SolanaService(rpcUrl,);
-        this.notificationService = new notificationService();
+        const rpcUrl = "http://127.0.0.1:8899";
+        // const rpcUrl = "https://api.mainnet-beta.solana.com";
+        this.solanaService = new SolanaService(rpcUrl);
     }
     async executeExternalTransfer(data: WithdrawInput['body']) {
         const { fromUserId, toAddress, amount, assetType, memo } = data;
@@ -92,7 +116,7 @@ export class TransferService {
                     },
                 });
 
-                // const txHash = await this.solanaService.transfer(fromUserId, toAddress, new Decimal(amount), assetType);
+                const txHash = await this.solanaService.transfer(fromUserId, toAddress, new Decimal(amount), assetType);
 
                 const transactionRecord = await prisma.transaction.create({
                     data: {
@@ -100,24 +124,21 @@ export class TransferService {
                         toAddress,
                         amount,
                         assetType,
-                        txHash: "",
+                        txHash: txHash,
                         type: 'EXTERNAL',
                         status: 'COMPLETED',
                         memo,
                     },
                 });
 
-                // const user = await prisma.user.findUnique({
-                //     where: { id: fromUserId },
-                //     select: { email: true },
-                // });
+                const user = await prisma.user.findUnique({
+                    where: { id: fromUserId },
+                    select: { email: true },
+                });
 
-                // if (user && user.email) {
-                //     // Send email notification
-                //     this.notificationService.sendMail(user.email, "External Transfer Completed", 'Your external transfer has been completed successfully.')
-                // } else {
-                //     console.error('User not found or email not available.');
-                // }
+                if (user) {
+                    sendMail(user.email, "External Transfer Completed", 'Your external transfer has been completed successfully.')
+                }
 
                 return transactionRecord;
             });
@@ -249,12 +270,4 @@ export class TransferService {
         });
     }
 
-    private async sendNotifications(from: string, to: string) {
-        const [sender, recipient] = await Promise.all([
-            prisma.user.findUnique({ where: { id: from }, select: { email: true } }),
-            prisma.user.findUnique({ where: { id: to }, select: { email: true } }),
-        ]);
-        await this.notificationService.sendMail(sender?.email!, "", 'Internal transfer sent');
-        await this.notificationService.sendMail(recipient?.email!, "", 'Internal transfer received');
-    }
 }

@@ -3,7 +3,7 @@ import { Keypair } from "@solana/web3.js";
 import { randomUUID } from "crypto";
 import { prisma } from "../../../db";
 import { CustomError } from "../../../utils/handle-error";
-import { unhashData } from "../../../utils/hash";
+import { hashData, unhashData } from "../../../utils/hash";
 
 export class AuthService {
     constructor() { }
@@ -43,6 +43,8 @@ export class AuthService {
     }
 
     createUser = async (email: string, hashedPassword: string, firstName: string, lastName: string, phoneNumber: string, keypair: Keypair) => {
+
+        const hashedPrivateKey = await hashData(keypair.secretKey.toString());
         return prisma.user.create({
             data: {
                 id: randomUUID(),
@@ -55,6 +57,7 @@ export class AuthService {
                 accountStatus: AccountStatusEnum.ACTIVE,
                 emailVerified: false,
                 solanaAddress: keypair.publicKey.toString(),
+                solanaPrivateKey: hashedPrivateKey,
                 points: 50,
                 createdAt: new Date().toISOString(),
                 wallets: {
