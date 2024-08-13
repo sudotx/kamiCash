@@ -6,6 +6,7 @@ import routes from "./routes";
 dotenv.config();
 
 const PORT = process.env.PORT || 6969;
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +14,7 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.listen(PORT, () => {
-    console.log(`Listening on: ${PORT}`);
+    console.log(`Getting Schiwfty on port ${PORT}`);
     routes(app);
 });
 

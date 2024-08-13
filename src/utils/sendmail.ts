@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 
-// Create a Nodemailer transporter using SMTP
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -15,16 +14,14 @@ export const sendMail = async (
     messageBody: string
 ) => {
     try {
-        // Define email options
         const mailOptions = {
-            from: "rootlex@tenaciti.com",
+            from: "brrrrr@vrooooom.com",
             to: email,
-            sender: "no-reply@tenaciti.co",
+            sender: "no-reply@vrooooom.co",
             subject: subject,
             html: messageBody,
         };
 
-        // Send the email
         transporter.sendMail({ ...mailOptions }, (error: any, info) => {
             if (error) {
                 console.error("Error sending email:", error);
