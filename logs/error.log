@@ -1,0 +1,10 @@
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:50:28
+
+  47 
+  48 const hashedPrivateKey = await hashData(keypair.secretKey.toString());
+  49 const ethWallet = ethers.Wallet.createRandom();
+→ 50 return prisma.user.create(
+The column `evmAddress` does not exist in the current database. {"timestamp":"2024-12-23T22:21:45.697Z"}
+error: Cannot read properties of undefined (reading 'id') {"timestamp":"2024-12-24T01:37:36.024Z"}

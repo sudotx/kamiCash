@@ -5,6 +5,7 @@ import { prisma } from "../../../db";
 import { CustomError } from "../../../utils/handle-error";
 import { InternalTransferInput, WithdrawInput } from "../schemas/index.schema";
 import { sendMail } from "../../../utils/sendmail";
+import { logger } from "../../../utils/logger";
 
 export class SolanaService {
     private connection: Connection;
@@ -96,7 +97,7 @@ export class TransferService {
                 });
 
                 let amt = new Decimal(amount)
-                console.log(amt);
+                logger.info(userBalance);
 
                 if (!userBalance || userBalance.balance < amt) {
                     throw new Error('Insufficient balance');
@@ -269,5 +270,11 @@ export class TransferService {
             },
         });
     }
+
+// Virtual account transfers
+// USDC vault operations
+// Settlement processing
+// Transaction monitoring
+// Circuit breakers
 
 }

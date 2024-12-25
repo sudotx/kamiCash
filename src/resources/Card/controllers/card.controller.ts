@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { GetCardDetailsInput, LinkCardInput, RemoveCardInput } from "../schemas/index.schema";
 import { CardService } from "../services/card.service";
+import { logger } from "../../../utils/logger";
 
 const card = new CardService()
 
@@ -27,7 +28,7 @@ export const getCardDetails = async (
     try {
         const { userId } = req.body;
         const cardDetails = await card.getCardDetails(userId);
-        console.log("card details", cardDetails);
+        logger.info("card details", cardDetails);
         return res.status(200).json(cardDetails);
     } catch (error) {
         console.error('Error getting card details:', error);

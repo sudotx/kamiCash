@@ -11,7 +11,7 @@ function handleError(
 
     if (!(err instanceof CustomError)) {
         customError = new CustomError(
-            "Oh no, this is embarrasing. We are having troubles my friend"
+            "Oh no, this is embarrassing. We are having troubles my friend"
         );
     }
 

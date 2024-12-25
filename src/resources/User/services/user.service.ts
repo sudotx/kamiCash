@@ -110,6 +110,9 @@ export class UserService {
     }
 
     async getBalance(userId: string) {
+        // track USDC and local currency balances
+        // assuming all onramp and offramp are accounted for in the ledger. 
+        // get user ledger balance from here
         try {
             const wallets = await prisma.wallet.findMany({
                 where: {
@@ -179,4 +182,34 @@ export class UserService {
             throw error;
         }
     }
+
+    async createVirtualAccount(userId: string, currency: string = 'USD') {
+        const accountNumber = `VA${Date.now()}${Math.floor(Math.random() * 10000)}`;
+
+        return prisma.virtualAccount.create({
+            data: {
+                userId,
+                accountNumber,
+                accountName: `${currency} Virtual Account`,
+                currency,
+                balance: 0,
+                status: 'ACTIVE',
+                limits: {
+                    create: {
+                        dailyLimit: 10000,
+                        monthlyLimit: 50000,
+                        transactionLimit: 5000
+                    }
+                }
+            },
+            include: {
+                limits: true
+            }
+        });
+    }
+
+    async getVirtualAccountDetails() { }
+    async getBalanceHistory() { }
+    async generateAccountStatement() { }
+    async checkTransactionLimits() { }
 }

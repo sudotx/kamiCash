@@ -1,0 +1,886 @@
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:35:01.459Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:35:04.823Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:35:50.488Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:35:53.813Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:35:56.570Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:00.367Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:11.854Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:13.396Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:17.942Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:24.943Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:31.937Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:35.005Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:49.892Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:52.884Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:36:57.800Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:03.928Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:06.854Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:13.239Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:14.592Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:19.635Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:30.274Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:36.423Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:41.011Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:47.795Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:49.380Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:52.662Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:37:55.775Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:02.864Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:04.540Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:08.490Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:18.906Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:20.937Z"}
+info: Getting Schiwfty on port 6969 {"timestamp":"2024-12-23T20:38:27.993Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["body","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-23T20:38:48.049Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T20:39:55.033Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:08:56.531Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:13:34.539Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:01.422Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:18.006Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:21.590Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:24.436Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:32.466Z"}
+info: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:14:50.737Z"}
+info: null {"timestamp":"2024-12-23T21:15:02.495Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "from"
+    ],
+    "message": "Sender user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "to"
+    ],
+    "message": "Recipient user ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Sender user ID is required","path":["body","from"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Recipient user ID is required","path":["body","to"],"received":"undefined"},{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:15:09.282Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "number",
+    "received": "string",
+    "path": [
+      "body",
+      "amount"
+    ],
+    "message": "Expected number, received string"
+  },
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_type","expected":"number","message":"Expected number, received string","path":["body","amount"],"received":"string"},{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:15:32.627Z"}
+info: [
+  {
+    "received": "",
+    "code": "invalid_enum_value",
+    "options": [
+      "SOL",
+      "USDC"
+    ],
+    "path": [
+      "body",
+      "assetType"
+    ],
+    "message": "Invalid enum value. Expected 'SOL' | 'USDC', received ''"
+  }
+] {"issues":[{"code":"invalid_enum_value","message":"Invalid enum value. Expected 'SOL' | 'USDC', received ''","options":["SOL","USDC"],"path":["body","assetType"],"received":""}],"name":"ZodError","timestamp":"2024-12-23T21:15:37.515Z"}
+info: null {"timestamp":"2024-12-23T21:15:53.078Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "userId"
+    ],
+    "message": "User ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "cardNumber"
+    ],
+    "message": "Card number is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "expiryMonth"
+    ],
+    "message": "Expiry month is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "expiryYear"
+    ],
+    "message": "Expiry year is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "cvv"
+    ],
+    "message": "CVV is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "cardHolderName"
+    ],
+    "message": "Card holder name is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["body","userId"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Card number is required","path":["body","cardNumber"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Expiry month is required","path":["body","expiryMonth"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Expiry year is required","path":["body","expiryYear"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"CVV is required","path":["body","cvv"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Card holder name is required","path":["body","cardHolderName"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-23T21:18:26.701Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "userId"
+    ],
+    "message": "User ID is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "cardId"
+    ],
+    "message": "Card ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["body","userId"],"received":"undefined"},{"code":"invalid_type","expected":"string","message":"Card ID is required","path":["body","cardId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-23T21:18:30.342Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["body","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-23T21:18:33.154Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:20.360Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:30.875Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:40.721Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:47.801Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:54.158Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:24:56.202Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:03.193Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:08.159Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:15.733Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:19.696Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:33.187Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:25:41.694Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:02.526Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:06.264Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:12.206Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:22.224Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:44.436Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:49.029Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:26:55.770Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:27:32.944Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:27:42.357Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:27:44.656Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:53:41.814Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:04.008Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:06.416Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:15.799Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:19.489Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:30.475Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:45.132Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:54:55.153Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:01.215Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:03.134Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:24.624Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:26.454Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:31.339Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:36.682Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:41.558Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:43.200Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:55:48.312Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:02.925Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:09.056Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:13.143Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:27.699Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:33.979Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:37.145Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:56:57.578Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:16.800Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:30.535Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:32.304Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:35.687Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:40.389Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:42.610Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:48.348Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T21:57:49.336Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:06:44.719Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:06:45.961Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:06:50.679Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:06:52.077Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:06:56.220Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:01.987Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:08.196Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:11.846Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:25.246Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:28.035Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:30.715Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:35.198Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:38.683Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:45.774Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:07:57.188Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:08:39.830Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:21:38.717Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:50:28
+
+  47 
+  48 const hashedPrivateKey = await hashData(keypair.secretKey.toString());
+  49 const ethWallet = ethers.Wallet.createRandom();
+→ 50 return prisma.user.create(
+The column `evmAddress` does not exist in the current database. {"timestamp":"2024-12-23T22:21:45.697Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:22:21.247Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:22:43.192Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:24:49.389Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:25:25.390Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:26:24.864Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:26:29.234Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:26:31.102Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:26:43.773Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:26:50.037Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:27:13.559Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:27:19.558Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:27:39.694Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:27:48.223Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:28:04.108Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:28:07.077Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:28:09.710Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:28:19.111Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:29:30.620Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:31:06.202Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:31:51.698Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:31:54.863Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:32:23.401Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:32:54.575Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:33:01.077Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:33:10.069Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:33:15.604Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:33:36.283Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:34:01.192Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:34:03.114Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:34:23.544Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:34:28.205Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:34:30.440Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:02.569Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:06.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:16.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:24.830Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:31.463Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:35:37.696Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:36:27.134Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:36:34.480Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:36:47.280Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:36:57.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:37:50.798Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:40:04.688Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:41:13.954Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-23T22:41:30.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:15:38.909Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "query",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["query","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-24T01:16:01.634Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "query",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["query","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-24T01:16:43.004Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "query",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["query","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-24T01:16:54.171Z"}
+info: result {"sol_balance":"0","timestamp":"2024-12-24T01:27:31.292Z","usdc_balance":"0"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:31:21.504Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:31:24.144Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:31:36.536Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:31:38.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T01:31:41.233Z"}
+info: [
+  {
+    "code": "too_small",
+    "minimum": 16,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Card number must be 16 digits",
+    "path": [
+      "body",
+      "cardNumber"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry month must be 2 digits",
+    "path": [
+      "body",
+      "expiryMonth"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry year must be 2 digits",
+    "path": [
+      "body",
+      "expiryYear"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "CVV must be 3 digits",
+    "path": [
+      "body",
+      "cvv"
+    ]
+  }
+] {"issues":[{"code":"too_small","exact":true,"inclusive":true,"message":"Card number must be 16 digits","minimum":16,"path":["body","cardNumber"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry month must be 2 digits","minimum":2,"path":["body","expiryMonth"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry year must be 2 digits","minimum":2,"path":["body","expiryYear"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"CVV must be 3 digits","minimum":3,"path":["body","cvv"],"type":"string"}],"name":"ZodError","timestamp":"2024-12-24T01:34:25.408Z"}
+info: [
+  {
+    "code": "too_big",
+    "maximum": 16,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Card number must be 16 digits",
+    "path": [
+      "body",
+      "cardNumber"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry month must be 2 digits",
+    "path": [
+      "body",
+      "expiryMonth"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry year must be 2 digits",
+    "path": [
+      "body",
+      "expiryYear"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "CVV must be 3 digits",
+    "path": [
+      "body",
+      "cvv"
+    ]
+  }
+] {"issues":[{"code":"too_big","exact":true,"inclusive":true,"maximum":16,"message":"Card number must be 16 digits","path":["body","cardNumber"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry month must be 2 digits","minimum":2,"path":["body","expiryMonth"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry year must be 2 digits","minimum":2,"path":["body","expiryYear"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"CVV must be 3 digits","minimum":3,"path":["body","cvv"],"type":"string"}],"name":"ZodError","timestamp":"2024-12-24T01:34:39.371Z"}
+info: [
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry month must be 2 digits",
+    "path": [
+      "body",
+      "expiryMonth"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry year must be 2 digits",
+    "path": [
+      "body",
+      "expiryYear"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "CVV must be 3 digits",
+    "path": [
+      "body",
+      "cvv"
+    ]
+  }
+] {"issues":[{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry month must be 2 digits","minimum":2,"path":["body","expiryMonth"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry year must be 2 digits","minimum":2,"path":["body","expiryYear"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"CVV must be 3 digits","minimum":3,"path":["body","cvv"],"type":"string"}],"name":"ZodError","timestamp":"2024-12-24T01:34:43.260Z"}
+info: [
+  {
+    "code": "too_small",
+    "minimum": 2,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "Expiry year must be 2 digits",
+    "path": [
+      "body",
+      "expiryYear"
+    ]
+  },
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "CVV must be 3 digits",
+    "path": [
+      "body",
+      "cvv"
+    ]
+  }
+] {"issues":[{"code":"too_small","exact":true,"inclusive":true,"message":"Expiry year must be 2 digits","minimum":2,"path":["body","expiryYear"],"type":"string"},{"code":"too_small","exact":true,"inclusive":true,"message":"CVV must be 3 digits","minimum":3,"path":["body","cvv"],"type":"string"}],"name":"ZodError","timestamp":"2024-12-24T01:34:49.567Z"}
+info: [
+  {
+    "code": "too_small",
+    "minimum": 3,
+    "type": "string",
+    "inclusive": true,
+    "exact": true,
+    "message": "CVV must be 3 digits",
+    "path": [
+      "body",
+      "cvv"
+    ]
+  }
+] {"issues":[{"code":"too_small","exact":true,"inclusive":true,"message":"CVV must be 3 digits","minimum":3,"path":["body","cvv"],"type":"string"}],"name":"ZodError","timestamp":"2024-12-24T01:34:54.746Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "userId"
+    ],
+    "message": "User ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"User ID is required","path":["body","userId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-24T01:35:21.716Z"}
+info: card details {"timestamp":"2024-12-24T01:35:33.466Z"}
+info: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "cardId"
+    ],
+    "message": "Card ID is required"
+  }
+] {"issues":[{"code":"invalid_type","expected":"string","message":"Card ID is required","path":["body","cardId"],"received":"undefined"}],"name":"ZodError","timestamp":"2024-12-24T01:35:47.920Z"}
+info: card details {"timestamp":"2024-12-24T01:36:29.733Z"}
+error: Cannot read properties of undefined (reading 'id') {"timestamp":"2024-12-24T01:37:36.024Z"}
+info: card details {"timestamp":"2024-12-24T01:41:21.235Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T13:30:10.928Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T13:30:16.134Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:10:03.652Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:19:55.600Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:21:54.488Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:22:00.097Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:22:01.751Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:22:16.090Z"}
+info: Creating new virtual account {"timestamp":"2024-12-24T14:23:37.092Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:24:09.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:24:11.487Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:24:13.758Z"}
+info: Creating new virtual account {"timestamp":"2024-12-24T14:24:16.328Z"}
+info: Creating new virtual account {"timestamp":"2024-12-24T14:24:21.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-24T14:24:31.250Z"}
+info: Creating new virtual account {"timestamp":"2024-12-24T14:24:33.511Z"}

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 import routes from "./routes";
+import { logger } from "./utils/logger";
 dotenv.config();
 
 const PORT = process.env.PORT || 6969;
@@ -14,7 +15,7 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.listen(PORT, () => {
-    console.log(`Getting Schiwfty on port ${PORT}`);
+    logger.info(`Ready on port ${PORT}`);
     routes(app);
 });
 

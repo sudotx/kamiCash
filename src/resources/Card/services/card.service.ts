@@ -68,4 +68,10 @@ export class CardService {
             throw new Error('Invalid token');
         }
     }
+
+
+    // Expand current CardService for fiat on-ramp
+    // Payment processor integrations
+    // Card-based withdrawals
+    // Transaction processing
 }

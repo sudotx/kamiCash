@@ -2,9 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -34,8 +33,16 @@ enum TransactionStatus {
   FAILED
 }
 
+enum FiatType {
+  USD
+  NGN
+  GHS
+  CFA
+}
+
 enum AssetType {
   SOL
+  USDT
   USDC
 }
 
@@ -48,9 +55,12 @@ model User {
   phoneNumber          String
   role                 RoleEnum          @default(USER)
   accountStatus        AccountStatusEnum @default(ACTIVE)
+  isKyc                Boolean           @default(false)
   emailVerified        Boolean           @default(false)
   solanaAddress        String?           @unique
   solanaPrivateKey     String?           @unique
+  evmAddress           String?           @unique
+  evmPrivateKey        String?           @unique
   points               Int               @default(0)
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt()
@@ -59,6 +69,8 @@ model User {
   cards                Card[]
   sentTransactions     Transaction[]     @relation("SenderTransactions")
   receivedTransactions Transaction[]     @relation("ReceiverTransactions")
+  VirtualAccount       VirtualAccount[]
+  LedgerEntry          LedgerEntry[]
 }
 
 model Wallet {
@@ -87,20 +99,23 @@ model Card {
 }
 
 model Transaction {
-  id         String            @id @default(cuid())
-  fromUserId String
-  toUserId   String?
-  toAddress  String?
-  amount     Decimal
-  assetType  AssetType
-  type       TransactionType
-  status     TransactionStatus
-  txHash     String? // For blockchain transactions
-  fromUser   User              @relation("SenderTransactions", fields: [fromUserId], references: [id])
-  toUser     User?             @relation("ReceiverTransactions", fields: [toUserId], references: [id])
-  memo       String?
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt()
+  id               String            @id @default(cuid())
+  fromUserId       String
+  toUserId         String?
+  toAddress        String?
+  amount           Decimal
+  assetType        AssetType
+  type             TransactionType
+  status           TransactionStatus
+  txHash           String? // For blockchain transactions
+  fromUser         User              @relation("SenderTransactions", fields: [fromUserId], references: [id])
+  toUser           User?             @relation("ReceiverTransactions", fields: [toUserId], references: [id])
+  memo             String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt()
+  VirtualAccount   VirtualAccount?   @relation(fields: [virtualAccountId], references: [id])
+  virtualAccountId String?
+  LedgerEntry      LedgerEntry[]
 }
 
 model OTP {
@@ -110,4 +125,68 @@ model OTP {
   expiresAt DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model VirtualAccount {
+  id            String   @id @default(uuid())
+  accountNumber String   @unique
+  accountName   String
+  balance       Decimal  @default(0)
+  currency      String   @default("USD")
+  status        String   @default("ACTIVE")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  userId       String
+  user         User                  @relation(fields: [userId], references: [id])
+  transactions Transaction[]
+  limits       VirtualAccountLimits?
+  LedgerEntry  LedgerEntry[]
+
+  // Indexes
+  @@index([userId])
+  @@index([accountNumber])
+}
+
+model VirtualAccountLimits {
+  id               String  @id @default(uuid())
+  dailyLimit       Decimal
+  monthlyLimit     Decimal
+  transactionLimit Decimal
+
+  // Relations
+  virtualAccountId String         @unique
+  virtualAccount   VirtualAccount @relation(fields: [virtualAccountId], references: [id])
+}
+
+model LedgerEntry {
+  id          String    @id @default(uuid())
+  entryType   EntryType // CREDIT, DEBIT
+  amount      Decimal
+  usdcAmount  Decimal // Equivalent USDC amount
+  balance     Decimal // Running balance
+  description String
+  status      String    @default("COMPLETED")
+  createdAt   DateTime  @default(now())
+
+  // Relations
+  userId           String
+  user             User           @relation(fields: [userId], references: [id])
+  virtualAccountId String
+  virtualAccount   VirtualAccount @relation(fields: [virtualAccountId], references: [id])
+  transactionId    String?
+  transaction      Transaction?   @relation(fields: [transactionId], references: [id])
+
+  // Metadata
+  metadata Json?
+
+  @@index([userId])
+  @@index([virtualAccountId])
+  @@index([createdAt])
+}
+
+enum EntryType {
+  CREDIT
+  DEBIT
 }

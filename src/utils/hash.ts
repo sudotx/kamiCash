@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import { logger } from "./logger";
 
 export const hashData = async (data: any, saltRounds = 10) => {
     try {
@@ -14,7 +15,7 @@ export const unhashData = async (unhashedData: any, hashedData: any) => {
         const unhashStatus = await bcrypt.compare(unhashedData, hashedData);
         return unhashStatus;
     } catch (err: any) {
-        console.log("[UNHASH_ERROR]:", err);
+        logger.error(err);
         return false;
     }
 };
