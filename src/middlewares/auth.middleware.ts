@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verifyJwt } from "../utils/jwt";
 
-export const requireAdminAuth = async (
+export const requireAuth = async (
     req: Request,
     res: Response,
     next: NextFunction
