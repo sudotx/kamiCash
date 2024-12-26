@@ -11,11 +11,11 @@ function routes(app: Express) {
     app.get("/", (req: Request, res: Response) =>
         res.send({ success: true, message: "Welcome To SendMeFunds", timestamp: date.toLocaleString() })
     );
-    app.use("/api/auth", authRouter);
-    app.use("/api/card", cardRouter);
-    app.use("/api/user", userRouter);
-    app.use("/api/transfer", transferRouter);
-    app.use("/api/account", virtualAccountRouter);
+    app.use("/auth", authRouter);
+    app.use("/card", cardRouter);
+    app.use("/user", userRouter);
+    app.use("/transfer", transferRouter);
+    app.use("/account", virtualAccountRouter);
 }
 
 export default routes;

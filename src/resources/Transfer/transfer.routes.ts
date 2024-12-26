@@ -1,12 +1,11 @@
 import { Router } from "express";
+import { requireAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
-import { externalTransfer, internalTransfer } from "./controllers/user.controller";
-import { internalTransferSchema, withdrawSchema } from "./schemas/index.schema";
+import { internalTransfer } from "./controllers/user.controller";
+import { internalTransferSchema } from "./schemas/index.schema";
 
 const transferRouter = Router();
 
-transferRouter.post("/external", validateResource(withdrawSchema), externalTransfer);
-
-transferRouter.post("/internal", validateResource(internalTransferSchema), internalTransfer);
+transferRouter.post("/internal", validateResource(internalTransferSchema), requireAuth, internalTransfer);
 
 export default transferRouter;

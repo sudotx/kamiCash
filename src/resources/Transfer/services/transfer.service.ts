@@ -6,6 +6,8 @@ import { CustomError } from "../../../utils/handle-error";
 import { InternalTransferInput, WithdrawInput } from "../schemas/index.schema";
 import { sendMail } from "../../../utils/sendmail";
 import { logger } from "../../../utils/logger";
+import { Key } from "readline";
+import { AddressLike, ethers, JsonRpcProvider } from "ethers";
 
 export class SolanaService {
     private connection: Connection;
@@ -75,124 +77,105 @@ export class SolanaService {
 
 }
 
+export class EVMService {
+    private connection: JsonRpcProvider;
+    private payer: AddressLike;
+
+    constructor(rpcUrl: string) {
+        this.connection = new ethers.JsonRpcProvider()
+        this.payer = ethers.Wallet.createRandom()
+    }
+
+    async getBalance() { }
+    async sendTransaction() { }
+}
+
+export class StellarService {
+    constructor(rpcUrl: string) {
+    }
+    async getBalance() { }
+    async sendTransaction() { }
+
+}
+// these are for onchain transactions
+
+// persist transfer related changes to the database
 export class TransferService {
     private solanaService: SolanaService;
+    private evmService: EVMService;
 
     constructor() {
-        const rpcUrl = "http://127.0.0.1:8899";
-        // const rpcUrl = "https://api.mainnet-beta.solana.com";
-        this.solanaService = new SolanaService(rpcUrl);
-    }
-    async executeExternalTransfer(data: WithdrawInput['body']) {
-        const { fromUserId, toAddress, amount, assetType, memo } = data;
-        try {
-            const transaction = await prisma.$transaction(async (prisma) => {
-                const userBalance = await prisma.wallet.findUnique({
-                    where: {
-                        userId_assetType: {
-                            userId: fromUserId,
-                            assetType: assetType,
-                        },
-                    },
-                });
-
-                let amt = new Decimal(amount)
-                logger.info(userBalance);
-
-                if (!userBalance || userBalance.balance < amt) {
-                    throw new Error('Insufficient balance');
-                }
-
-                await prisma.wallet.update({
-                    where: {
-                        userId_assetType: {
-                            userId: fromUserId,
-                            assetType: assetType,
-                        },
-                    },
-                    data: {
-                        balance: {
-                            decrement: amount,
-                        },
-                    },
-                });
-
-                const txHash = await this.solanaService.transfer(fromUserId, toAddress, new Decimal(amount), assetType);
-
-                const transactionRecord = await prisma.transaction.create({
-                    data: {
-                        fromUserId,
-                        toAddress,
-                        amount,
-                        assetType,
-                        txHash: txHash,
-                        type: 'EXTERNAL',
-                        status: 'COMPLETED',
-                        memo,
-                    },
-                });
-
-                const user = await prisma.user.findUnique({
-                    where: { id: fromUserId },
-                    select: { email: true },
-                });
-
-                if (user) {
-                    sendMail(user.email, "External Transfer Completed", 'Your external transfer has been completed successfully.')
-                }
-
-                return transactionRecord;
-            });
-
-            return { transactionId: transaction.id };
-
-        } catch (error) {
-            throw error;
-        }
+        this.solanaService = new SolanaService("http://127.0.0.1:8899");
+        this.evmService = new EVMService("")
     }
 
     async executeInternalTransfer(data: InternalTransferInput['body']) {
         const { from, to, amount, assetType, memo } = data;
         const amountDecimal = new Decimal(amount);
 
+        const user = await prisma.user.findUnique({
+            where: { id: from },
+            include: { wallets: true },
+        });
+
+
         try {
             return await prisma.$transaction(async (prisma) => {
-                const [senderUpdate, recipientWallet, transactionRecord] = await Promise.all([
+                const [senderUpdate, transactionRecord] = await Promise.all([
                     prisma.wallet.updateMany({
                         where: {
                             userId: from,
-                            assetType: assetType,
-                            balance: { gte: amount }
+                            assetType: assetType
                         },
-                        data: { balance: { decrement: amount.toString() } }
+                        data: { balance: { decrement: amount } }
                     }),
                     prisma.wallet.upsert({
                         where: { userId_assetType: { userId: to, assetType: assetType } },
-                        update: { balance: { increment: amount.toString() } },
+                        update: { balance: { increment: amount } },
                         create: { userId: to, assetType, balance: amount }
                     }),
-                    prisma.transaction.create({
-                        data: {
-                            fromUserId: from,
-                            toUserId: to,
-                            amount,
-                            assetType,
-                            type: 'INTERNAL',
-                            status: 'COMPLETED',
-                            memo: memo || ''
-                        }
+                    prisma.transaction.createMany({
+                        data: [
+                            {
+                                amount: amount,
+                                assetType: assetType,
+                                fromUserId: from,
+                                status: "PENDING",
+                                type: "INTERNAL",
+                            },
+                        ]
+                    }),
+                    prisma.ledgerEntry.createMany({
+                        data: [
+                            {
+                                amount: amount,
+                                entryType: "CREDIT",
+                                description: memo || "",
+                                balance: "1",
+                                usdcAmount: "1",
+                                userId: from,
+                                virtualAccountId: "",
+                            },
+                            {
+                                amount: amount,
+                                entryType: "DEBIT",
+                                description: memo || "",
+                                balance: "1",
+                                usdcAmount: "1",
+                                userId: to,
+                                virtualAccountId: "",
+                            },
+                        ]
                     })
-                ]);
-
+                ])
                 if (senderUpdate.count === 0) {
-                    throw new Error('Insufficient balance');
+                    throw new Error("Insufficient Balance")
                 }
-
-                return { transactionId: transactionRecord.id };
-            });
-
+                return { "senderUpdate": senderUpdate, "transaction record": transactionRecord }
+            })
         } catch (error) {
-            throw error;
+            throw (error)
+
         }
     }
 
@@ -271,10 +254,10 @@ export class TransferService {
         });
     }
 
-// Virtual account transfers
-// USDC vault operations
-// Settlement processing
-// Transaction monitoring
-// Circuit breakers
+    // Virtual account transfers
+    // USDC vault operations
+    // Settlement processing
+    // Transaction monitoring
+    // Circuit breakers
 
 }

@@ -26,3 +26,5 @@ prisma/migrations
 Makefile
 
 test-ledger
+
+.vscode
