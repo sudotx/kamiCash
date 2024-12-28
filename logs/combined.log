@@ -884,3 +884,804 @@ info: Creating new virtual account {"timestamp":"2024-12-24T14:24:16.328Z"}
 info: Creating new virtual account {"timestamp":"2024-12-24T14:24:21.587Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-24T14:24:31.250Z"}
 info: Creating new virtual account {"timestamp":"2024-12-24T14:24:33.511Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:41:19.039Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:50:58.952Z"}
+error: Error Getting Cannot read properties of undefined (reading 'starter') {"stack":"TypeError: Cannot read properties of undefined (reading 'starter')\n    at generateAccountNumber (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/utils/generateAccountNumber.ts:21:24)\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:7:52)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71","timestamp":"2024-12-25T22:53:18.723Z"}
+error: Error Getting Cannot read properties of undefined (reading 'starter') {"stack":"TypeError: Cannot read properties of undefined (reading 'starter')\n    at generateAccountNumber (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/utils/generateAccountNumber.ts:21:24)\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:7:52)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71","timestamp":"2024-12-25T22:54:15.659Z"}
+error: Error Getting Cannot read properties of undefined (reading 'starter') {"stack":"TypeError: Cannot read properties of undefined (reading 'starter')\n    at generateAccountNumber (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/utils/generateAccountNumber.ts:21:24)\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:7:52)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71","timestamp":"2024-12-25T22:54:18.696Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38
+
+  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {
+  7     const accountNumber = generateAccountNumber(userId, currencyCode);
+  8 
+→ 9     return prisma.virtualAccount.create({
+          data: {
+            userId: "b04bd876-c626-4f92-808d-c4e15661bfdd",
+            accountNumber: "11735167301b04bd876-c626-4f92-808d-c4e15661bfdd",
+            accountName: "Nigerian Naira Account",
+            currency: "NGN",
+                      ~~~~~
+            balance: 0,
+            status: "ACTIVE",
+            limits: {
+              create: {
+                dailyLimit: 10000,
+                monthlyLimit: 50000,
+                transactionLimit: 5000
+              }
+            }
+          },
+          include: {
+            limits: true,
+            user: true
+          }
+        })
+
+Invalid value for argument `currency`: invalid digit found in string. Expected decimal String. {"clientVersion":"5.11.0","name":"PrismaClientValidationError","stack":"PrismaClientValidationError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38\n\n  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {\n  7     const accountNumber = generateAccountNumber(userId, currencyCode);\n  8 \n→ 9     return prisma.virtualAccount.create({\n          data: {\n            userId: \"b04bd876-c626-4f92-808d-c4e15661bfdd\",\n            accountNumber: \"11735167301b04bd876-c626-4f92-808d-c4e15661bfdd\",\n            accountName: \"Nigerian Naira Account\",\n            currency: \"NGN\",\n                      ~~~~~\n            balance: 0,\n            status: \"ACTIVE\",\n            limits: {\n              create: {\n                dailyLimit: 10000,\n                monthlyLimit: 50000,\n                transactionLimit: 5000\n              }\n            }\n          },\n          include: {\n            limits: true,\n            user: true\n          }\n        })\n\nInvalid value for argument `currency`: invalid digit found in string. Expected decimal String.\n    at Tn (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:115:5888)\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6510)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-25T22:55:01.305Z"}
+error: Error Getting Cannot read properties of undefined (reading 'starter') {"stack":"TypeError: Cannot read properties of undefined (reading 'starter')\n    at generateAccountNumber (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/utils/generateAccountNumber.ts:21:24)\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:7:52)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71","timestamp":"2024-12-25T22:55:10.685Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:55:27.013Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:55:29.102Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-25T22:55:30.569Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:56:08.712Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:56:21.539Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:56:23.622Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:56:25.469Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:56:30.849Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-25T22:56:38.408Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:57:27.563Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:57:33.793Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-25T22:57:35.437Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:57:48.150Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:57:50.588Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38
+
+  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {
+  7     const accountNumber = generateAccountNumber(userId, currencyCode);
+  8 
+→ 9     return prisma.virtualAccount.create(
+Error occurred during query execution:
+ConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: "22021", message: "invalid byte sequence for encoding \"UTF8\": 0x00", severity: "ERROR", detail: None, column: None, hint: None }), transient: false }) {"clientVersion":"5.11.0","name":"PrismaClientUnknownRequestError","stack":"PrismaClientUnknownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38\n\n  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {\n  7     const accountNumber = generateAccountNumber(userId, currencyCode);\n  8 \n→ 9     return prisma.virtualAccount.create(\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: \"22021\", message: \"invalid byte sequence for encoding \\\"UTF8\\\": 0x00\", severity: \"ERROR\", detail: None, column: None, hint: None }), transient: false })\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:7044)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-25T22:58:15.658Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T22:59:36.215Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:04:36.027Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:46:38.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:46:43.936Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:46:45.640Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:46:53.156Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:46:59.142Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:47:12.585Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:47:14.338Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:47:16.722Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:47:45.966Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:47:53.060Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:01.252Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:07.105Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:08.361Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:10.072Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:11.083Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:19.619Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:48:37.519Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:15.531Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:25.890Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:27.843Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:30.537Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:37.328Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:45.260Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:49:48.335Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:50:57.554Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:54:51.164Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:54:55.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:55:10.171Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:55:27.680Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:55:52.412Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:55:58.278Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:56:04.492Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:56:05.512Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:56:23.151Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:56:29.890Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:56:33.664Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:59:38.158Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-25T23:59:48.685Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:00.796Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:08.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:12.223Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:13.438Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:36.960Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:00:43.735Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:01:07.619Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:01:51.348Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:01:54.191Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:01:55.624Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:02:00.499Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:02:20.310Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:02:24.017Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:03:25.798Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:03:28.707Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:03:49.686Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:04:16.024Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:04:17.071Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:04:38.977Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:04:45.327Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:04:59.204Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:05:22.755Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:05:55.426Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:08:27.704Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:01.919Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:03.368Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:18.787Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:25.304Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:28.361Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:49.672Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:16:50.753Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:18:09.857Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:18:12.292Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:18:26.651Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:18:42.968Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:19:07.411Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:19:13.509Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:19:15.353Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:26:43.642Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:27:14.642Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:27:32.396Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:28:01.482Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:28:05.627Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:28:11.456Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:28:16.443Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:28:50.196Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:29:49.554Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:30:10.677Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38
+
+  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {
+  7     const accountNumber = generateAccountNumber(userId, currencyCode);
+  8 
+→ 9     return prisma.virtualAccount.create(
+Error occurred during query execution:
+ConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: "22021", message: "invalid byte sequence for encoding \"UTF8\": 0x00", severity: "ERROR", detail: None, column: None, hint: None }), transient: false }) {"clientVersion":"5.11.0","name":"PrismaClientUnknownRequestError","stack":"PrismaClientUnknownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:38\n\n  6 async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {\n  7     const accountNumber = generateAccountNumber(userId, currencyCode);\n  8 \n→ 9     return prisma.virtualAccount.create(\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error: None, kind: QueryError(PostgresError { code: \"22021\", message: \"invalid byte sequence for encoding \\\"UTF8\\\": 0x00\", severity: \"ERROR\", detail: None, column: None, hint: None }), transient: false })\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:7044)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-26T00:30:12.150Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:30:47.413Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:30:50.615Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:31:13.166Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:31:15.250Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:31:36.223Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:32:06.691Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:32:16.734Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:35:50.656Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:38:27.490Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:38:39.756Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:39:12.882Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.findMany()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:33:57
+
+  30 
+  31 async getAllWallets(userId: string) {
+  32     try {
+→ 33         const wallets = await prisma.virtualAccount.findMany(
+Inconsistent column data: Could not convert value "USDC" of the field `currency` to type `Decimal`. {"clientVersion":"5.11.0","code":"P2023","meta":{"message":"Could not convert value \"USDC\" of the field `currency` to type `Decimal`.","modelName":"VirtualAccount"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.findMany()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:33:57\n\n  30 \n  31 async getAllWallets(userId: string) {\n  32     try {\n→ 33         const wallets = await prisma.virtualAccount.findMany(\nInconsistent column data: Could not convert value \"USDC\" of the field `currency` to type `Decimal`.\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-26T00:39:27.395Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:41:14.916Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:13:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:43:26.242Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:12.402Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:17.949Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:23.456Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:25.971Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:27.636Z"}
+error: Error Getting Cannot read properties of undefined (reading 'name') {"stack":"TypeError: Cannot read properties of undefined (reading 'name')\n    at VirtualAccountService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:14:58)\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:8:71\n    at new Promise (<anonymous>)\n    at __awaiter (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:4:12)\n    at VirtualAccountService.createVirtualAccount (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:21:16)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:14:40\n    at Generator.next (<anonymous>)\n    at /Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/controllers/va.controller.ts:8:71\n    at new Promise (<anonymous>)","timestamp":"2024-12-26T00:45:31.509Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:53.184Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:45:56.979Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:46:03.630Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:10:38
+
+   7 console.log("currency code", currencyCode);
+   8 const accountNumber = generateAccountNumber(userId, currencyCode);
+   9 
+→ 10 return prisma.virtualAccount.create(
+Unique constraint failed on the fields: (`accountNumber`) {"clientVersion":"5.11.0","code":"P2002","meta":{"modelName":"VirtualAccount","target":["accountNumber"]},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:10:38\n\n   7 console.log(\"currency code\", currencyCode);\n   8 const accountNumber = generateAccountNumber(userId, currencyCode);\n   9 \n→ 10 return prisma.virtualAccount.create(\nUnique constraint failed on the fields: (`accountNumber`)\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-26T00:46:29.750Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:46:47.266Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:46:50.793Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:46:54.437Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:05.436Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:08.841Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:18.897Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:27.059Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:28.033Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:41.816Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:46.001Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:51.523Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:47:53.941Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:11.185Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:22.515Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:24.820Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:30.046Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:32.359Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:41.730Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:44.546Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:48:49.714Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:49:00.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:49:03.032Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:49:06.466Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:50:58.877Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:53:42.715Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T00:55:44.035Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:00:21.823Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:00:49.614Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:05.663Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:16.806Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:18.403Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:19.898Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:25.880Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:33.497Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:36.773Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:01:39.691Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:01.258Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:12.282Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:25.154Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:26.157Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:40.483Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:02:57.500Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:03:16.135Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:03:21.498Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:03:25.044Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:04:45.216Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:04:46.248Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:05:56.278Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:06:08.655Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:06:10.066Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:06:26.041Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:06:33.241Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:08:22.769Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:09:40.880Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:11:27.382Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:13:35.840Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:09.112Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:13.835Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:36.776Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:38.862Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:51.601Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:16:54.723Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:17:12.016Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:17:33.728Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:03.607Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:12.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:13.910Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:15.383Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:24.426Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:40.594Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:46.467Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:49.216Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:54.392Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:18:59.906Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:19:01.601Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:19:46.865Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:19:49.047Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:19:51.926Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:19:53.271Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:20:01.473Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:20:03.260Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:20:43.719Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:21:32.875Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:21:36.361Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:21:37.539Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:21:48.489Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:22:40.308Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:23:15.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:23:17.419Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:23:24.970Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:23:42.313Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:25:11.665Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:25:18.398Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:25:24.711Z"}
+info: Hello {"timestamp":"2024-12-26T01:25:25.870Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:25:41.137Z"}
+info: [object PrismaClient] {"timestamp":"2024-12-26T01:25:41.632Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:25:58.055Z"}
+info: hello {"timestamp":"2024-12-26T01:25:59.317Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:26:10.357Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:26:17.473Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:26:53.042Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:28:28.035Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:28:36.841Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:28:58.268Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:07.713Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:11.952Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:16.576Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:26.695Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:29.059Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:55.748Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:29:56.762Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:37:03.822Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:40:17.181Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:40:29.418Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:40:31.313Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:40:37.148Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:40:39.833Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:42:05.831Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:42:10.004Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T01:42:11.998Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:52:26.190Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:53:15.536Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:53:18.068Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:53:26.389Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:17.343Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:21.962Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:31.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:35.070Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:42.993Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:54:51.345Z"}
+info: undefined {"timestamp":"2024-12-26T08:55:00.477Z"}
+info: undefined {"timestamp":"2024-12-26T08:55:03.049Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:55:13.594Z"}
+info: undefined {"timestamp":"2024-12-26T08:55:46.331Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:03.084Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:04.333Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:14.805Z"}
+info: [object Object] {"timestamp":"2024-12-26T08:57:15.004Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:34.258Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:43.265Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:57:48.830Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:58:00.964Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:58:08.806Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:58:11.155Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:58:13.221Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:59:13.930Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T08:59:17.154Z"}
+info: [object Object] {"timestamp":"2024-12-26T08:59:57.693Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:00:15.567Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:00:24.762Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:00:27.059Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:04:37.480Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:04:48.330Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:05:10.915Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:26.910Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:31.275Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:34.555Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:39.334Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:46.685Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:48.592Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:05:50.011Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:08:45.465Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:08:49.842Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:09:03.301Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:09:48.099Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:09:50.404Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:10:06.745Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:10:08.202Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:12:39.591Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:13:02.751Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:13:40.069Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:14:18.865Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:14:19.668Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:14:23.880Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:14:26.919Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:17:34.202Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:17:37.053Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:17:42.899Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:18:06.229Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:19:14.219Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:19:34.971Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:14.423Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:18.223Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:26.897Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:31.558Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:34.233Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:36.984Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:41.957Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:44.723Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:20:52.182Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:21:13.872Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:22:02.173Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:24:27.458Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:24:40.459Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:24:53.572Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:25:24.727Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:25:57.703Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:26:03.958Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:26:12.538Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:26:17.603Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:27:28.004Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:27:31.317Z"}
+info: undefined {"timestamp":"2024-12-26T09:27:49.374Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:28:01.879Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:28:04.126Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:28:25.959Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:28:27.907Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:28:36.805Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:28:50.148Z"}
+info: [object Object] {"timestamp":"2024-12-26T09:28:51.577Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:29:57.133Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:30:26.072Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:30:39.149Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:30:47.373Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:30:49.914Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:31:03.439Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:31:10.650Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:31:40.079Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:31:46.432Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:31:54.266Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:37:33.994Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:38:19.200Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:39:08.194Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:41:58.997Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:42:00.539Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:43:04.069Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:43:08.201Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:43:09.856Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:43:19.830Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:43:22.825Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:45:38.168Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:45:40.786Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:45:47.425Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:45:55.488Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:06.555Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:16.805Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:36.152Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:44.153Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:50.151Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:46:59.223Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:47:02.650Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:03.289Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:06.095Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:23.374Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:25.035Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:29.220Z"}
+error: Invalid email or password {"timestamp":"2024-12-26T12:05:18.764Z"}
+error: User not found {"timestamp":"2024-12-26T12:05:18.782Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:11:59.865Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:13.865Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:16.511Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:19.711Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:27.342Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:34.770Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:35.858Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:54.135Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:00.086Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:02.116Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:08.814Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:14.991Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:16.842Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:21.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:48.716Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:53.307Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:56.448Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:59.595Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:10.771Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:49.145Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:51.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:17:32.273Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:18:53.969Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:18:54.976Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:19:06.710Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:19:24.438Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:19:46.250Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:02.022Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:11.373Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:14.411Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:15.876Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:43.674Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:46.091Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:59.999Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:02.669Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:05.174Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:13.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:52.330Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:02.562Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:08.347Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:16.524Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:31.108Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:41.568Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:47.532Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:09.361Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:12.913Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:15.450Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:34.591Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:47.237Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:01.888Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:07.827Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:09.376Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:19.324Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:34.108Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:24:54.399Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:40.579Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:43.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:45.640Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:07.009Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:09.984Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:23.607Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:27.811Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:34.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:37.534Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:53.117Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:59.076Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:28:16.172Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:08.176Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:24.240Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:25.725Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:30.661Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:38.353Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:30:28.311Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:30:30.316Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:30:31.144Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:26.150Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:27.215Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:56.569Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:06.431Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:13.267Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:18.948Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:28.959Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:17:50.432Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:26.600Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:39.367Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:45.752Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:57.769Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:19:06.540Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:21:37.679Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:22:21.201Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:22:49.069Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:23:00.171Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:23:47.561Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:25.703Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:40.497Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:48.241Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:09.659Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:20.332Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:25.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:29.737Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:33.665Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:04.000Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:09.528Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:16.445Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:22.497Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:33.493Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:45.678Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:48.593Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:56.615Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:07:15.459Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:11:49.760Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:12:16.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:12:42.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:13:16.775Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:14:12.417Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:15:59.276Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:16:13.239Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:16:44.763Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:17:43.918Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:18:09.522Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:18:36.766Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:19:24.467Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:20:51.050Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:35.091Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:39.127Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:50.451Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:02.691Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:30.536Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:35.405Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:56.288Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:25:09.862Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:26:07.442Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:30:50.044Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:30:54.556Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:09.971Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:31.135Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:59.758Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:11.554Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:24.663Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:33.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:39:09.071Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:39:46.144Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:04.007Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:32.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:39.729Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:46.236Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:52.024Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:41.359Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:52.506Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:59.783Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:46:45.350Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:14.384Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:23.277Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:32.695Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:48:47.754Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:49:06.605Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:49:11.195Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:49:20.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:52:05.592Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:46.656Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:50.549Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:59.870Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:03.196Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:09.077Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:14.939Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:23.796Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:36.971Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:49.764Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:22.038Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:47.138Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:53.777Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:11.330Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:26.364Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:33.629Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:41.626Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:48.195Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:10.589Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:18.477Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:34.594Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:38.866Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:01:08.841Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:03:26.175Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:04:15.711Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:24:56.690Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:26:10.378Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:26:20.112Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:27:47.823Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:13.738Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:28.814Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:42.276Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:05.593Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:11.537Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:17.370Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:36.577Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:53.639Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:31:48.143Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:31:56.693Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:32:18.290Z"}
+info: [object Object] {"timestamp":"2024-12-26T22:32:22.285Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:33:41.446Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:09.125Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:16.262Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:46.321Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:35:23.763Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:35:52.092Z"}
+info: [object Object] {"timestamp":"2024-12-26T22:35:53.678Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:36:18.366Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:36:47.672Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:37:11.331Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:38:21.022Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:38:24.687Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:14:20.401Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:14:56.417Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:14.683Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:39.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:45.117Z"}
+info: [object Object] {"timestamp":"2024-12-26T23:16:03.145Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:16:47.252Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:03.210Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:28.239Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:31.929Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:50.216Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:54.982Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:01.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:26.365Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:31.558Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:06.992Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:09.429Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:14.567Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:39:20.833Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:11.698Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:42:39.739Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:48.580Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:44:04.235Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:44:55.456Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:45:08.438Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:45:49.465Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:13.454Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:18.599Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:22.801Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:47.358Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:59.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:13.939Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:18.753Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:23.362Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:30.284Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:38.757Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:47:49.033Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:56.346Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:28.005Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:45.472Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:48.059Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:48:52.259Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:57.377Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:49:02.547Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:49:14.082Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:04.623Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:37.768Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:42.492Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:47.089Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:51:19.096Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:51:37.480Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:83:32
+
+  80 try {
+  81     // await sendMail(email, "WELCOME", "welcome dawg!")
+  82 
+→ 83     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:51:50.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:52:22.547Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42
+
+  6 const accountNumber = generateAccountNumber(userId, currencyCode);
+  7 
+  8 try {
+→ 9     return prisma.virtualAccount.create(
+Foreign key constraint failed on the field: `VirtualAccount_userId_fkey (index)` {"clientVersion":"5.11.0","code":"P2003","meta":{"field_name":"VirtualAccount_userId_fkey (index)","modelName":"VirtualAccount"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42\n\n  6 const accountNumber = generateAccountNumber(userId, currencyCode);\n  7 \n  8 try {\n→ 9     return prisma.virtualAccount.create(\nForeign key constraint failed on the field: `VirtualAccount_userId_fkey (index)`\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-28T05:09:31.663Z"}

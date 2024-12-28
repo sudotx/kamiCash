@@ -5,21 +5,6 @@ import { logger } from "../../../utils/logger";
 
 const transferService = new TransferService()
 
-export const externalTransfer = async (
-    req: Request<{}, {}, WithdrawInput["body"]>,
-    res: Response,
-    next: NextFunction
-) => {
-    const { amount, assetType, fromUserId, toAddress, memo } = req.body;
-    try {
-        const result = await transferService.executeExternalTransfer({ amount, assetType, fromUserId, toAddress, memo });
-        res.status(200).json(result);
-    } catch (error) {
-        console.error("External transfer failed:", error);
-        res.status(500).json({ message: "External transfer failed", error: error });
-    }
-}
-
 export const internalTransfer = async (
     req: Request<{}, {}, InternalTransferInput["body"]>,
     res: Response,

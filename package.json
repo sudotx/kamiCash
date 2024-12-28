@@ -23,6 +23,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
+    "multichain-crypto-wallet": "^0.2.8",
     "nodemailer": "^6.9.13",
     "paystack-sdk": "^2.5.17",
     "winston": "^3.14.2",

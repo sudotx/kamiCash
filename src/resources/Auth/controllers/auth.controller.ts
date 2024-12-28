@@ -25,6 +25,9 @@ export const registerHandler = async (
             user: authService.sanitizeUser(user),
         });
     } catch (err: any) {
+        res.status(400).json({
+            error: err.name
+        })
         next(new CustomError(err.message, 400));
     }
 };

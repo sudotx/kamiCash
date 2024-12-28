@@ -31,15 +31,13 @@ c. Features:
 - Off-platform transfers
 - Card linking and management
 - Solana blockchain integration
+- Stellar blockchain integration
 d. Technical Requirements:
 - Built with Express.js and TypeScript
-- Utilizes Solana blockchain SDKs
+- Utilizes Solana, Stellar blockchain SDKs
 - Secure API endpoints for all operations
 - Database for user and transaction data
 - Integration with a card issuing service
-
-
-
 
 Core Components:
 **Virtual Account System**
