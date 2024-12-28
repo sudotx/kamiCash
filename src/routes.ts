@@ -9,9 +9,18 @@ import userRouter from "./resources/User/user.routes";
 import { verifyJwt } from "./utils/jwt";
 
 function routes(app: Express) {
-    let date = new Date();
+
+    let date = new Intl.DateTimeFormat([], {
+        timeZone: 'Africa/Lagos',
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+    });
     app.get("/", (req: Request, res: Response) =>
-        res.send({ success: true, message: "Welcome To SendMeFunds", timestamp: date.toLocaleString() })
+        res.send({ success: true, message: "Welcome To SendMeFunds", timestamp: date.format(new Date()) })
     );
     app.use("/auth", authRouter);
     app.use("/card", cardRouter);
