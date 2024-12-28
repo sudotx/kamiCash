@@ -1330,3 +1330,358 @@ info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:06.095Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:23.374Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:25.035Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-26T09:48:29.220Z"}
+error: Invalid email or password {"timestamp":"2024-12-26T12:05:18.764Z"}
+error: User not found {"timestamp":"2024-12-26T12:05:18.782Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:11:59.865Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:13.865Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:16.511Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:19.711Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:27.342Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:34.770Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:14:35.858Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:14:54.135Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:00.086Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:02.116Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:08.814Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:14.991Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:16.842Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:21.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:48.716Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:53.307Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:56.448Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:15:59.595Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:10.771Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:49.145Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:16:51.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:17:32.273Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:18:53.969Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:18:54.976Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:19:06.710Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:19:24.438Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:19:46.250Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:02.022Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:11.373Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:14.411Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:15.876Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:43.674Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:46.091Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:20:59.999Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:02.669Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:05.174Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:13.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:21:52.330Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:02.562Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:08.347Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:16.524Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:31.108Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:41.568Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:22:47.532Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:09.361Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:12.913Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:15.450Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:34.591Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:23:47.237Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:01.888Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:07.827Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:09.376Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:19.324Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:24:34.108Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:24:54.399Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:40.579Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:43.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:25:45.640Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:07.009Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:09.984Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:23.607Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:27.811Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:34.587Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:37.534Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:53.117Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:26:59.076Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:28:16.172Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:08.176Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:24.240Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:25.725Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:30.661Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:29:38.353Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:30:28.311Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:30:30.316Z"}
+info: [object Object] {"timestamp":"2024-12-26T12:30:31.144Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:26.150Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:27.215Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:32:56.569Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:06.431Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:13.267Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:18.948Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T12:33:28.959Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:17:50.432Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:26.600Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:39.367Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:45.752Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:18:57.769Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:19:06.540Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:21:37.679Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:22:21.201Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:22:49.069Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:23:00.171Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:23:47.561Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:25.703Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:40.497Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:38:48.241Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:09.659Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:20.332Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:25.120Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:29.737Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T19:39:33.665Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:04.000Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:09.528Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:16.445Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:22.497Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:33.493Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:45.678Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:48.593Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:06:56.615Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:07:15.459Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:11:49.760Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:12:16.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:12:42.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:13:16.775Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:14:12.417Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:15:59.276Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:16:13.239Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:16:44.763Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:17:43.918Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:18:09.522Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:18:36.766Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:19:24.467Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:20:51.050Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:35.091Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:39.127Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:23:50.451Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:02.691Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:30.536Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:35.405Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:24:56.288Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:25:09.862Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:26:07.442Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:30:50.044Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:30:54.556Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:09.971Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:31.135Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:36:59.758Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:11.554Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:24.663Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:38:33.851Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:39:09.071Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:39:46.144Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:04.007Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:32.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:39.729Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:46.236Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:40:52.024Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:41.359Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:52.506Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:45:59.783Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:46:45.350Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:14.384Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:23.277Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:47:32.695Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:48:47.754Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:49:06.605Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:49:11.195Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:49:20.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:52:05.592Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:46.656Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:50.549Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:56:59.870Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:03.196Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:09.077Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:14.939Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:23.796Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:36.971Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:57:49.764Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:22.038Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:47.138Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:58:53.777Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:11.330Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:26.364Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:33.629Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:41.626Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T20:59:48.195Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:10.589Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:18.477Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:34.594Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:00:38.866Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:01:08.841Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:03:26.175Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T21:04:15.711Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:24:56.690Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:26:10.378Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:26:20.112Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:27:47.823Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:13.738Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:28.814Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:29:42.276Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:05.593Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:11.537Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:17.370Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:36.577Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:30:53.639Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:31:48.143Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:31:56.693Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:32:18.290Z"}
+info: [object Object] {"timestamp":"2024-12-26T22:32:22.285Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:33:41.446Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:09.125Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:16.262Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:34:46.321Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:35:23.763Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:35:52.092Z"}
+info: [object Object] {"timestamp":"2024-12-26T22:35:53.678Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:36:18.366Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:36:47.672Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:37:11.331Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:38:21.022Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T22:38:24.687Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:14:20.401Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:14:56.417Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:14.683Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:39.900Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:15:45.117Z"}
+info: [object Object] {"timestamp":"2024-12-26T23:16:03.145Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:16:47.252Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:03.210Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:28.239Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:31.929Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:50.216Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:17:54.982Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:01.474Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:26.365Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:19:31.558Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:06.992Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:09.429Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-26T23:20:14.567Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:39:20.833Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:11.698Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:42:39.739Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:48.580Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:44:04.235Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:44:55.456Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:45:08.438Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:45:49.465Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:13.454Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:18.599Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:22.801Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:47.358Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:46:59.667Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:13.939Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:18.753Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:23.362Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:30.284Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:38.757Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:47:49.033Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:47:56.346Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:28.005Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:45.472Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:48.059Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:48:52.259Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:48:57.377Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:49:02.547Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:49:14.082Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:04.623Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:37.768Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:42.492Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:50:47.089Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:51:19.096Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:51:37.480Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:83:32
+
+  80 try {
+  81     // await sendMail(email, "WELCOME", "welcome dawg!")
+  82 
+→ 83     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:51:50.061Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-28T04:52:22.547Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42
+
+  6 const accountNumber = generateAccountNumber(userId, currencyCode);
+  7 
+  8 try {
+→ 9     return prisma.virtualAccount.create(
+Foreign key constraint failed on the field: `VirtualAccount_userId_fkey (index)` {"clientVersion":"5.11.0","code":"P2003","meta":{"field_name":"VirtualAccount_userId_fkey (index)","modelName":"VirtualAccount"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42\n\n  6 const accountNumber = generateAccountNumber(userId, currencyCode);\n  7 \n  8 try {\n→ 9     return prisma.virtualAccount.create(\nForeign key constraint failed on the field: `VirtualAccount_userId_fkey (index)`\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-28T05:09:31.663Z"}

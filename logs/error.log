@@ -92,3 +92,104 @@ Invalid `prisma.virtualAccount.create()` invocation in
    9 
 → 10 return prisma.virtualAccount.create(
 Unique constraint failed on the fields: (`accountNumber`) {"clientVersion":"5.11.0","code":"P2002","meta":{"modelName":"VirtualAccount","target":["accountNumber"]},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:10:38\n\n   7 console.log(\"currency code\", currencyCode);\n   8 const accountNumber = generateAccountNumber(userId, currencyCode);\n   9 \n→ 10 return prisma.virtualAccount.create(\nUnique constraint failed on the fields: (`accountNumber`)\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-26T00:46:29.750Z"}
+error: Invalid email or password {"timestamp":"2024-12-26T12:05:18.764Z"}
+error: User not found {"timestamp":"2024-12-26T12:05:18.782Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:48:47.754Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     let rep = await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-26T20:49:20.667Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:11.698Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+The table `public.User` does not exist in the current database. {"timestamp":"2024-12-28T04:42:48.580Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:44:55.456Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:45:08.438Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:47:49.033Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:48:52.259Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:82:32
+
+  79 try {
+  80     // await sendMail(email, "WELCOME", "welcome dawg!")
+  81 
+→ 82     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:49:02.547Z"}
+error: 
+Invalid `prisma.user.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Auth/services/auth.service.ts:83:32
+
+  80 try {
+  81     // await sendMail(email, "WELCOME", "welcome dawg!")
+  82 
+→ 83     return prisma.user.create(
+Unique constraint failed on the fields: (`email`) {"timestamp":"2024-12-28T04:51:50.061Z"}
+error: Error Getting 
+Invalid `prisma.virtualAccount.create()` invocation in
+/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42
+
+  6 const accountNumber = generateAccountNumber(userId, currencyCode);
+  7 
+  8 try {
+→ 9     return prisma.virtualAccount.create(
+Foreign key constraint failed on the field: `VirtualAccount_userId_fkey (index)` {"clientVersion":"5.11.0","code":"P2003","meta":{"field_name":"VirtualAccount_userId_fkey (index)","modelName":"VirtualAccount"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42\n\n  6 const accountNumber = generateAccountNumber(userId, currencyCode);\n  7 \n  8 try {\n→ 9     return prisma.virtualAccount.create(\nForeign key constraint failed on the field: `VirtualAccount_userId_fkey (index)`\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-28T05:09:31.663Z"}
