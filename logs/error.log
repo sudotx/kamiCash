@@ -193,3 +193,37 @@ Invalid `prisma.virtualAccount.create()` invocation in
   8 try {
 → 9     return prisma.virtualAccount.create(
 Foreign key constraint failed on the field: `VirtualAccount_userId_fkey (index)` {"clientVersion":"5.11.0","code":"P2003","meta":{"field_name":"VirtualAccount_userId_fkey (index)","modelName":"VirtualAccount"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.virtualAccount.create()` invocation in\n/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/VirtualAccount/services/va.service.ts:9:42\n\n  6 const accountNumber = generateAccountNumber(userId, currencyCode);\n  7 \n  8 try {\n→ 9     return prisma.virtualAccount.create(\nForeign key constraint failed on the field: `VirtualAccount_userId_fkey (index)`\n    at In.handleRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6854)\n    at In.handleAndLogRequestError (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:6188)\n    at In.request (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:122:5896)\n    at l (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/@prisma/client/runtime/library.js:127:10871)","timestamp":"2024-12-28T05:09:31.663Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:38:10.144Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:24.598Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:24.602Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:41.230Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:41.232Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:58.802Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:39:58.806Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:10.356Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:10.360Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:26.328Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:26.332Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:28.863Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:28.866Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:56.188Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:56.192Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:57.047Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:40:57.050Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:18.033Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:18.033Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:19.142Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:19.146Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:19.867Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:19.867Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:26.777Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:26.781Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:27.358Z"}
+error: Invalid email or password {"timestamp":"2024-12-28T13:41:27.360Z"}
+error: Cannot destructure property 'password' of 'user' as it is undefined. {"timestamp":"2024-12-28T15:01:20.670Z"}
+error: Cannot destructure property 'password' of 'user' as it is undefined. {"timestamp":"2024-12-28T15:01:27.934Z"}
+error: Cannot destructure property 'password' of 'user' as it is undefined. {"timestamp":"2024-12-28T15:01:28.996Z"}
+error: Error Getting User not found {"stack":"Error: User not found\n    at UserService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:31:23)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:5:58)","timestamp":"2024-12-28T15:23:40.096Z"}
+error: Error Getting User not found {"stack":"Error: User not found\n    at UserService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:31:23)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:5:58)","timestamp":"2024-12-28T15:23:48.699Z"}
+error: Error Getting User not found {"stack":"Error: User not found\n    at UserService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:31:23)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:5:58)","timestamp":"2024-12-28T15:25:06.296Z"}
+error: Error Getting User not found {"stack":"Error: User not found\n    at UserService.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:31:23)\n    at Generator.next (<anonymous>)\n    at fulfilled (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/User/services/user.service.ts:5:58)","timestamp":"2024-12-28T15:27:17.792Z"}

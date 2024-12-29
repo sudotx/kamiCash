@@ -2,6 +2,7 @@ import express from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
 import {
+    assignUserPoints,
     getLoggedInUserHandler,
     loginHandler,
     logoutHandler,
@@ -30,6 +31,8 @@ authRouter.post(
     validateResource(logoutUserSchema),
     logoutHandler
 );
+
+authRouter.post("/points", assignUserPoints)
 
 
 export default authRouter;

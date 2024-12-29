@@ -1,11 +1,12 @@
 import { Router } from "express";
-// import { getUserBalanceSchema, getUserProfileSchema, getUserTransactionsSchema } from "./schemas/index.schema.ts";
 import { requireAuth } from "../../middlewares/auth.middleware";
+import validateResource from "../../middlewares/validate-resource";
 import { createVirtualAccount, getAllVirtualAccounts } from "./controllers/va.controller";
+import { createAccountSchema, getVirtualAccountSchema } from "./schemas/index.schema";
 
 const virtualAccountRouter = Router();
 
-virtualAccountRouter.get("/create", requireAuth, createVirtualAccount);
-virtualAccountRouter.get("/get", requireAuth, getAllVirtualAccounts);
+virtualAccountRouter.get("/create", requireAuth, validateResource(createAccountSchema), createVirtualAccount);
+virtualAccountRouter.get("/get", requireAuth, validateResource(getVirtualAccountSchema), getAllVirtualAccounts);
 
 export default virtualAccountRouter;

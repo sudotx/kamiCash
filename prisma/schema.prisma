@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("LOCAL_URL")
 }
 
 generator client {
@@ -70,24 +70,12 @@ model User {
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt()
   lastLogin            DateTime?
-  wallets              Wallet[]
   cards                Card[]
   sentTransactions     Transaction[]     @relation("SenderTransactions")
   receivedTransactions Transaction[]     @relation("ReceiverTransactions")
   VirtualAccount       VirtualAccount[]
   LedgerEntry          LedgerEntry[]
-}
-
-model Wallet {
-  id        String    @id @default(cuid())
-  userId    String
-  assetType AssetType
-  balance   Decimal
-  user      User      @relation(fields: [userId], references: [id])
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt()
-
-  @@unique([userId, assetType])
+  otps                 OTP[]
 }
 
 model Card {
@@ -110,6 +98,7 @@ model Transaction {
   toAddress        String?
   amount           Decimal
   assetType        AssetType
+  fiatType         FiatType
   type             TransactionType
   status           TransactionStatus
   txHash           String? // For blockchain transactions
@@ -126,10 +115,12 @@ model Transaction {
 model OTP {
   id        String   @id @default(cuid())
   email     String   @unique
+  userId    String
   code      String
   expiresAt DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  User      User     @relation(fields: [userId], references: [id])
 }
 
 model VirtualAccount {

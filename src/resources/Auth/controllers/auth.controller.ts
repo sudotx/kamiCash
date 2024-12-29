@@ -1,11 +1,8 @@
-import { Keypair } from "@solana/web3.js";
 import { NextFunction, Request, Response } from "express";
 import { CustomError } from "../../../utils/handle-error";
-import { hashData } from "../../../utils/hash";
 import { JwtPayload } from "../../../utils/interfaces";
 import { signJwt } from "../../../utils/jwt";
 import { LoginUserInput, RegisterUserInput } from "../schema/auth.schema";
-
 import { AuthService } from "../services/auth.service";
 
 const authService = new AuthService()
@@ -17,16 +14,14 @@ export const registerHandler = async (
 ) => {
     try {
         const { email, password, firstName, lastName, phoneNumber } = req.body;
-        const hashedPassword = await hashData(password);
-        const newKeypair = Keypair.generate();
-        const user = await authService.createUser(email, hashedPassword, firstName, lastName, phoneNumber, newKeypair);
+        const user = await authService.createUser(email, password, firstName, lastName, phoneNumber);
         res.status(201).json({
             message: "User created successfully",
             user: authService.sanitizeUser(user),
         });
     } catch (err: any) {
         res.status(400).json({
-            error: err.name
+            error: err
         })
         next(new CustomError(err.message, 400));
     }
@@ -55,10 +50,33 @@ export const loginHandler = async (
             accessToken
         });
     } catch (err: any) {
-        next(err);
+        res.status(400).json({
+            error: err.message
+        })
+        next(new CustomError(err.message, 400));
     }
 };
 
+export const assignUserPoints = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+
+
+    try {
+        const { user, points } = req.body;
+
+        const pts = authService.updateUserPoints(user, points)
+
+        res.status(200).json({
+            message: `${user} has been sent ${points} points`,
+        });
+
+    } catch (error) {
+        throw (error)
+    }
+};
 export const logoutHandler = async (
     req: Request,
     res: Response,
@@ -86,6 +104,9 @@ export const getLoggedInUserHandler = async (
         const user = await authService.getUserById(jwtUser.id);
         res.status(200).json(authService.sanitizeUser(user));
     } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
         next(new CustomError(error.message, error.statusCode || 500));
     }
 };

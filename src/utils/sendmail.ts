@@ -2,14 +2,6 @@ import nodemailer from "nodemailer";
 import { logger } from "./logger";
 const jwt = require('jsonwebtoken');
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.NODEMAILER_EMAIL,
-        pass: process.env.NODEMAILER_PASSWORD,
-    },
-});
-
 const token = jwt.sign({
     data: 'Token Data',
 }, 'ourSecretKey', { expiresIn: '10m' }
@@ -18,8 +10,17 @@ const token = jwt.sign({
 export const sendMail = async (
     email: string,
     subject: string,
-    messageBody: string
 ) => {
+    const transporter = nodemailer.createTransport({
+        host: 'live.smtp.mailtrap.io',
+        port: 587,
+        secure: false, // use SSL
+        auth: {
+            user: '1a2b3c4d5e6f7g',
+            pass: '1a2b3c4d5e6f7g',
+        }
+    });
+
     try {
         const mailOptions = {
 
@@ -39,6 +40,7 @@ export const sendMail = async (
                 http://localhost:6969/verify/${token} 
         
                 Thanks`
+            ,
 
         };
 
