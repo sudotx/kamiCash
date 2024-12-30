@@ -1,5 +1,5 @@
 {
-  "name": "payMeNow",
+  "name": "KembaBank",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "@prisma/client": "^5.11.0",
     "@solana/spl-token": "^0.4.8",
     "@solana/web3.js": "^1.95.1",
-    "axios": "^1.6.8",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

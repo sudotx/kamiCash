@@ -62,8 +62,6 @@ export const assignUserPoints = async (
     res: Response,
     next: NextFunction
 ) => {
-
-
     try {
         const { user, points } = req.body;
 
@@ -82,7 +80,6 @@ export const logoutHandler = async (
     res: Response,
     next: NextFunction
 ) => {
-
     res.clearCookie('refreshToken', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',

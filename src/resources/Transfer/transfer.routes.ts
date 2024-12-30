@@ -7,5 +7,7 @@ import { internalTransferSchema } from "./schemas/index.schema";
 const transferRouter = Router();
 
 transferRouter.post("/internal", validateResource(internalTransferSchema), requireAuth, internalTransfer);
+transferRouter.post("/deposit", validateResource(internalTransferSchema), requireAuth, internalTransfer);
+transferRouter.post("/withdrawal", validateResource(internalTransferSchema), requireAuth, internalTransfer);
 
 export default transferRouter;

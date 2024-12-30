@@ -74,6 +74,8 @@ export class AuthService {
                     evmAddress: ethWallet.address.toString(),
                     evmPrivateKey: hashedPrivateKeyEth,
                     points: 50,
+                    dateOfBirth: new Date(),
+                    nationality: "Nigeria",
                 },
             });
         } catch (error) {

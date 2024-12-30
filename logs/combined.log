@@ -1879,3 +1879,9 @@ info: Ready on port 6969 {"timestamp":"2024-12-28T15:33:41.002Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-28T15:33:44.131Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-28T15:34:03.054Z"}
 info: Ready on port 6969 {"timestamp":"2024-12-28T15:34:04.901Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-29T14:17:31.890Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-30T10:20:16.366Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-30T10:48:49.967Z"}
+error: User not found {"timestamp":"2024-12-30T14:48:24.775Z"}
+info: Ready on port 6969 {"timestamp":"2024-12-30T14:49:11.085Z"}
+error: User not found {"timestamp":"2024-12-30T14:49:53.617Z"}

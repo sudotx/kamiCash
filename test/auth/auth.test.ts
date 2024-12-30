@@ -97,7 +97,6 @@ describe('AuthService', () => {
                 'John',
                 'Doe',
                 '1234567890',
-                mockKeypair,
             );
 
             expect(hashData).toHaveBeenCalledWith(mockKeypair.secretKey.toString());
@@ -118,8 +117,12 @@ describe('AuthService', () => {
                     createdAt: expect.any(String),
                     wallets: {
                         create: [
-                            { assetType: AssetType.SOL, balance: 0 },
+                            { assetType: AssetType.DAI, balance: 0 },
                             { assetType: AssetType.USDC, balance: 0 },
+                            { assetType: AssetType.PYUSD, balance: 0 },
+                            { assetType: AssetType.RLUSD, balance: 0 },
+                            { assetType: AssetType.USDT, balance: 0 },
+                            { assetType: AssetType.USDe, balance: 0 },
                         ],
                     },
                 },

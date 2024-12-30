@@ -1,6 +1,6 @@
 import { number, object, string, TypeOf, z } from "zod";
 
-export const assetTypeEnum = z.enum(["SOL", "USDC"]);
+export const assetTypeEnum = z.enum(["USDC"]);
 
 export const createUserSchema = object({
     body: object({

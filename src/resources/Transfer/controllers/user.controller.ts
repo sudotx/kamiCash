@@ -20,3 +20,26 @@ export const internalTransfer = async (
         res.status(500).json({ message: "Internal transfer failed", error: error });
     }
 }
+
+export const deposit = async (req: Request<{}, {}, WithdrawInput["body"]>, res: Response, next: NextFunction) => {
+    const { amount, assetType, fromUserId, toAddress, memo } = req.body;
+    try {
+        const result = await transferService.executeDeposit(amount, assetType, fromUserId, toAddress, memo || "none");
+        logger.info(result);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("Deposit failed:", error);
+        res.status(500).json({ message: "Deposit failed", error: error });
+    }
+}
+export const withdraw = async (req: Request<{}, {}, WithdrawInput["body"]>, res: Response, next: NextFunction) => {
+    const { amount, assetType, fromUserId, toAddress, memo } = req.body;
+    try {
+        const result = await transferService.executeWithdraw(amount, assetType, fromUserId, toAddress, memo || "none");
+        logger.info(result);
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("Deposit failed:", error);
+        res.status(500).json({ message: "Deposit failed", error: error });
+    }
+}

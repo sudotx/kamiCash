@@ -1,6 +1,4 @@
 import { Express, Request, Response } from "express";
-const jwt = require('jsonwebtoken');
-
 import authRouter from "./resources/Auth/auth.routes";
 import cardRouter from "./resources/Card/card.routes";
 import transferRouter from "./resources/Transfer/transfer.routes";
@@ -19,7 +17,7 @@ function routes(app: Express) {
         second: 'numeric',
     });
     app.get("/", (req: Request, res: Response) =>
-        res.send({ success: true, message: "Welcome To SendMeFunds", timestamp: date.format(new Date()) })
+        res.send({ success: true, message: "Welcome To Kemba Bank, THE BANK OF THE FUTURE", timestamp: date.format(new Date()) })
     );
     app.use("/auth", authRouter);
     app.use("/card", cardRouter);

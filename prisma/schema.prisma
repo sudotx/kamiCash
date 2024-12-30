@@ -14,17 +14,29 @@ enum AccountStatusEnum {
   ACTIVE
   SUSPENDED
   BANNED
+  INACTIVE
   DELETED
 }
 
 enum RoleEnum {
+  SUPER_ADMIN
   ADMIN
   USER
+  SUPPORT
 }
 
 enum EntryType {
   CREDIT
   DEBIT
+}
+
+enum TxType {
+  DEPOSIT // For adding money to account
+  WITHDRAWAL // For taking money out
+  TRANSFER // For internal transfers
+  PAYMENT // For merchant payments
+  REFUND // For refunds
+  FEE // For system fees
 }
 
 enum TransactionType {
@@ -34,8 +46,19 @@ enum TransactionType {
 
 enum TransactionStatus {
   PENDING
+  PROCESSING // Added for multi-step transactions
   COMPLETED
   FAILED
+  REVERSED // Added for chargebacks/refunds
+  CANCELLED
+}
+
+enum KycStatus {
+  NONE
+  PENDING
+  IN_REVIEW
+  REJECTED
+  VERIFIED
 }
 
 enum FiatType {
@@ -43,12 +66,66 @@ enum FiatType {
   NGN
   GHS
   CFA
+  EUR
+  GBP
 }
 
 enum AssetType {
-  SOL
   USDT
   USDC
+  DAI
+  USDe
+  PYUSD
+  RLUSD
+}
+
+enum PaymentMethodType {
+  CARD
+  BANK_TRANSFER
+  CRYPTO
+  MOBILE_MONEY
+}
+
+model KycData {
+  id                 String    @id @default(uuid())
+  userId             String    @unique
+  user               User      @relation(fields: [userId], references: [id])
+  idType             String // passport, national_id, drivers_license
+  idNumber           String
+  dateOfBirth        DateTime  @default(now())
+  nationality        String    @default("")
+  addressLine1       String
+  addressLine2       String?
+  city               String
+  state              String
+  country            String
+  postalCode         String
+  documentUrls       String[] // Array of verification document URLs
+  verificationStatus String    @default("PENDING") // PENDING, VERIFIED, REJECTED
+  submittedAt        DateTime  @default(now())
+  verifiedAt         DateTime?
+  expirationDate     DateTime?
+  verifiedBy         String?
+  riskScore          Int?
+  rejectionReason    String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt()
+
+  @@index([userId])
+  @@index([verificationStatus])
+}
+
+model UserAddress {
+  id         String   @id @default(uuid())
+  street     String
+  city       String
+  state      String
+  country    String
+  zipCode    String
+  isApproved Boolean  @default(false)
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
 }
 
 model User {
@@ -58,37 +135,74 @@ model User {
   firstName            String
   lastName             String
   phoneNumber          String
+  dateOfBirth          DateTime
+  nationality          String
   role                 RoleEnum          @default(USER)
   accountStatus        AccountStatusEnum @default(ACTIVE)
   isKyc                Boolean           @default(false)
+  kycStatus            KycStatus         @default(NONE)
+  kycData              KycData?
   emailVerified        Boolean           @default(false)
+  phoneVerified        Boolean           @default(false)
+  twoFactorEnabled     Boolean           @default(false)
+  twoFactorSecret      String?
   solanaAddress        String?           @unique
   solanaPrivateKey     String?           @unique
   evmAddress           String?           @unique
   evmPrivateKey        String?           @unique
   points               Int               @default(0)
+  referralCode         String?           @unique
+  tier                 Int               @default(1)
+  referredBy           String?
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt()
   lastLogin            DateTime?
+  failedLoginAttempts  Int               @default(0)
+  passwordResetToken   String?
+  passwordResetExpires DateTime?
   cards                Card[]
   sentTransactions     Transaction[]     @relation("SenderTransactions")
   receivedTransactions Transaction[]     @relation("ReceiverTransactions")
   VirtualAccount       VirtualAccount[]
   LedgerEntry          LedgerEntry[]
   otps                 OTP[]
+  userAddresses        UserAddress[]
+  LoginSession         LoginSession[]
+  Notification         Notification[]
+}
+
+model LoginSession {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  deviceInfo   Json // Store device fingerprint
+  ipAddress    String
+  lastActivity DateTime @default(now())
+  isActive     Boolean  @default(true)
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([isActive])
 }
 
 model Card {
-  id          String   @id @default(cuid())
-  userId      String
-  last4       String
-  brand       String
-  expiryMonth String
-  expiryYear  String
-  token       String? // For storing tokenized card info
-  user        User     @relation(fields: [userId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt()
+  id             String   @id @default(cuid())
+  userId         String
+  last4          String
+  brand          String
+  expiryMonth    String
+  expiryYear     String
+  token          String? // For storing tokenized card info
+  isDefault      Boolean  @default(false)
+  failedAttempts Int      @default(0)
+  user           User     @relation(fields: [userId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt()
+
+  @@index([userId])
+  @@index([token])
 }
 
 model Transaction {
@@ -97,16 +211,24 @@ model Transaction {
   toUserId         String?
   toAddress        String?
   amount           Decimal
+  fee              Decimal           @default(0)
+  netAmount        Decimal
   assetType        AssetType
   fiatType         FiatType
   type             TransactionType
+  paymentMethod    PaymentMethodType
   status           TransactionStatus
   txHash           String? // For blockchain transactions
   fromUser         User              @relation("SenderTransactions", fields: [fromUserId], references: [id])
   toUser           User?             @relation("ReceiverTransactions", fields: [toUserId], references: [id])
   memo             String?
+  reference        String?
+  metadata         Json?
+  failureReason    String?
+  processingSteps  Json?
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt()
+  completedAt      DateTime?
   VirtualAccount   VirtualAccount?   @relation(fields: [virtualAccountId], references: [id])
   virtualAccountId String?
   LedgerEntry      LedgerEntry[]
@@ -124,21 +246,21 @@ model OTP {
 }
 
 model VirtualAccount {
-  id            String   @id @default(uuid())
-  accountNumber String   @unique
-  accountName   String
-  balance       Decimal  @default(0)
-  currency      String
-  status        String   @default("ACTIVE")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
+  id               String                @id @default(uuid())
+  accountNumber    String                @unique
+  accountName      String
+  balance          Decimal               @default(0)
+  availableBalance Decimal               @default(0)
+  currency         String
+  status           String                @default("ACTIVE")
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
   // Relations
-  userId       String
-  user         User                  @relation(fields: [userId], references: [id])
-  transactions Transaction[]
-  limits       VirtualAccountLimits?
-  LedgerEntry  LedgerEntry[]
+  userId           String
+  user             User                  @relation(fields: [userId], references: [id])
+  transactions     Transaction[]
+  limits           VirtualAccountLimits?
+  LedgerEntry      LedgerEntry[]
 
   // Indexes
   @@index([userId])
@@ -179,5 +301,22 @@ model LedgerEntry {
 
   @@index([userId])
   @@index([virtualAccountId])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  type      String // EMAIL, SMS, PUSH
+  title     String
+  message   String
+  isRead    Boolean   @default(false)
+  metadata  Json?
+  createdAt DateTime  @default(now())
+  readAt    DateTime?
+
+  @@index([userId])
+  @@index([isRead])
   @@index([createdAt])
 }
