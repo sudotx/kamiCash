@@ -1,35 +1,14 @@
-// src/api/admin/controllers/admin.controller.ts
-
 import { NextFunction, Request, Response } from "express";
 import { CustomError } from "../../../utils/handle-error";
 import { JwtPayload } from "../../../utils/interfaces";
 import { signJwt } from "../../../utils/jwt";
+import { AssignPointsInput, LoginUserInput, RegisterAdminInput } from "../schema/admin.schema";
 import { AdminService } from "../services/admin.service";
 
-// Define admin-specific interfaces
-interface AdminRegisterInput {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    role: 'ADMIN' | 'SUPER_ADMIN';
-}
-
-interface AdminLoginInput {
-    email: string;
-    password: string;
-}
-
-interface AssignPointsInput {
-    userId: string;
-    points: number;
-    reason?: string;
-}
 const adminService = new AdminService();
 
 export const registerAdmin = async (
-    req: Request<{}, {}, AdminRegisterInput>,
+    req: Request<{}, {}, RegisterAdminInput>,
     res: Response,
     next: NextFunction
 ) => {
@@ -49,32 +28,32 @@ export const registerAdmin = async (
 };
 
 export const loginAdmin = async (
-    req: Request<{}, {}, AdminLoginInput>,
+    req: Request<{}, {}, LoginUserInput>,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const { email, password } = req.body;
+        const { email, password } = req.body.body;
 
         const admin = await adminService.authenticateAdmin(email, password);
-        // const accessToken = signJwt(admin, { expiresIn: process.env.ADMIN_TOKEN_TTL });
+        const accessToken = signJwt(admin, { expiresIn: process.env.ADMIN_TOKEN_TTL });
 
-        // // Set secure cookie for admin session
-        // res.cookie('adminToken', accessToken, {
-        //     httpOnly: true,
-        //     secure: process.env.NODE_ENV === 'production',
-        //     sameSite: 'strict',
-        //     maxAge: 24 * 60 * 60 * 1000 // 24 hours
-        // });
+        // Set secure cookie for admin session
+        res.cookie('adminToken', accessToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 24 * 60 * 60 * 1000 // 24 hours
+        });
 
-        // res.status(200).json({
-        //     status: 'success',
-        //     message: "Admin logged in successfully",
-        //     data: {
-        //         admin: this.adminService.sanitizeAdminData(admin),
-        //         accessToken
-        //     }
-        // });
+        res.status(200).json({
+            status: 'success',
+            message: "Admin logged in successfully",
+            data: {
+                admin: admin,
+                accessToken
+            }
+        });
     } catch (error: any) {
         next(new CustomError(error.message, error.statusCode || 401));
     }
@@ -86,12 +65,11 @@ export const assignUserPoints = async (
     next: NextFunction
 ) => {
     try {
-        const { userId, points, reason } = req.body;
+        const { userId, points } = req.body.body;
         const adminId = (res.locals.user as JwtPayload).id;
 
         const updatedUser = await adminService.assignPoints(userId, points, {
             adminId,
-            reason
         });
 
         res.status(200).json({
@@ -117,7 +95,6 @@ export const logoutAdmin = async (
         const adminId = (res.locals.user as JwtPayload).id;
 
         // Invalidate admin session
-        await adminService.invalidateSession(adminId);
 
         res.clearCookie('adminToken', {
             httpOnly: true,
@@ -143,9 +120,9 @@ export const getCurrentAdmin = async (
         const adminId = (res.locals.user as JwtPayload).id;
         const admin = await adminService.getAdminById(adminId);
 
-        // if (!admin) {
-        //     throw new CustomError('Admin not found', 404);
-        // }
+        if (!admin) {
+            throw new CustomError('Admin not found', 404);
+        }
 
         res.status(200).json({
             status: 'success',
@@ -165,10 +142,10 @@ export const getAllUsers = async (
     try {
         const users = await adminService.getAllUsers();
 
-        // res.status(200).json({
-        //     status: 'success',
-        //     data: users.map(user => this.adminService.sanitizeUserData(user))
-        // });
+        res.status(200).json({
+            status: 'success',
+            users: users
+        });
     } catch (error: any) {
         next(new CustomError(error.message, error.statusCode || 500));
     }
@@ -183,10 +160,10 @@ export const getUserDetails = async (
         const { userId } = req.params;
         const user = await adminService.getUserDetails(userId);
 
-        // res.status(200).json({
-        //     status: 'success',
-        //     data: this.adminService.sanitizeUserData(user)
-        // });
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
     } catch (error: any) {
         next(new CustomError(error.message, error.statusCode || 404));
     }

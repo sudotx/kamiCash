@@ -1,6 +1,6 @@
-import { TypeOf, object, string } from "zod";
+import { TypeOf, number, object, string } from "zod";
 
-export const registerUserSchema = object({
+export const registerAdminSchema = object({
     body: object({
         firstName: string({
             required_error: "First name is required",
@@ -20,7 +20,7 @@ export const registerUserSchema = object({
     }),
 });
 
-export const loginUserSchema = object({
+export const loginAdminSchema = object({
     body: object({
         email: string({
             required_error: "Email is required",
@@ -31,15 +31,18 @@ export const loginUserSchema = object({
     }),
 });
 
-export const logoutUserSchema = object({
+export const assignPointsSchema = object({
     body: object({
         userId: string({
-            required_error: "User ID is required",
+            required_error: "User Id is required",
+        }),
+        points: number({
+            required_error: "Points is required",
         }),
     }),
 });
 
-export type RegisterUserInput = TypeOf<typeof registerUserSchema>;
-export type LoginUserInput = TypeOf<typeof loginUserSchema>;
-export type LogoutUserInput = TypeOf<typeof logoutUserSchema>;
+export type RegisterAdminInput = TypeOf<typeof registerAdminSchema>;
+export type LoginUserInput = TypeOf<typeof loginAdminSchema>;
+export type AssignPointsInput = TypeOf<typeof assignPointsSchema>;
 

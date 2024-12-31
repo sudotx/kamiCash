@@ -88,7 +88,7 @@ export const deposit = async (req: Request<{}, {}, WithdrawInput["body"]>, res: 
 export const withdraw = async (req: Request<{}, {}, WithdrawInput["body"]>, res: Response, next: NextFunction) => {
     const { amount, assetType, fromUserId, toAddress, memo } = req.body;
     try {
-        const result = await transactionService.executeWithdraw(amount, assetType, fromUserId, toAddress, memo || "none");
+        const result = transactionService.executeWithdraw(amount, assetType, fromUserId, toAddress, memo || "none");
         logger.info(result);
         res.status(200).json(result);
         // res.status(200).json({
@@ -116,7 +116,7 @@ export const getTransactionStatus = async (
         const { transactionId } = req.params;
         const userId = (res.locals.user as JwtPayload).id;
 
-        const transaction = await transactionService.getTransactionById(transactionId, userId);
+        const transaction = transactionService.getTransactionById(transactionId, userId);
 
         res.status(200).json({
             status: 'success',
@@ -141,7 +141,7 @@ export const cancelTransaction = async (
         const { transactionId } = req.params;
         const userId = (res.locals.user as JwtPayload).id;
 
-        await transactionService.cancelTransaction(transactionId, userId);
+        transactionService.cancelTransaction(transactionId, userId);
 
         res.status(200).json({
             status: 'success',
@@ -168,7 +168,7 @@ export const getTransactionHistory = async (
         const userId = (res.locals.user as JwtPayload).id;
         const { page = 1, limit = 10, type, status, startDate, endDate } = req.query;
 
-        const { transactions, total } = await transactionService.getTransactionHistory({
+        const { transactions, total } = transactionService.getTransactionHistory({
             userId,
             page: Number(page),
             limit: Number(limit),
@@ -204,7 +204,7 @@ export const getTransactionReceipt = async (
         const { transactionId } = req.params;
         const userId = (res.locals.user as JwtPayload).id;
 
-        const receipt = await transactionService.generateTransactionReceipt(transactionId, userId);
+        const receipt = transactionService.generateTransactionReceipt(transactionId, userId);
 
         res.status(200).json({
             status: 'success',
@@ -223,7 +223,7 @@ export const handleTransactionCallback = async (
     try {
         const callbackData = req.body;
 
-        await transactionService.processTransactionCallback(callbackData);
+        transactionService.processTransactionCallback(callbackData);
 
         res.status(200).json({
             status: 'success',

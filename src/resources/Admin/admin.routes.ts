@@ -10,7 +10,7 @@ import {
     logoutAdmin,
     registerAdmin
 } from "./controllers/admin.controller";
-import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/admin.schema";
+import { assignPointsSchema, loginAdminSchema, registerAdminSchema } from "./schema/admin.schema";
 
 const authRouter = express.Router();
 
@@ -22,23 +22,22 @@ authRouter.route("/current").get(requireAuth, getCurrentAdmin);
 
 authRouter.post(
     "/register",
-    validateResource(registerUserSchema),
+    validateResource(registerAdminSchema),
     registerAdmin
 );
 
 authRouter.post(
     "/login",
-    validateResource(loginUserSchema),
+    validateResource(loginAdminSchema),
     loginAdmin
 );
 
 authRouter.post(
     "/logout",
-    validateResource(logoutUserSchema),
     logoutAdmin
 );
 
-authRouter.post("/points", assignUserPoints)
+authRouter.post("/points", validateResource(assignPointsSchema), assignUserPoints)
 
 
 export default authRouter;
