@@ -118,7 +118,7 @@ export class TransferService {
 
         const user = await prisma.user.findUnique({
             where: { id: from },
-            include: { VirtualAccount: true },
+            include: { virtualAccount: true },
         });
 
         const accountNumber = await prisma.virtualAccount.findUnique({
@@ -172,14 +172,14 @@ export class TransferService {
     async depositForUser(userId: string, amount: number, assetType: AssetType) {
         const user = await prisma.user.findUnique({
             where: { id: userId },
-            include: { VirtualAccount: true },
+            include: { virtualAccount: true },
         });
 
         if (!user) {
             throw new CustomError("User not found", 404);
         }
 
-        const wallet = user.VirtualAccount.find(w => w.currency === assetType);
+        const wallet = user.virtualAccount.find(w => w.currency === assetType);
 
         if (!wallet) {
             throw new CustomError(`Wallet for ${assetType} not found`, 404);
@@ -196,7 +196,7 @@ export class TransferService {
                 toUserId: userId,
                 amount,
                 assetType,
-                type: TransactionType.INTERNAL,
+                type: TransactionType.DEPOSIT,
                 status: TransactionStatus.COMPLETED,
                 memo: "Deposit",
                 fiatType: 'NGN',
@@ -273,6 +273,24 @@ export class TransferService {
         })
     }
 
+    getTransactionById(transactionId: string, userId: string) {
+        return {
+            id: "",
+            status: "",
+            processingSteps: "",
+            completedAt: "",
+        }
+    }
+    cancelTransaction(transactionId: string, userId: string) { }
+    getTransactionHistory(data: any) {
+        return {
+            transactions: "",
+            total: 1
+        }
+    }
+    generateTransactionReceipt(transactionId: string, userId: string) { }
+    processTransactionCallback(callbackData: any) { }
+
     private async updateRecipientBalance(to: string, assetType: AssetType, amount: Decimal) {
         // await prisma.virtualAccount.upsert({
         //     where: { userId_assetType: { userId: to, assetType: assetType } },
@@ -288,7 +306,7 @@ export class TransferService {
                 toUserId: to,
                 amount,
                 assetType: assetType,
-                type: 'INTERNAL',
+                type: 'DEPOSIT',
                 status: 'COMPLETED',
                 memo,
                 fiatType: "NGN",

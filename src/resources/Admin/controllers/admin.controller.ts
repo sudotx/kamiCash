@@ -1,0 +1,193 @@
+// src/api/admin/controllers/admin.controller.ts
+
+import { NextFunction, Request, Response } from "express";
+import { CustomError } from "../../../utils/handle-error";
+import { JwtPayload } from "../../../utils/interfaces";
+import { signJwt } from "../../../utils/jwt";
+import { AdminService } from "../services/admin.service";
+
+// Define admin-specific interfaces
+interface AdminRegisterInput {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    role: 'ADMIN' | 'SUPER_ADMIN';
+}
+
+interface AdminLoginInput {
+    email: string;
+    password: string;
+}
+
+interface AssignPointsInput {
+    userId: string;
+    points: number;
+    reason?: string;
+}
+const adminService = new AdminService();
+
+export const registerAdmin = async (
+    req: Request<{}, {}, AdminRegisterInput>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const adminData = req.body;
+
+        const newAdmin = await adminService.createAdmin(adminData);
+
+        res.status(201).json({
+            status: 'success',
+            message: "Admin created successfully",
+            data: adminService.sanitizeAdminData(newAdmin),
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+
+export const loginAdmin = async (
+    req: Request<{}, {}, AdminLoginInput>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { email, password } = req.body;
+
+        const admin = await adminService.authenticateAdmin(email, password);
+        // const accessToken = signJwt(admin, { expiresIn: process.env.ADMIN_TOKEN_TTL });
+
+        // // Set secure cookie for admin session
+        // res.cookie('adminToken', accessToken, {
+        //     httpOnly: true,
+        //     secure: process.env.NODE_ENV === 'production',
+        //     sameSite: 'strict',
+        //     maxAge: 24 * 60 * 60 * 1000 // 24 hours
+        // });
+
+        // res.status(200).json({
+        //     status: 'success',
+        //     message: "Admin logged in successfully",
+        //     data: {
+        //         admin: this.adminService.sanitizeAdminData(admin),
+        //         accessToken
+        //     }
+        // });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 401));
+    }
+};
+
+export const assignUserPoints = async (
+    req: Request<{}, {}, AssignPointsInput>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId, points, reason } = req.body;
+        const adminId = (res.locals.user as JwtPayload).id;
+
+        const updatedUser = await adminService.assignPoints(userId, points, {
+            adminId,
+            reason
+        });
+
+        res.status(200).json({
+            status: 'success',
+            message: `Points assigned successfully`,
+            data: {
+                userId: updatedUser.id,
+                newPoints: updatedUser.points,
+                assignedBy: adminId
+            }
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+
+export const logoutAdmin = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const adminId = (res.locals.user as JwtPayload).id;
+
+        // Invalidate admin session
+        await adminService.invalidateSession(adminId);
+
+        res.clearCookie('adminToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        });
+
+        res.status(200).json({
+            status: 'success',
+            message: "Admin logged out successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+
+export const getCurrentAdmin = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const adminId = (res.locals.user as JwtPayload).id;
+        const admin = await adminService.getAdminById(adminId);
+
+        // if (!admin) {
+        //     throw new CustomError('Admin not found', 404);
+        // }
+
+        res.status(200).json({
+            status: 'success',
+            data: adminService.sanitizeAdminData(admin)
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+
+// Additional admin-specific handlers
+export const getAllUsers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const users = await adminService.getAllUsers();
+
+        // res.status(200).json({
+        //     status: 'success',
+        //     data: users.map(user => this.adminService.sanitizeUserData(user))
+        // });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+
+export const getUserDetails = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        // res.status(200).json({
+        //     status: 'success',
+        //     data: this.adminService.sanitizeUserData(user)
+        // });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};

@@ -3,33 +3,39 @@ import { requireAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
 import {
     assignUserPoints,
-    getLoggedInUserHandler,
-    loginHandler,
-    logoutHandler,
-    registerHandler
-} from "./controllers/auth.controller";
-import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/auth.schema";
+    getAllUsers,
+    getCurrentAdmin,
+    getUserDetails,
+    loginAdmin,
+    logoutAdmin,
+    registerAdmin
+} from "./controllers/admin.controller";
+import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/admin.schema";
 
 const authRouter = express.Router();
 
-authRouter.route("").get(requireAuth, getLoggedInUserHandler);
+authRouter.route("").get(requireAuth, getUserDetails);
+
+authRouter.route("/all").get(requireAuth, getAllUsers);
+
+authRouter.route("/current").get(requireAuth, getCurrentAdmin);
 
 authRouter.post(
     "/register",
     validateResource(registerUserSchema),
-    registerHandler
+    registerAdmin
 );
 
 authRouter.post(
     "/login",
     validateResource(loginUserSchema),
-    loginHandler
+    loginAdmin
 );
 
 authRouter.post(
     "/logout",
     validateResource(logoutUserSchema),
-    logoutHandler
+    logoutAdmin
 );
 
 authRouter.post("/points", assignUserPoints)

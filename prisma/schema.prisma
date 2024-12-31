@@ -19,10 +19,8 @@ enum AccountStatusEnum {
 }
 
 enum RoleEnum {
-  SUPER_ADMIN
   ADMIN
   USER
-  SUPPORT
 }
 
 enum EntryType {
@@ -30,7 +28,7 @@ enum EntryType {
   DEBIT
 }
 
-enum TxType {
+enum TransactionType {
   DEPOSIT // For adding money to account
   WITHDRAWAL // For taking money out
   TRANSFER // For internal transfers
@@ -39,17 +37,12 @@ enum TxType {
   FEE // For system fees
 }
 
-enum TransactionType {
-  INTERNAL
-  EXTERNAL
-}
-
 enum TransactionStatus {
   PENDING
   PROCESSING // Added for multi-step transactions
   COMPLETED
   FAILED
-  REVERSED // Added for chargebacks/refunds
+  REVERSED // Added for chargeBacks/refunds
   CANCELLED
 }
 
@@ -163,12 +156,12 @@ model User {
   cards                Card[]
   sentTransactions     Transaction[]     @relation("SenderTransactions")
   receivedTransactions Transaction[]     @relation("ReceiverTransactions")
-  VirtualAccount       VirtualAccount[]
+  virtualAccount       VirtualAccount[]
   LedgerEntry          LedgerEntry[]
   otps                 OTP[]
   userAddresses        UserAddress[]
-  LoginSession         LoginSession[]
-  Notification         Notification[]
+  loginSession         LoginSession[]
+  notification         Notification[]
 }
 
 model LoginSession {
@@ -260,7 +253,7 @@ model VirtualAccount {
   user             User                  @relation(fields: [userId], references: [id])
   transactions     Transaction[]
   limits           VirtualAccountLimits?
-  LedgerEntry      LedgerEntry[]
+  ledgerEntry      LedgerEntry[]
 
   // Indexes
   @@index([userId])

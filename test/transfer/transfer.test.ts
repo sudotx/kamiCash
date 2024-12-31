@@ -1,6 +1,6 @@
 import { Decimal } from "@prisma/client/runtime/library";
 import { prisma } from "../../src/db";
-import { TransferService } from "../../src/resources/Transfer/services/transfer.service";
+import { TransferService } from "../../src/resources/Transaction/services/transaction.service";
 
 // Mock Prisma
 jest.mock("../../src/db", () => ({

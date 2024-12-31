@@ -1,7 +1,7 @@
 import { Express, Request, Response } from "express";
 import authRouter from "./resources/Auth/auth.routes";
 import cardRouter from "./resources/Card/card.routes";
-import transferRouter from "./resources/Transfer/transfer.routes";
+import transactionRouter from "./resources/Transaction/transaction.routes";
 import userRouter from "./resources/User/user.routes";
 import virtualAccountRouter from "./resources/VirtualAccount/virtualaccount.routes";
 import { verifyJwt } from "./utils/jwt";
@@ -22,7 +22,7 @@ function routes(app: Express) {
     app.use("/auth", authRouter);
     app.use("/card", cardRouter);
     app.use("/user", userRouter);
-    app.use("/transfer", transferRouter);
+    app.use("/transfer", transactionRouter);
     app.use("/account", virtualAccountRouter);
     app.use("/verify/:token", (req, res) => {
         const { token } = req.params;
