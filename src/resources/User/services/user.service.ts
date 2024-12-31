@@ -114,11 +114,11 @@ export class UserService {
         // assuming all onramp and offramp are accounted for in the ledger. 
         // get user ledger balance from here
         try {
-            const wallets = await prisma.wallet.findMany({
+            const wallets = await prisma.virtualAccount.findMany({
                 where: {
                     userId: userId,
-                    assetType: {
-                        in: ['SOL', 'USDC']
+                    currency: {
+                        in: []
                     }
                 },
             });
@@ -133,9 +133,9 @@ export class UserService {
             };
 
             for (const wallet of wallets) {
-                if (wallet.assetType === 'SOL') {
+                if (wallet.currency === 'NGN') {
                     balances.sol_balance = wallet.balance.toString();
-                } else if (wallet.assetType === 'USDC') {
+                } else if (wallet.currency === 'USDC') {
                     balances.usdc_balance = wallet.balance.toString();
                 }
             }

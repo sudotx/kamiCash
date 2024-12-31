@@ -53,19 +53,19 @@ export class LedgerService {
             });
 
             // Update virtual account balance
-            await tx.wallet.update({
-                where: {
-                    userId_assetType: {
-                        userId,
-                        assetType: 'USDC'
-                    }
-                },
-                data: {
-                    balance: entryType === 'CREDIT'
-                        ? { increment: usdcAmount }
-                        : { decrement: usdcAmount }
-                }
-            });
+            // await tx.virtualAccount.update({
+            //     where: {
+            //         userId_assetType: {
+            //             userId,
+            //             assetType: 'USDC'
+            //         }
+            //     },
+            //     data: {
+            //         balance: entryType === 'CREDIT'
+            //             ? { increment: usdcAmount }
+            //             : { decrement: usdcAmount }
+            //     }
+            // });
 
             return ledgerEntry;
         });

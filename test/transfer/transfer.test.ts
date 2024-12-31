@@ -1,6 +1,6 @@
 import { Decimal } from "@prisma/client/runtime/library";
 import { prisma } from "../../src/db";
-import { TransferService } from "../../src/resources/Transfer/services/transfer.service";
+import { TransferService } from "../../src/resources/Transaction/services/transaction.service";
 
 // Mock Prisma
 jest.mock("../../src/db", () => ({
@@ -62,33 +62,33 @@ describe("TransferService", () => {
 
 
     it("should execute internal transfer", async () => {
-        (prisma.wallet.updateMany as jest.Mock).mockResolvedValue({ count: 1 });
-        (prisma.wallet.upsert as jest.Mock).mockResolvedValue({});
+        (prisma.virtualAccount.updateMany as jest.Mock).mockResolvedValue({ count: 1 });
+        (prisma.virtualAccount.upsert as jest.Mock).mockResolvedValue({});
         (prisma.transaction.create as jest.Mock).mockResolvedValue({ id: "mockTransactionId" });
 
         const result = await transferService.executeInternalTransfer({
             from: "mockFromUserId",
             to: "mockToUserId",
             amount: 1,
-            assetType: "SOL",
+            assetType: "USDC",
             memo: "Test memo",
         });
 
         expect(result).toEqual({ transactionId: "mockTransactionId" });
-        expect(prisma.wallet.updateMany).toHaveBeenCalled();
-        expect(prisma.wallet.upsert).toHaveBeenCalled();
+        expect(prisma.virtualAccount.updateMany).toHaveBeenCalled();
+        expect(prisma.virtualAccount.upsert).toHaveBeenCalled();
         expect(prisma.transaction.create).toHaveBeenCalled();
     });
 
     it("should throw an error if the internal transfer balance is insufficient", async () => {
-        (prisma.wallet.updateMany as jest.Mock).mockResolvedValue({ count: 0 });
+        (prisma.virtualAccount.updateMany as jest.Mock).mockResolvedValue({ count: 0 });
 
         await expect(
             transferService.executeInternalTransfer({
                 from: "mockFromUserId",
                 to: "mockToUserId",
                 amount: 1,
-                assetType: "SOL",
+                assetType: "USDC",
                 memo: "Test memo",
             })
         ).rejects.toThrow("Insufficient balance");
@@ -99,12 +99,12 @@ describe("TransferService", () => {
             id: "mockUserId",
             wallets: [{ id: "mockWalletId", assetType: "SOL", balance: new Decimal(0) }],
         });
-        (prisma.wallet.update as jest.Mock).mockResolvedValue({});
+        (prisma.virtualAccount.update as jest.Mock).mockResolvedValue({});
         (prisma.transaction.create as jest.Mock).mockResolvedValue({});
 
-        await transferService.depositForUser("mockUserId", 1, "SOL");
+        await transferService.depositForUser("mockUserId", 1, "DAI");
 
-        expect(prisma.wallet.update).toHaveBeenCalledWith({
+        expect(prisma.virtualAccount.update).toHaveBeenCalledWith({
             where: { id: "mockWalletId" },
             data: { balance: { increment: 1 } },
         });
@@ -114,6 +114,6 @@ describe("TransferService", () => {
     it("should throw an error if user is not found on deposit", async () => {
         (prisma.user.findUnique as jest.Mock).mockResolvedValue(null);
 
-        await expect(transferService.depositForUser("mockUserId", 1, "SOL")).rejects.toThrow("User not found");
+        await expect(transferService.depositForUser("mockUserId", 1, "DAI")).rejects.toThrow("User not found");
     });
 });
