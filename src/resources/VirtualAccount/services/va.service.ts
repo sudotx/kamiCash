@@ -1,3 +1,4 @@
+import { FiatType } from "@prisma/client";
 import { prisma } from "../../../db";
 import generateAccountNumber, { CURRENCIES } from "../../../utils/generateAccountNumber";
 
@@ -11,7 +12,7 @@ export class VirtualAccountService {
                     userId,
                     accountNumber,
                     accountName: `${currencyCode} Account`,
-                    currency: currencyCode + "",
+                    currency: "USD",
                     balance: 0,
                     status: 'ACTIVE',
                     limits: {

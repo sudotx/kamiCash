@@ -12,7 +12,7 @@ import { loginUserSchema, logoutUserSchema, registerUserSchema } from "./schema/
 
 const authRouter = express.Router();
 
-authRouter.route("/admin").get(requireAuth, getLoggedInUserHandler);
+authRouter.route("").get(requireAuth, getLoggedInUserHandler);
 
 authRouter.post(
     "/register",

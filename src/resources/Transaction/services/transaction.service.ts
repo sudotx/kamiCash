@@ -3,7 +3,8 @@ import { Decimal } from "@prisma/client/runtime/library";
 import { prisma } from "../../../db";
 import { CustomError } from "../../../utils/handle-error";
 import { InternalTransferInput } from "../schemas/index.schema";
-import { sendMail } from "../../../utils/sendmail";
+// import { sendMail } from "../../../utils/sendmail";
+import axios from "axios";
 import { AddressLike, ethers, JsonRpcProvider } from "ethers";
 import * as multichainWallet from 'multichain-crypto-wallet';
 
@@ -114,13 +115,14 @@ export class TransferService {
         const { from, to, amount, assetType, memo } = data;
         const amountDecimal = new Decimal(amount);
 
+
         const user = await prisma.user.findUnique({
             where: { id: from },
-            include: { wallets: true },
+            include: { virtualAccount: true },
         });
 
         const accountNumber = await prisma.virtualAccount.findUnique({
-            where: { id: from, currency: assetType },
+            where: { id: from, currency: "NGN" },
             select: {
                 accountNumber: true
             }
@@ -170,20 +172,20 @@ export class TransferService {
     async depositForUser(userId: string, amount: number, assetType: AssetType) {
         const user = await prisma.user.findUnique({
             where: { id: userId },
-            include: { wallets: true },
+            include: { virtualAccount: true },
         });
 
         if (!user) {
             throw new CustomError("User not found", 404);
         }
 
-        const wallet = user.wallets.find(w => w.assetType === assetType);
+        const wallet = user.virtualAccount.find(w => w.currency === "NGN");
 
         if (!wallet) {
             throw new CustomError(`Wallet for ${assetType} not found`, 404);
         }
 
-        const updatedWallet = await prisma.wallet.update({
+        const updatedWallet = await prisma.virtualAccount.update({
             where: { id: wallet.id },
             data: { balance: { increment: amount } },
         });
@@ -194,9 +196,12 @@ export class TransferService {
                 toUserId: userId,
                 amount,
                 assetType,
-                type: TransactionType.INTERNAL,
+                type: TransactionType.DEPOSIT,
                 status: TransactionStatus.COMPLETED,
                 memo: "Deposit",
+                fiatType: 'NGN',
+                netAmount: "",
+                paymentMethod: "BANK_TRANSFER",
             },
         });
 
@@ -204,31 +209,94 @@ export class TransferService {
     }
 
     private async validateSenderBalance(from: string, assetType: AssetType, amount: Decimal) {
-        const senderWallet = await prisma.wallet.findUnique({
-            where: { userId_assetType: { userId: from, assetType: assetType, } },
-        });
-        if (!senderWallet || new Decimal(senderWallet.balance).lessThan(amount)) {
-            throw new Error('Insufficient balance');
-        }
-        return senderWallet;
+        // const senderWallet = await prisma.virtualAccount.findUnique({
+        //     // where: { userId_assetType: { userId: from, assetType: assetType, } },
+        // });
+        // if (!senderWallet || new Decimal(senderWallet.balance).lessThan(amount)) {
+        //     throw new Error('Insufficient balance');
+        // }
+        // return senderWallet;
     }
 
     private async updateSenderBalance(senderWallet: any, amount: Decimal, assetType: AssetType) {
-        await prisma.wallet.updateMany({
-            where: {
-                userId: senderWallet,
-                assetType: assetType
+        // await prisma.wallet.updateMany({
+        //     where: {
+        //         userId: senderWallet,
+        //         assetType: assetType
+        //     },
+        //     data: { balance: { decrement: amount } }
+        // })
+    }
+
+    async executeDeposit(amount: number, assetType: AssetType, fromUserId: string, toAddress: string, memo: string) {
+        // call striga
+        // get money
+        // update user, ledger, wallet, transaction
+        let data = `{"amount":${amount},"assetType":"${assetType}","toAddress":"${toAddress}","memo":"${memo}"}`;
+
+        let config = {
+            method: 'post',
+            url: 'https://www.sandbox.striga.com/api/v1/ping',
+            headers: {
+                'Authorization': 'HMAC 1735526446347:46174dfa48baca125ca853c7e4c90607603df7ebae146f1a7e89fd0feaee3a41',
+                'api-key': process.env.RESEND_API_KEY
             },
-            data: { balance: { decrement: amount } }
+            data: data
+        };
+
+        axios(config).then((response) => {
+            console.log(JSON.stringify(response.data));
+        }).catch((error) => {
+            console.log(error);
         })
     }
 
+    executeWithdraw(amount: number, assetType: AssetType, fromUserId: string, toAddress: string, memo: string) {
+        // get money
+        // update user, ledger, wallet, transaction
+        let data = `{"amount":${amount},"assetType":"${assetType}","toAddress":"${toAddress}","memo":"${memo}"}`;
+
+        let config = {
+            method: 'post',
+            url: 'https://www.sandbox.striga.com/api/v1/ping',
+            headers: {
+                'Authorization': 'HMAC 1735526446347:46174dfa48baca125ca853c7e4c90607603df7ebae146f1a7e89fd0feaee3a41',
+                'api-key': process.env.RESEND_API_KEY
+            },
+            data: data
+        };
+
+        axios(config).then((response) => {
+            console.log(JSON.stringify(response.data));
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    getTransactionById(transactionId: string, userId: string) {
+        return {
+            id: "",
+            status: "",
+            processingSteps: "",
+            completedAt: "",
+        }
+    }
+    cancelTransaction(transactionId: string, userId: string) { }
+    getTransactionHistory(data: any) {
+        return {
+            transactions: "",
+            total: 1
+        }
+    }
+    generateTransactionReceipt(transactionId: string, userId: string) { }
+    processTransactionCallback(callbackData: any) { }
+
     private async updateRecipientBalance(to: string, assetType: AssetType, amount: Decimal) {
-        await prisma.wallet.upsert({
-            where: { userId_assetType: { userId: to, assetType: assetType } },
-            update: { balance: { increment: amount } },
-            create: { userId: to, assetType, balance: amount },
-        });
+        // await prisma.virtualAccount.upsert({
+        //     where: { userId_assetType: { userId: to, assetType: assetType } },
+        //     update: { balance: { increment: amount } },
+        //     create: { userId: to, assetType, balance: amount },
+        // });
     }
 
     private async createTransactionRecord(from: string, to: string, amount: Decimal, assetType: AssetType, memo: string) {
@@ -238,9 +306,12 @@ export class TransferService {
                 toUserId: to,
                 amount,
                 assetType: assetType,
-                type: 'INTERNAL',
+                type: 'DEPOSIT',
                 status: 'COMPLETED',
                 memo,
+                fiatType: "NGN",
+                netAmount: "",
+                paymentMethod: "BANK_TRANSFER",
             },
         });
     }

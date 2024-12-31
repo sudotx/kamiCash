@@ -90,9 +90,9 @@ describe('UserService', () => {
                 { assetType: 'USDC', balance: 500 },
             ];
 
-            (prisma.wallet.findMany as jest.Mock).mockResolvedValue(mockWallets);
+            (prisma.virtualAccount.findMany as jest.Mock).mockResolvedValue(mockWallets);
 
-            const result = await userService.getBalance('user-123');
+            const result = await userService.getBalance('user-123', 'NGN');
 
             expect(result).toEqual({
                 sol_balance: '100',
@@ -101,9 +101,9 @@ describe('UserService', () => {
         });
 
         it('should return zero balances if no wallets found', async () => {
-            (prisma.wallet.findMany as jest.Mock).mockResolvedValue([]);
+            (prisma.virtualAccount.findMany as jest.Mock).mockResolvedValue([]);
 
-            const result = await userService.getBalance('user-123');
+            const result = await userService.getBalance('user-123', 'USD');
 
             expect(result).toEqual({
                 sol_balance: '0',
