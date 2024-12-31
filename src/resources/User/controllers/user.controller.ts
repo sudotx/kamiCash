@@ -26,7 +26,7 @@ export const getUserBalance = async (
 ) => {
     const userId = req.query.userId as string
     try {
-        const result = await userService.getBalance(userId)
+        const result = await userService.getBalance(userId, "USD")
         logger.info("result", result);
         return res.status(200).json(result)
     } catch (error) {

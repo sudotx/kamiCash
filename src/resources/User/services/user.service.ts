@@ -1,9 +1,17 @@
+import { FiatType } from "@prisma/client";
 import { prisma } from "../../../db";
+import { CustomError } from "../../../utils/handle-error";
 
 export class UserService {
     private async generateUserId(userId: string) {
+        let date = new Intl.DateTimeFormat([], {
+            timeZone: 'Africa/Lagos',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+        });
         const random = Math.floor(Math.random() * 10000);
-        const timestamp = Date.now();
+        const timestamp = date;
         const uniqueId = `${random}-${timestamp}-${userId}`;
         const newUserId = `user-${uniqueId}`;
         return newUserId;
@@ -42,7 +50,19 @@ export class UserService {
         }
     }
 
-    async getUser(email: string) { }
+    async getUser(email: string) {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        })
+
+        if (!user) {
+            return new CustomError("User does not exist", 400);
+        }
+
+        return user
+    }
 
     async updateUser(userId: string, data: any) {
         try {
@@ -109,16 +129,16 @@ export class UserService {
         }
     }
 
-    async getBalance(userId: string) {
+    async getBalance(userId: string, currency: FiatType) {
         // track USDC and local currency balances
-        // assuming all onramp and offramp are accounted for in the ledger. 
+        // assuming all onramp and offRamp are accounted for in the ledger. 
         // get user ledger balance from here
         try {
             const wallets = await prisma.virtualAccount.findMany({
                 where: {
                     userId: userId,
                     currency: {
-                        in: []
+                        in: [currency]
                     }
                 },
             });
@@ -127,20 +147,7 @@ export class UserService {
                 throw new Error('Wallet not found for this user');
             }
 
-            const balances = {
-                sol_balance: '0',
-                usdc_balance: '0'
-            };
-
-            for (const wallet of wallets) {
-                if (wallet.currency === 'NGN') {
-                    balances.sol_balance = wallet.balance.toString();
-                } else if (wallet.currency === 'USDC') {
-                    balances.usdc_balance = wallet.balance.toString();
-                }
-            }
-
-            return balances;
+            return wallets;
         } catch (error) {
             throw error;
         }
@@ -183,7 +190,7 @@ export class UserService {
         }
     }
 
-    async createVirtualAccount(userId: string, currency: string = 'USD') {
+    async createVirtualAccount(userId: string, currency: FiatType) {
         const accountNumber = `VA${Date.now()}${Math.floor(Math.random() * 10000)}`;
 
         return prisma.virtualAccount.create({
@@ -208,8 +215,23 @@ export class UserService {
         });
     }
 
-    async getVirtualAccountDetails() { }
-    async getBalanceHistory() { }
+    async getVirtualAccountDetails(userId: string, currency: FiatType) {
+        return await prisma.virtualAccount.findUnique({
+            where: {
+                id: userId, currency: currency
+            }
+        })
+    }
+    async getBalanceHistory() {
+    }
+
     async generateAccountStatement() { }
-    async checkTransactionLimits() { }
+
+    async checkTransactionLimits(id: string) {
+        return await prisma.virtualAccountLimits.findFirst({
+            where: {
+                id: id
+            },
+        })
+    }
 }
