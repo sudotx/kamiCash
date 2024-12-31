@@ -122,7 +122,7 @@ export class TransferService {
         });
 
         const accountNumber = await prisma.virtualAccount.findUnique({
-            where: { id: from, currency: assetType },
+            where: { id: from, currency: "NGN" },
             select: {
                 accountNumber: true
             }
@@ -179,7 +179,7 @@ export class TransferService {
             throw new CustomError("User not found", 404);
         }
 
-        const wallet = user.virtualAccount.find(w => w.currency === assetType);
+        const wallet = user.virtualAccount.find(w => w.currency === "NGN");
 
         if (!wallet) {
             throw new CustomError(`Wallet for ${assetType} not found`, 404);

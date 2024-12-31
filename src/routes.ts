@@ -1,6 +1,5 @@
 import { Express, Request, Response } from "express";
 import authRouter from "./resources/Auth/auth.routes";
-import cardRouter from "./resources/Card/card.routes";
 import transactionRouter from "./resources/Transaction/transaction.routes";
 import userRouter from "./resources/User/user.routes";
 import virtualAccountRouter from "./resources/VirtualAccount/virtualaccount.routes";
@@ -17,10 +16,9 @@ function routes(app: Express) {
         second: 'numeric',
     });
     app.get("/", (req: Request, res: Response) =>
-        res.send({ success: true, message: "Welcome To Kemba Bank, THE BANK OF THE FUTURE", timestamp: date.format(new Date()) })
+        res.send({ success: true, message: "Welcome To Kemba Bank", timestamp: date.format(new Date()) })
     );
     app.use("/auth", authRouter);
-    app.use("/card", cardRouter);
     app.use("/user", userRouter);
     app.use("/transfer", transactionRouter);
     app.use("/account", virtualAccountRouter);

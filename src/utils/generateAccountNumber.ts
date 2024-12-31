@@ -11,7 +11,7 @@ type CurrencyMap = {
 const CURRENCIES: CurrencyMap = {
     NGN: { code: "NGN", name: "Nigerian Naira", starter: "1" },
     GHS: { code: "GHS", name: "Ghanaian Cedi", starter: "2" },
-    XOF: { code: "XOF", name: "West African CFA", starter: "3" },
+    CFA: { code: "XOF", name: "West African CFA", starter: "3" },
     USD: { code: "USD", name: "US Dollar", starter: "4" }
 };
 
