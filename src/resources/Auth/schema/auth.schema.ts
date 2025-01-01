@@ -1,4 +1,6 @@
-import { TypeOf, object, string } from "zod";
+import { TypeOf, object, string, z } from "zod";
+
+export const userTypeEnum = z.enum(["USER", "ADMIN"]);
 
 export const registerUserSchema = object({
     body: object({

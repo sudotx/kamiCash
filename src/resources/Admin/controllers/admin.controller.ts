@@ -176,12 +176,13 @@ export const blockUser = async (
 ) => {
     try {
         const { userId } = req.params;
-        const user = await adminService.getUserDetails(userId);
+        // const user = await adminService
+        // const user = await adminService.getUserDetails(userId);
 
-        res.status(200).json({
-            status: 'success',
-            data: user
-        });
+        // res.status(200).json({
+        //     status: 'success',
+        //     data: user
+        // });
     } catch (error: any) {
         next(new CustomError(error.message, error.statusCode || 404));
     }

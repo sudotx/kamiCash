@@ -31,12 +31,6 @@ import { assignPointsSchema, bulkActionSchema, loginAdminSchema, registerAdminSc
 
 const adminRouter = express.Router();
 
-adminRouter.route("/").get(requireAuth, getUserDetails);
-
-adminRouter.route("/all").get(requireAuth, getAllUsers);
-
-adminRouter.route("/current").get(requireAuth, getCurrentAdmin);
-
 adminRouter.post(
     "/register",
     validateResource(registerAdminSchema),
@@ -53,6 +47,10 @@ adminRouter.post(
     "/logout",
     logoutAdmin
 );
+
+adminRouter.get("", requireAuth, getCurrentAdmin);
+adminRouter.get("/users", requireAuth, getAllUsers);
+adminRouter.get("/users/:userId", requireAuth, getUserDetails);
 
 adminRouter.post("/points", validateResource(assignPointsSchema), assignUserPoints)
 
@@ -84,17 +82,5 @@ adminRouter.put("/roles", requireAdmin, validateResource(roleManagementSchema), 
 // Bulk operations
 adminRouter.get("/bulk-operations", requireAuth, getBulkOperations);
 adminRouter.post("/bulk-action", requireAuth, validateResource(bulkActionSchema), performBulkAction);
-
-
-// ## 10. Admin & Compliance
-// - `GET /admin/users` - User management
-// - `GET /admin/transactions` - Transaction monitoring
-// - `POST /admin/limits` - Set system limits
-// - `GET /admin/audit` - Audit logs
-// - `GET /admin/compliance` - Compliance reports
-// - `POST /admin/freeze` - Freeze accounts
-// - `GET /admin/metrics` - System metrics
-// - `POST /admin/announcements` - Send announcements
-
 
 export default adminRouter;

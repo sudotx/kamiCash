@@ -1,6 +1,7 @@
 import { number, object, string, TypeOf, z } from "zod";
 
 export const assetTypeEnum = z.enum(["USDC"]);
+export const userTypeEnum = z.enum(["USER", "ADMIN"]);
 
 export const createUserSchema = object({
     body: object({
@@ -19,9 +20,7 @@ export const createUserSchema = object({
         password: string({
             required_error: "Password is required",
         }).min(8, "Password must be more than 8 characters"),
-        role: z.enum(["client", "property_owner"], {
-            required_error: "Role is required",
-        }),
+        role: userTypeEnum,
     }),
 });
 

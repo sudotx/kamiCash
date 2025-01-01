@@ -2,6 +2,7 @@ import { Express, Request, Response } from "express";
 import authRouter from "./resources/Auth/auth.routes";
 import transactionRouter from "./resources/Transaction/transaction.routes";
 import userRouter from "./resources/User/user.routes";
+import adminRouter from "./resources/Admin/admin.routes";
 import virtualAccountRouter from "./resources/VirtualAccount/virtualaccount.routes";
 import { verifyJwt } from "./utils/jwt";
 
@@ -23,16 +24,17 @@ const v1Routes = (app: Express) => {
 
     app.use(`${v1BasePath}/auth`, authRouter);
     app.use(`${v1BasePath}/users`, userRouter);
+    app.use(`${v1BasePath}/admin`, adminRouter);
+    app.use(`${v1BasePath}/transactions`, transactionRouter);
+    app.use(`${v1BasePath}/account`, virtualAccountRouter);
 
     app.use(`${v1BasePath}/wallets`, userRouter);
-    app.use(`${v1BasePath}/transactions`, userRouter);
     app.use(`${v1BasePath}/exchange`, userRouter);
     app.use(`${v1BasePath}/savings`, userRouter);
     app.use(`${v1BasePath}/payments`, userRouter);
     app.use(`${v1BasePath}/cards`, userRouter);
     app.use(`${v1BasePath}/analytics`, userRouter);
     app.use(`${v1BasePath}/reports`, userRouter);
-    app.use(`${v1BasePath}/admin`, userRouter);
     app.use(`${v1BasePath}/partners`, userRouter);
     app.use(`${v1BasePath}/webhooks`, userRouter);
     app.use(`${v1BasePath}/contracts`, userRouter);
@@ -41,7 +43,6 @@ const v1Routes = (app: Express) => {
     app.use(`${v1BasePath}/risk`, userRouter);
     app.use(`${v1BasePath}/notifications`, userRouter);
     app.use(`${v1BasePath}/transfer`, transactionRouter);
-    app.use(`${v1BasePath}/account`, virtualAccountRouter);
 };
 
 // Group v2 routes (when needed)

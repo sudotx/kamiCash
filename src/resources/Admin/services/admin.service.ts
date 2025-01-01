@@ -140,4 +140,36 @@ export class AdminService {
         }
         return user
     }
+
+    blockUser = async () => { }
+
+    unblockUser = async () => { }
+
+    updateUserStatus = async () => { }
+
+    resetUserPassword = async () => { }
+
+    getSystemMetrics = async () => { }
+
+    getAuditLogs = async () => { }
+
+    getAdminLogs = async () => { }
+
+    getTransactionReport = async () => { }
+
+    exportUserData = async () => { }
+
+    getKYCRequests = async () => { }
+
+    approveKYC = async () => { }
+
+    rejectKYC = async () => { }
+
+    getSystemSettings = async () => { }
+
+    manageRoles = async () => { }
+
+    getBulkOperations = async () => { }
+
+    performBulkOptions = async () => { }
 }
