@@ -15,6 +15,8 @@ const dateFormatter = new Intl.DateTimeFormat([], {
     second: 'numeric',
 });
 
+const API_VERSION = 'v1';
+
 // Group v1 routes
 const v1Routes = (app: Express) => {
     const v1BasePath = '/api/v1';
@@ -50,7 +52,7 @@ const v2Routes = (app: Express) => {
         res.status(200).json({
             success: false,
             message: "V2 API coming soon! Stay tuned for exciting new features.",
-            currentVersion: "v1"
+            currentVersion: API_VERSION
         });
     });
 };
