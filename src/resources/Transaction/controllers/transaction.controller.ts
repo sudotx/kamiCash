@@ -233,3 +233,201 @@ export const handleTransactionCallback = async (
         next(new CustomError(error.message, error.statusCode || 400));
     }
 };
+export const initiateRefund = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const disputeTransaction = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const getBulkTransactions = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const exportTransactions = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const getTransactionAnalytics = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const scheduleTransaction = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const getScheduledTransactions = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const cancelScheduledTransaction = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const getFees = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const estimateTransactionFee = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};
+export const validateAccountBalance = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const callbackData = req.body;
+
+        transactionService.processTransactionCallback(callbackData);
+
+        res.status(200).json({
+            status: 'success',
+            message: "Callback processed successfully"
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 400));
+    }
+};

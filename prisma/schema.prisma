@@ -21,6 +21,7 @@ enum AccountStatusEnum {
 enum RoleEnum {
   ADMIN
   USER
+  SUPER_ADMIN
 }
 
 enum EntryType {

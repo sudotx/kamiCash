@@ -20,6 +20,27 @@ export const getVirtualAccountSchema = object({
         }),
     }),
 });
+export const updateAccountSchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
+export const transferFundsSchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
+export const transactionHistorySchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
 
 export type CreateVirtualAccountInput = TypeOf<typeof createAccountSchema>;
 export type GetVirtualAccountsInput = TypeOf<typeof getVirtualAccountSchema>;

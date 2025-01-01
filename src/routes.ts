@@ -5,16 +5,17 @@ import userRouter from "./resources/User/user.routes";
 import virtualAccountRouter from "./resources/VirtualAccount/virtualaccount.routes";
 import { verifyJwt } from "./utils/jwt";
 
+let date = new Intl.DateTimeFormat([], {
+    timeZone: 'Africa/Lagos',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+});
+
 function routes(app: Express) {
-    let date = new Intl.DateTimeFormat([], {
-        timeZone: 'Africa/Lagos',
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-    });
     app.get("/", (req: Request, res: Response) =>
         res.send({ success: true, message: "Welcome To Kemba Bank", timestamp: date.format(new Date()) })
     );

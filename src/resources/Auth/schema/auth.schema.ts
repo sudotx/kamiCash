@@ -31,7 +31,28 @@ export const loginUserSchema = object({
     }),
 });
 
+export const resetPasswordSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
+export const changePasswordSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
 export const logoutUserSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+    }),
+});
+export const twoFactorSchema = object({
     body: object({
         userId: string({
             required_error: "User ID is required",

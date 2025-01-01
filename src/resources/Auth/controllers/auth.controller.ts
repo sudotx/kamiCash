@@ -107,3 +107,211 @@ export const getLoggedInUserHandler = async (
         next(new CustomError(error.message, error.statusCode || 500));
     }
 };
+export const refreshTokenHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const validateTokenHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const forgotPasswordHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const resetPasswordHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const changePasswordHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const verifyEmailHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const resendVerificationHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const enable2FAHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const disable2FAHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const socialAuthHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const deactivateAccountHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const loginHistoryHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
+export const verify2FAHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const jwtUser: JwtPayload = res.locals.user;
+        const user = await authService.getUserById(jwtUser.id);
+        res.status(200).json(authService.sanitizeUser(user));
+    } catch (error: any) {
+        res.status(400).json({
+            error: error
+        })
+        next(new CustomError(error.message, error.statusCode || 500));
+    }
+};
