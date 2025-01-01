@@ -74,5 +74,4 @@ authRouter.post("/points", assignUserPoints)
 authRouter.delete("/deactivate", requireAuth, deactivateAccountHandler);
 authRouter.get("/login-history", requireAuth, loginHistoryHandler);
 
-
 export default authRouter;

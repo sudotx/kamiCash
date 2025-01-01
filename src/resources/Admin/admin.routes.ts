@@ -86,4 +86,15 @@ adminRouter.get("/bulk-operations", requireAuth, getBulkOperations);
 adminRouter.post("/bulk-action", requireAuth, validateResource(bulkActionSchema), performBulkAction);
 
 
+// ## 10. Admin & Compliance
+// - `GET /admin/users` - User management
+// - `GET /admin/transactions` - Transaction monitoring
+// - `POST /admin/limits` - Set system limits
+// - `GET /admin/audit` - Audit logs
+// - `GET /admin/compliance` - Compliance reports
+// - `POST /admin/freeze` - Freeze accounts
+// - `GET /admin/metrics` - System metrics
+// - `POST /admin/announcements` - Send announcements
+
+
 export default adminRouter;

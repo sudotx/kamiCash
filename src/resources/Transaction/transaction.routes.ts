@@ -74,5 +74,4 @@ transactionRouter.post("/estimate-fee", requireAuth, estimateTransactionFee);
 // Pre-transaction validation
 transactionRouter.post("/validate-balance", requireAuth, validateAccountBalance);
 
-
 export default transactionRouter;
