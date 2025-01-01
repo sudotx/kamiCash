@@ -41,6 +41,36 @@ export const assignPointsSchema = object({
         }),
     }),
 });
+export const systemSettingsSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User Id is required",
+        }),
+        points: number({
+            required_error: "Points is required",
+        }),
+    }),
+});
+export const roleManagementSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User Id is required",
+        }),
+        points: number({
+            required_error: "Points is required",
+        }),
+    }),
+});
+export const bulkActionSchema = object({
+    body: object({
+        userId: string({
+            required_error: "User Id is required",
+        }),
+        points: number({
+            required_error: "Points is required",
+        }),
+    }),
+});
 
 export type RegisterAdminInput = TypeOf<typeof registerAdminSchema>;
 export type LoginUserInput = TypeOf<typeof loginAdminSchema>;

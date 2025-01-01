@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { requireAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
-import { cancelTransaction, deposit, getTransactionHistory, getTransactionReceipt, getTransactionStatus, handleTransactionCallback, internalTransfer, withdraw } from "./controllers/transaction.controller";
-import { internalTransferSchema } from "./schemas/index.schema";
+import { cancelScheduledTransaction, cancelTransaction, deposit, disputeTransaction, estimateTransactionFee, exportTransactions, getBulkTransactions, getFees, getScheduledTransactions, getTransactionAnalytics, getTransactionHistory, getTransactionReceipt, getTransactionStatus, handleTransactionCallback, initiateRefund, internalTransfer, scheduleTransaction, validateAccountBalance, withdraw } from "./controllers/transaction.controller";
+import { disputeSchema, exportSchema, internalTransferSchema, refundSchema, scheduleTransactionSchema } from "./schemas/index.schema";
 
 const transactionRouter = Router();
 
@@ -54,5 +54,25 @@ transactionRouter.post(
     // validateWebhookSecret,
     handleTransactionCallback
 );
+
+// Advanced transaction features
+transactionRouter.post("/refund/:transactionId", requireAuth, validateResource(refundSchema), initiateRefund);
+transactionRouter.post("/dispute/:transactionId", requireAuth, validateResource(disputeSchema), disputeTransaction);
+transactionRouter.get("/bulk", requireAuth, getBulkTransactions);
+transactionRouter.post("/export", requireAuth, validateResource(exportSchema), exportTransactions);
+transactionRouter.get("/analytics", requireAuth, getTransactionAnalytics);
+
+// Scheduled transactions
+transactionRouter.post("/schedule", requireAuth, validateResource(scheduleTransactionSchema), scheduleTransaction);
+transactionRouter.get("/schedule", requireAuth, getScheduledTransactions);
+transactionRouter.delete("/schedule/:scheduleId", requireAuth, cancelScheduledTransaction);
+
+// Fee management
+transactionRouter.get("/fees", requireAuth, getFees);
+transactionRouter.post("/estimate-fee", requireAuth, estimateTransactionFee);
+
+// Pre-transaction validation
+transactionRouter.post("/validate-balance", requireAuth, validateAccountBalance);
+
 
 export default transactionRouter;

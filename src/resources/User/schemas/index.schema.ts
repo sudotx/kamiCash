@@ -28,6 +28,39 @@ export const getUserTransactionsSchema = object({
         offset: string().optional(),
     }),
 });
+export const changePasswordSchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+        startDate: string().optional(),
+        endDate: string().optional(),
+        limit: string().optional(),
+        offset: string().optional(),
+    }),
+});
+export const bankAccountSchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+        startDate: string().optional(),
+        endDate: string().optional(),
+        limit: string().optional(),
+        offset: string().optional(),
+    }),
+});
+export const notificationSettingsSchema = object({
+    query: object({
+        userId: string({
+            required_error: "User ID is required",
+        }),
+        startDate: string().optional(),
+        endDate: string().optional(),
+        limit: string().optional(),
+        offset: string().optional(),
+    }),
+});
 
 export type GetUserProfileInput = TypeOf<typeof getUserProfileSchema>;
 export type GetUserBalanceInput = TypeOf<typeof getUserBalanceSchema>;

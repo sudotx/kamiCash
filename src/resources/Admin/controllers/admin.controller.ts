@@ -168,3 +168,293 @@ export const getUserDetails = async (
         next(new CustomError(error.message, error.statusCode || 404));
     }
 };
+
+export const blockUser = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const unblockUser = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const updateUserStatus = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const resetUserPassword = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getSystemMetrics = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getAuditLogs = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getAdminLogs = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getTransactionReports = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const exportUserData = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getKYCRequests = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const approveKYC = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const rejectKYC = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getSystemSettings = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const updateSystemSettings = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const manageRoles = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const getBulkOperations = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};
+export const performBulkAction = async (
+    req: Request<{ userId: string }>,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params;
+        const user = await adminService.getUserDetails(userId);
+
+        res.status(200).json({
+            status: 'success',
+            data: user
+        });
+    } catch (error: any) {
+        next(new CustomError(error.message, error.statusCode || 404));
+    }
+};

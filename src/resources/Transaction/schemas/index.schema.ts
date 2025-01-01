@@ -56,6 +56,66 @@ export const internalTransferSchema = object({
         memo: string().optional(),
     }),
 });
+export const refundSchema = object({
+    body: object({
+        from: string({
+            required_error: "Sender user ID is required",
+        }),
+        to: string({
+            required_error: "Recipient user ID is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
+export const disputeSchema = object({
+    body: object({
+        from: string({
+            required_error: "Sender user ID is required",
+        }),
+        to: string({
+            required_error: "Recipient user ID is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
+export const exportSchema = object({
+    body: object({
+        from: string({
+            required_error: "Sender user ID is required",
+        }),
+        to: string({
+            required_error: "Recipient user ID is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
+export const scheduleTransactionSchema = object({
+    body: object({
+        from: string({
+            required_error: "Sender user ID is required",
+        }),
+        to: string({
+            required_error: "Recipient user ID is required",
+        }),
+        amount: number({
+            required_error: "Transfer amount is required",
+        }).positive("Amount must be positive"),
+        assetType: assetTypeEnum,
+        memo: string().optional(),
+    }),
+});
 
 export type WithdrawInput = TypeOf<typeof withdrawSchema>;
 export type InternalTransferInput = TypeOf<typeof internalTransferSchema>;
