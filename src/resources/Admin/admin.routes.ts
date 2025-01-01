@@ -31,7 +31,7 @@ import { assignPointsSchema, bulkActionSchema, loginAdminSchema, registerAdminSc
 
 const adminRouter = express.Router();
 
-adminRouter.route("").get(requireAuth, getUserDetails);
+adminRouter.route("/").get(requireAuth, getUserDetails);
 
 adminRouter.route("/all").get(requireAuth, getAllUsers);
 

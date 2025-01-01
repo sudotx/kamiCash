@@ -2,6 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { verifyJwt } from "../utils/jwt";
 import { prisma } from "../db";
 import { JwtPayload } from "../utils/interfaces";
+import { AdminService } from "../resources/Admin/services/admin.service";
+
+const adminService = new AdminService();
 
 export const requireAuth = async (
     req: Request,
@@ -70,7 +73,7 @@ export const requireAdmin = async (
         }
     })
 
-    if (!user || !['admin', 'super_admin'].includes(user.role)) {
+    if (!user || !['ADMIN', 'SUPER_ADMIN'].includes(user.role)) {
         return res.status(403).json({
             success: false,
             error: "Admin privileges required"

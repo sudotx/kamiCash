@@ -26,7 +26,7 @@ export class AdminService {
         const { password, solanaPrivateKey, evmPrivateKey, ...sanitizedUser } = user;
         return sanitizedUser;
     };
-    authenticateAdmin = async (email: string, password: string) => {
+    authenticateAdmin = async (email: string) => {
         const user = await prisma.user.findUnique({
             where: { id: email, role: RoleEnum.ADMIN }
         })
@@ -43,6 +43,9 @@ export class AdminService {
                 points: { increment: points }
             }
         })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
         return { id: user.id, points: user.points }
     }
 
@@ -51,6 +54,19 @@ export class AdminService {
             where: {
                 id: data.id,
                 role: RoleEnum.ADMIN
+            },
+            select: {
+                id: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                phoneNumber: true,
+                role: true,
+                accountStatus: true,
+                emailVerified: true,
+                isKyc: true,
+                createdAt: true,
+                updatedAt: true,
             }
         })
         if (!admin) {
@@ -62,6 +78,19 @@ export class AdminService {
         const admins = await prisma.user.findMany({
             where: {
                 role: RoleEnum.ADMIN
+            },
+            select: {
+                id: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                phoneNumber: true,
+                role: true,
+                accountStatus: true,
+                emailVerified: true,
+                isKyc: true,
+                createdAt: true,
+                updatedAt: true,
             }
         })
         return admins
@@ -70,6 +99,19 @@ export class AdminService {
         const admins = await prisma.user.findMany({
             where: {
                 role: RoleEnum.USER
+            },
+            select: {
+                id: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                phoneNumber: true,
+                role: true,
+                accountStatus: true,
+                emailVerified: true,
+                isKyc: true,
+                createdAt: true,
+                updatedAt: true,
             }
         })
         return admins
@@ -78,8 +120,24 @@ export class AdminService {
         const user = await prisma.user.findUnique({
             where: {
                 id: userId
+            },
+            select: {
+                id: true,
+                email: true,
+                firstName: true,
+                lastName: true,
+                phoneNumber: true,
+                role: true,
+                accountStatus: true,
+                emailVerified: true,
+                isKyc: true,
+                createdAt: true,
+                updatedAt: true,
             }
         })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
         return user
     }
 }

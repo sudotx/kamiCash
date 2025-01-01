@@ -35,7 +35,7 @@ export const loginAdmin = async (
     try {
         const { email, password } = req.body.body;
 
-        const admin = await adminService.authenticateAdmin(email, password);
+        const admin = await adminService.authenticateAdmin(email);
         const accessToken = signJwt(admin, { expiresIn: process.env.ADMIN_TOKEN_TTL });
 
         // Set secure cookie for admin session
@@ -126,7 +126,7 @@ export const getCurrentAdmin = async (
 
         res.status(200).json({
             status: 'success',
-            data: adminService.sanitizeAdminData(admin)
+            data: admin
         });
     } catch (error: any) {
         next(new CustomError(error.message, error.statusCode || 500));
