@@ -141,35 +141,78 @@ export class AdminService {
         return user
     }
 
-    blockUser = async () => { }
+    blockUser = async (userId: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                accountStatus: "BANNED"
+            }
+        })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
+        return user
+    }
 
-    unblockUser = async () => { }
+    unblockUser = async (userId: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                accountStatus: "ACTIVE"
+            }
+        })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
+        return user
+    }
 
-    updateUserStatus = async () => { }
+    resetUserPassword = async (userId: string, newPassword: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                password: newPassword
+            }
+        })
+        return user
+    }
 
-    resetUserPassword = async () => { }
+    getTransactionReport = async (transactionId: string) => {
+        const transaction = await prisma.transaction.findUnique({
+            where: {
+                id: transactionId
+            }
+        })
+        return transaction
+    }
 
-    getSystemMetrics = async () => { }
+    exportUserData = async (userId: string) => {
+        const user = await prisma.user.findMany({
+            where: {
+                role: "USER",
+                id: userId
+            }, select: {
+                _count: true,
+            }
+        })
+        return user
+    }
 
-    getAuditLogs = async () => { }
+    submitKYC = async () => {
+        // submit kyc to necessary External API
+    }
 
-    getAdminLogs = async () => { }
-
-    getTransactionReport = async () => { }
-
-    exportUserData = async () => { }
-
-    getKYCRequests = async () => { }
-
-    approveKYC = async () => { }
-
-    rejectKYC = async () => { }
-
-    getSystemSettings = async () => { }
-
-    manageRoles = async () => { }
-
-    getBulkOperations = async () => { }
-
-    performBulkOptions = async () => { }
+    manageRoles = async (userId: string, role: RoleEnum) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                role: role
+            }
+        })
+        return user
+    }
 }
