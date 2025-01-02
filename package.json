@@ -12,6 +12,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@circle-fin/developer-controlled-wallets": "^6.0.0",
+    "@circle-fin/smart-contract-platform": "^6.0.0",
+    "@circle-fin/user-controlled-wallets": "^6.0.0",
     "@prisma/client": "^6.1.0",
     "@solana/spl-token": "^0.4.8",
     "@solana/web3.js": "^1.95.1",

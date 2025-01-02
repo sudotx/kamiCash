@@ -1,4 +1,6 @@
-import { TypeOf, number, object, string } from "zod";
+import { TypeOf, number, object, string, z } from "zod";
+
+export const userTypeEnum = z.enum(["USER", "ADMIN"]);
 
 export const registerAdminSchema = object({
     body: object({
@@ -17,6 +19,13 @@ export const registerAdminSchema = object({
         phoneNumber: string({
             required_error: "Phone number is required",
         }),
+        dateOfBirth: string({
+            required_error: "Date of birth is required",
+        }),
+        nationality: string({
+            required_error: "Nationality is required",
+        }),
+        role: userTypeEnum,
     }),
 });
 

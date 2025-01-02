@@ -140,4 +140,79 @@ export class AdminService {
         }
         return user
     }
+
+    blockUser = async (userId: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                accountStatus: "BANNED"
+            }
+        })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
+        return user
+    }
+
+    unblockUser = async (userId: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                accountStatus: "ACTIVE"
+            }
+        })
+        if (!user) {
+            throw new CustomError("User not found", 404)
+        }
+        return user
+    }
+
+    resetUserPassword = async (userId: string, newPassword: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                password: newPassword
+            }
+        })
+        return user
+    }
+
+    getTransactionReport = async (transactionId: string) => {
+        const transaction = await prisma.transaction.findUnique({
+            where: {
+                id: transactionId
+            }
+        })
+        return transaction
+    }
+
+    exportUserData = async (userId: string) => {
+        const user = await prisma.user.findMany({
+            where: {
+                role: "USER",
+                id: userId
+            }, select: {
+                _count: true,
+            }
+        })
+        return user
+    }
+
+    submitKYC = async () => {
+        // submit kyc to necessary External API
+    }
+
+    manageRoles = async (userId: string, role: RoleEnum) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                role: role
+            }
+        })
+        return user
+    }
 }

@@ -497,6 +497,27 @@
   optionalDependencies:
     secp256k1 "^3.5.2"
 
+"@circle-fin/developer-controlled-wallets@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@circle-fin/developer-controlled-wallets/-/developer-controlled-wallets-6.0.0.tgz#76829956941901c3ee30f5d62eb7a3b80c763a27"
+  integrity sha512-fdVZ9Bi05sabrHexKvKpB9bsE1T3GEm93HtAqVtuAsohNABwJUXyYDhynuBfC0SL3XQos37WJhhiZ3+7EQJLZg==
+  dependencies:
+    axios "^1.6.2"
+
+"@circle-fin/smart-contract-platform@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@circle-fin/smart-contract-platform/-/smart-contract-platform-6.0.0.tgz#7fbbe30730e4dbc7830d145071fe8c947b8eab36"
+  integrity sha512-64X5VOEMKdDKfWnPMBZ0dDb3cVXeSCsx54hX/PZmlj9CAXbRQly6gtoVwBb5etCYSXo15OiEhSE1anHazuwhfw==
+  dependencies:
+    axios "^1.6.2"
+
+"@circle-fin/user-controlled-wallets@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@circle-fin/user-controlled-wallets/-/user-controlled-wallets-6.0.0.tgz#252e119424d6a131f556c6cd9f85a78804c7d1bc"
+  integrity sha512-uWp9/7Wd7p6LECouhbSfQduNw/skdzdBLhpmaDjlti00B2xdMrkHAZ9oTNoGLQPsR4wcLVa+BKxx5yFLVK8UvQ==
+  dependencies:
+    axios "^1.6.2"
+
 "@colors/colors@1.6.0", "@colors/colors@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.6.0.tgz#ec6cd237440700bc23ca23087f513c75508958b0"
@@ -2671,7 +2692,7 @@ axios@^0.27.2:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
 
-axios@^1.6.7, axios@^1.7.9:
+axios@^1.6.2, axios@^1.6.7, axios@^1.7.9:
   version "1.7.9"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.9.tgz#d7d071380c132a24accda1b2cfc1535b79ec650a"
   integrity sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==

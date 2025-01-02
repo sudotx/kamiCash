@@ -21,6 +21,8 @@ export const sendMail = async (
         }
     });
 
+    logger.info("Sending mail to: " + email);
+
     try {
         const mailOptions = {
 
@@ -43,13 +45,14 @@ export const sendMail = async (
             ,
         };
 
-        transporter.sendMail({ ...mailOptions }, (error: any, info) => {
+        const result = transporter.sendMail({ ...mailOptions }, (error: any, info) => {
             if (error) {
                 console.error("Error sending email:", error);
             } else {
                 logger.info("Email sent:", info.response);
             }
         });
+        logger.info(result);
     } catch (err: any) {
         logger.error(err);
         return false;

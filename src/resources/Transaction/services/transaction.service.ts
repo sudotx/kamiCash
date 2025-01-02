@@ -7,6 +7,7 @@ import { InternalTransferInput } from "../schemas/index.schema";
 import axios from "axios";
 import { AddressLike, ethers, JsonRpcProvider } from "ethers";
 import * as multichainWallet from 'multichain-crypto-wallet';
+// import { initiateUserControlledWalletsClient} from "@circle-fin/user-controlled-wallets"
 
 export class OnchainService {
     private connection: JsonRpcProvider;

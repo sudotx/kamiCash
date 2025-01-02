@@ -128,4 +128,34 @@ export class AuthService {
         return user
     }
 
+    forgotPassword = async (userId: string) => {
+        // trigger forget password logic
+        // send mail etc
+        return {
+            status: true,
+            message: "in progress"
+        }
+    }
+    resetPassword = async (userId: string) => {
+        // trigger forget password logic
+        // send mail etc
+        return {
+            status: true,
+            message: "in progress"
+        }
+    }
+    verifyEmail = async (userId: string) => {
+        const user = await prisma.user.update({
+            where: {
+                id: userId
+            }, data: {
+                emailVerified: true
+            }
+        })
+        return {
+            status: true,
+            message: user
+        }
+    }
+
 }
