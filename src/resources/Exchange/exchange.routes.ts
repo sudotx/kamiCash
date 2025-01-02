@@ -3,14 +3,20 @@ import { requireAuth } from "../../middlewares/auth.middleware";
 import validateResource from "../../middlewares/validate-resource";
 
 const exchangeRouter = express.Router();
-// ## 5. Exchange & Trading
-// - `GET /exchange/rates` - Get exchange rates
-// - `POST /exchange/convert` - Convert between stablecoins
-// - `GET /exchange/pairs` - Get trading pairs
-// - `POST /exchange/swap` - Instant swap
-// - `GET /exchange/limits` - Get trading limits
-// - `POST /exchange/orders` - Place limit orders
-// - `GET /exchange/order-book` - View order book
+// Get exchange rates
+exchangeRouter.get("/rates")
+// Convert between stablecoins
+exchangeRouter.post("/convert")
+// Get trading pairs
+exchangeRouter.get("/pairs")
+// Instant swap
+exchangeRouter.post("/swap", requireAuth)
+// Get trading limits
+exchangeRouter.get("/limits", requireAuth)
+// Place limit orders
+exchangeRouter.post("/orders", requireAuth)
+// View order book
+exchangeRouter.get("/order-book")
 
 
 export default exchangeRouter;
