@@ -4,82 +4,90 @@ import { prisma } from "../db";
 import { JwtPayload } from "../utils/interfaces";
 import { AdminService } from "../resources/Admin/services/admin.service";
 
+const ADMIN_ROLES = ['ADMIN', 'SUPER_ADMIN'] as const;
+type AdminRole = typeof ADMIN_ROLES[number];
+
+interface AuthResponse {
+    success: boolean;
+    error?: string;
+}
+
 const adminService = new AdminService();
+
+const extractToken = (req: Request): string | null => {
+    if (req.headers.authorization?.startsWith("Bearer")) {
+        return req.headers.authorization.split(" ")[1];
+    }
+    return null;
+};
+
+const validateToken = (token: string) => {
+    const { decoded } = verifyJwt(token);
+    if (!decoded) {
+        throw new Error("Session Token Expired");
+    }
+    return decoded;
+};
+
+const createAuthResponse = (error: string): AuthResponse => ({
+    success: false,
+    error
+});
 
 export const requireAuth = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
-    let token: string | undefined;
-
-    if (
-        req.headers.authorization &&
-        req.headers.authorization.startsWith("Bearer")
-    ) {
-        token = req.headers.authorization.split(" ")[1];
-    }
+    const token = extractToken(req);
 
     if (!token) {
-        return res.status(401).json({
-            success: false,
-            error: "Not authorized to access this route",
-        });
-    }
-    const { decoded } = verifyJwt(token);
-
-    if (!decoded) {
-        return res.status(401).json({
-            success: false,
-            error: "Session Token Expired to access this route",
-        });
+        return res.status(401).json(
+            createAuthResponse("Not authorized to access this route")
+        );
     }
 
-    res.locals.admin = decoded;
-    return next();
+    try {
+        const decoded = validateToken(token);
+        res.locals.admin = decoded;
+        return next();
+    } catch (error) {
+        return res.status(401).json(
+            createAuthResponse("Session Token Expired to access this route")
+        );
+    }
 };
+
 export const requireAdmin = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
-    let token: string | undefined;
-
-    if (
-        req.headers.authorization &&
-        req.headers.authorization.startsWith("Bearer")
-    ) {
-        token = req.headers.authorization.split(" ")[1];
-    }
+    const token = extractToken(req);
 
     if (!token) {
-        return res.status(401).json({
-            success: false,
-            error: "Not authorized to access this route",
-        });
-    }
-    const { decoded } = verifyJwt(token);
-
-    if (!decoded) {
-        return res.status(401).json({
-            success: false,
-            error: "Session Token Expired to access this route",
-        });
+        return res.status(401).json(
+            createAuthResponse("Not authorized to access this route")
+        );
     }
 
-    const user = await prisma.user.findUnique({
-        where: {
-            id: (decoded as JwtPayload).id,
+    try {
+        const decoded = validateToken(token);
+        const user = await prisma.user.findUnique({
+            where: { id: (decoded as JwtPayload).id }
+        });
+
+        if (!user || !ADMIN_ROLES.includes(user.role as AdminRole)) {
+            return res.status(403).json(
+                createAuthResponse("Admin privileges required")
+            );
         }
-    })
 
-    if (!user || !['ADMIN', 'SUPER_ADMIN'].includes(user.role)) {
-        return res.status(403).json({
-            success: false,
-            error: "Admin privileges required"
-        });
+        res.locals.admin = decoded;
+        return next();
+    } catch (error) {
+        return res.status(401).json(
+            createAuthResponse("Authentication failed")
+        );
     }
-
-    res.locals.admin = decoded;
-    return next();
 };

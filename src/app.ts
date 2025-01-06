@@ -6,7 +6,7 @@ import routes from "./routes";
 import { logger } from "./utils/logger";
 dotenv.config();
 
-const PORT = process.env.PORT || 6969;
+const PORT = process.env.PORT || 8081;
 
 const app = express();
 app.use(express.json());

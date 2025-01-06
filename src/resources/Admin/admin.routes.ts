@@ -15,7 +15,7 @@ import {
     resetUserPassword,
     unblockUser,
 } from "./controllers/admin.controller";
-import { assignPointsSchema, bulkActionSchema, loginAdminSchema, registerAdminSchema, roleManagementSchema, systemSettingsSchema } from "./schema/admin.schema";
+import { assignPointsSchema, loginAdminSchema, registerAdminSchema, roleManagementSchema } from "./schema/admin.schema";
 
 const adminRouter = express.Router();
 

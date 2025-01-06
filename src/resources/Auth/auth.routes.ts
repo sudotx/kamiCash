@@ -8,8 +8,7 @@ import {
     loginHandler,
     logoutHandler,
     registerHandler,
-    resetPasswordHandler,
-    verifyEmailHandler
+    resetPasswordHandler
 } from "./controllers/auth.controller";
 import { loginUserSchema, logoutUserSchema, registerUserSchema, resetPasswordSchema } from "./schema/auth.schema";
 
@@ -41,12 +40,5 @@ authRouter.post("/points", assignUserPoints)
 // Password management
 authRouter.post("/forgot-password", forgotPasswordHandler);
 authRouter.post("/reset-password", validateResource(resetPasswordSchema), resetPasswordHandler);
-
-// Email verification
-authRouter.get("/verify-email/:token", verifyEmailHandler);
-
-
-// Account management
-authRouter.post("/points", assignUserPoints)
 
 export default authRouter;

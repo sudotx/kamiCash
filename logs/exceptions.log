@@ -1,0 +1,36 @@
+2025-01-06 21:31:54 [31merror[39m: [31muncaughtException: router is not defined[39m
+[31mReferenceError: router is not defined[39m
+[31m    at Object.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Exchange/exchange.routes.ts:22:1)[39m
+[31m    at Module.<anonymous> (node:internal/modules/cjs/loader:1546:14)[39m
+[31m    at Module._compile (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/source-map-support/source-map-support.js:568:25)[39m
+[31m    at Module.m._compile (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:69:33)[39m
+[31m    at node:internal/modules/cjs/loader:1698:10[39m
+[31m    at require.extensions..jsx.require.extensions..js (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:114:20)[39m
+[31m    at require.extensions.<computed> (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:71:20)[39m
+[31m    at Object.nodeDevHook [as .ts] (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/ts-node-dev/lib/hook.js:63:13)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1303:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1117:12)[39m
+2025-01-06 21:31:57 [31merror[39m: [31muncaughtException: router is not defined[39m
+[31mReferenceError: router is not defined[39m
+[31m    at Object.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Exchange/exchange.routes.ts:22:1)[39m
+[31m    at Module.<anonymous> (node:internal/modules/cjs/loader:1546:14)[39m
+[31m    at Module._compile (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/source-map-support/source-map-support.js:568:25)[39m
+[31m    at Module.m._compile (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:69:33)[39m
+[31m    at node:internal/modules/cjs/loader:1698:10[39m
+[31m    at require.extensions..jsx.require.extensions..js (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:114:20)[39m
+[31m    at require.extensions.<computed> (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:71:20)[39m
+[31m    at Object.nodeDevHook [as .ts] (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/ts-node-dev/lib/hook.js:63:13)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1303:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1117:12)[39m
+2025-01-06 21:33:51 [31merror[39m: [31muncaughtException: convertSchema is not defined[39m
+[31mReferenceError: convertSchema is not defined[39m
+[31m    at Object.<anonymous> (/Users/user/Desktop/projects/HACK_LAB/kamiCash/src/resources/Exchange/exchange.routes.ts:24:22)[39m
+[31m    at Module.<anonymous> (node:internal/modules/cjs/loader:1546:14)[39m
+[31m    at Module._compile (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/source-map-support/source-map-support.js:568:25)[39m
+[31m    at Module.m._compile (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:69:33)[39m
+[31m    at node:internal/modules/cjs/loader:1698:10[39m
+[31m    at require.extensions..jsx.require.extensions..js (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:114:20)[39m
+[31m    at require.extensions.<computed> (/private/var/folders/ps/5gvxxp6102x_kwvkv6jyb6mh0000gn/T/ts-node-dev-hook-6053614842171067.js:71:20)[39m
+[31m    at Object.nodeDevHook [as .ts] (/Users/user/Desktop/projects/HACK_LAB/kamiCash/node_modules/ts-node-dev/lib/hook.js:63:13)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1303:32)[39m
+[31m    at Function._load (node:internal/modules/cjs/loader:1117:12)[39m

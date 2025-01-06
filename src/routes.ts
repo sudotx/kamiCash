@@ -1,14 +1,17 @@
 import { Express, Request, Response } from "express";
 import adminRouter from "./resources/Admin/admin.routes";
 import authRouter from "./resources/Auth/auth.routes";
-import exchangeRouter from "./resources/Exchange/exchange.routes";
-import paymentRouter from "./resources/Payments/payment.routes";
-import savingsRouter from "./resources/Savings/savings.routes";
 import transactionRouter from "./resources/Transaction/transaction.routes";
 import userRouter from "./resources/User/user.routes";
 import virtualAccountRouter from "./resources/VirtualAccount/virtualaccount.routes";
 import virtualCardRouter from "./resources/VirtualCard/vc.routes";
 import { verifyJwt } from "./utils/jwt";
+
+// Constants
+const API_VERSIONS = {
+    V1: 'v1',
+    V2: 'v2'
+} as const;
 
 const dateFormatter = new Intl.DateTimeFormat([], {
     timeZone: 'Africa/Lagos',
@@ -17,63 +20,67 @@ const dateFormatter = new Intl.DateTimeFormat([], {
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
-    second: 'numeric',
+    second: 'numeric'
 });
 
-const API_VERSION = 'v1';
+// Route handlers
+const handleEmailVerification = (req: Request, res: Response) => {
+    const { token } = req.params;
+    try {
+        verifyJwt(token);
+        return res.status(200).json({ message: "Email verified successfully" });
+    } catch (error) {
+        return res.status(400).json({ error: "Email verification failed" });
+    }
+};
 
-// Group v1 routes
-const v1Routes = (app: Express) => {
+const handleBaseRoute = (_req: Request, res: Response) => {
+    return res.status(200).json({
+        success: true,
+        message: "Welcome To Kemba Bank",
+        timestamp: dateFormatter.format(new Date())
+    });
+};
+
+const handleV2Routes = (_req: Request, res: Response) => {
+    return res.status(200).json({
+        success: false,
+        message: "V2 API coming soon! Stay tuned for exciting new features.",
+        currentVersion: API_VERSIONS.V1
+    });
+};
+
+// Route configuration
+const configureV1Routes = (app: Express) => {
     const v1BasePath = '/api/v1';
+    const routes = [
+        { path: '/auth', router: authRouter },
+        { path: '/users', router: userRouter },
+        { path: '/admin', router: adminRouter },
+        { path: '/transactions', router: transactionRouter },
+        { path: '/account', router: virtualAccountRouter },
+        { path: '/cards', router: virtualCardRouter }
+    ];
 
-    app.use(`${v1BasePath}/auth`, authRouter);
-    app.use(`${v1BasePath}/users`, userRouter);
-    app.use(`${v1BasePath}/admin`, adminRouter);
-    app.use(`${v1BasePath}/transactions`, transactionRouter);
-    app.use(`${v1BasePath}/account`, virtualAccountRouter);
-    app.use(`${v1BasePath}/exchange`, exchangeRouter);
-    app.use(`${v1BasePath}/savings`, savingsRouter);
-    app.use(`${v1BasePath}/payments`, paymentRouter);
-    app.use(`${v1BasePath}/cards`, virtualCardRouter);
+    routes.forEach(({ path, router }) => {
+        app.use(`${v1BasePath}${path}`, router);
+    });
 };
 
-// Group v2 routes (when needed)
-const v2Routes = (app: Express) => {
+const configureV2Routes = (app: Express) => {
     const v2BasePath = '/api/v2';
-
-    app.all(`${v2BasePath}/*`, (req: Request, res: Response) => {
-        res.status(200).json({
-            success: false,
-            message: "V2 API coming soon! Stay tuned for exciting new features.",
-            currentVersion: API_VERSION
-        });
-    });
+    app.all(`${v2BasePath}/*`, handleV2Routes);
 };
 
+// Main routes configuration
 function routes(app: Express) {
-    // Base route
-    app.get("/", (req: Request, res: Response) =>
-        res.send({
-            success: true,
-            message: "Welcome To Kemba Bank",
-            timestamp: dateFormatter.format(new Date())
-        })
-    );
+    // Base routes
+    app.get("/", handleBaseRoute);
+    app.use("/verify/:token", handleEmailVerification);
 
-    // Email verification route
-    app.use("/verify/:token", (req, res) => {
-        const { token } = req.params;
-        try {
-            verifyJwt(token)
-            res.status(200).json({ message: "Email verified successfully" })
-        } catch (error) {
-            res.status(400).json({ error: "Email verification failed" })
-        }
-    });
-
-    // Initialize versioned routes
-    v1Routes(app);
-    v2Routes(app);
+    // API version routes
+    configureV1Routes(app);
+    configureV2Routes(app);
 }
 
 export default routes;

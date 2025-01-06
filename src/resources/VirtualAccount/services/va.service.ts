@@ -1,6 +1,6 @@
 import { FiatType } from "@prisma/client";
 import { prisma } from "../../../db";
-import generateAccountNumber, { CURRENCIES } from "../../../utils/generateAccountNumber";
+import { CURRENCIES, generateAccountNumber } from "../../../utils/generateAccountNumber";
 
 export class VirtualAccountService {
     async createVirtualAccount(userId: string, currencyCode: keyof typeof CURRENCIES) {

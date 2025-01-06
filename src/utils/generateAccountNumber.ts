@@ -1,28 +1,34 @@
-const ACCOUNT_NUMBER_MAX_LENGTH = 10;
+const ACCOUNT_CONFIG = {
+    MAX_LENGTH: 10,
+    MIN_LENGTH: 8,
+    TIMESTAMP_LENGTH: 6,
+    ID_LENGTH: 4
+} as const;
 
-type Currency = {
-    code: string;
-    name: string;
-    starter: string;
-    prefix?: string;
+interface CurrencyConfig {
+    readonly code: string;
+    readonly name: string;
+    readonly starter: string;
+    readonly prefix: string;
+    readonly format?: (accountNumber: string) => string;
 }
 
-type CurrencyMap = Record<string, Currency>;
-
-export const CURRENCIES: CurrencyMap = {
+const CURRENCIES: Record<string, CurrencyConfig> = {
     NGN: {
         code: "NGN",
         name: "Nigerian Naira",
         starter: "1",
-        prefix: "NG"
+        prefix: "NG",
+        format: (num) => num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')
     },
     GHS: {
         code: "GHS",
         name: "Ghanaian Cedi",
         starter: "2",
-        prefix: "GH"
+        prefix: "GH",
+        format: (num) => num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')
     },
-    CFA: {
+    XOF: {
         code: "XOF",
         name: "West African CFA",
         starter: "3",
@@ -34,16 +40,26 @@ export const CURRENCIES: CurrencyMap = {
         starter: "4",
         prefix: "US"
     }
-};
+} as const;
+
+function generateTimestamp(): string {
+    return Date.now().toString().slice(-ACCOUNT_CONFIG.TIMESTAMP_LENGTH);
+}
+
+function formatAccountNumber(accountNumber: string, currency: CurrencyConfig): string {
+    return currency.format ? currency.format(accountNumber) : accountNumber;
+}
 
 export function generateAccountNumber(id: string, currencyCode: keyof typeof CURRENCIES): string {
     const currency = CURRENCIES[currencyCode];
-    const timestamp = Date.now().toString().slice(-6);
-    const uniqueId = id.slice(-4);
-    const accountNumber = `${currency.prefix}${currency.starter}${timestamp}${uniqueId}`;
+    const timestamp = generateTimestamp();
+    const uniqueId = id.slice(-ACCOUNT_CONFIG.ID_LENGTH);
 
-    return accountNumber.slice(0, ACCOUNT_NUMBER_MAX_LENGTH);
+    const rawAccountNumber = `${currency.prefix}${currency.starter}${timestamp}${uniqueId}`;
+    const accountNumber = rawAccountNumber.slice(0, ACCOUNT_CONFIG.MAX_LENGTH);
+
+    return formatAccountNumber(accountNumber, currency);
 }
 
-export { ACCOUNT_NUMBER_MAX_LENGTH };
-export type { Currency, CurrencyMap };
+export { ACCOUNT_CONFIG, CURRENCIES };
+export type { CurrencyConfig };
